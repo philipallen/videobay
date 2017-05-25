@@ -30,7 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
       links: [
         { component: HomePage, name: 'Home', segment: 'home' },
         { component: ListPage, name: 'List', segment: 'list', defaultHistory: [HomePage] },
-        { component: ListPage, name: 'List', segment: 'list/:itemId' }
+        { component: ListPage, name: 'List', segment: 'list/:item' }
       ]
     })
   ],

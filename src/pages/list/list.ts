@@ -11,12 +11,7 @@ export class ListPage {
   items: Array<{title: string, note: string, icon: string, id: number}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log('welcome to list page');
     console.log(navParams);
-
-    // if (navParams.data) {
-    //   this.itemTapped({}, navParams.data);
-    // }
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
@@ -40,8 +35,7 @@ export class ListPage {
     console.log(item);
     // That's right, we're pushing to ourselves!
     this.navCtrl.push(ListPage, {
-      "item": item,
-      "itemId": item.id
+      "item": item
     });
   }
 }
