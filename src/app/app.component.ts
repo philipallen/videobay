@@ -7,7 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  // selector: 'ion-app',
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;

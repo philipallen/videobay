@@ -8,9 +8,16 @@ import { NavController, NavParams } from 'ionic-angular';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: Array<{title: string, note: string, icon: string, id: number}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log('welcome to list page');
+    console.log(navParams);
+
+    // if (navParams.data) {
+    //   this.itemTapped({}, navParams.data);
+    // }
+
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -23,15 +30,18 @@ export class ListPage {
       this.items.push({
         title: 'Item ' + i,
         note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+        icon: this.icons[Math.floor(Math.random() * this.icons.length)],
+        id: i
       });
     }
   }
 
   itemTapped(event, item) {
+    console.log(item);
     // That's right, we're pushing to ourselves!
     this.navCtrl.push(ListPage, {
-      item: item
+      "item": item,
+      "itemId": item.id
     });
   }
 }
