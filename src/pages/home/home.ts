@@ -1,13 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { User } from '../../models/users';
+import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+	currentUser: User;
+    users: User[] = [];
 
-  constructor(public navCtrl: NavController) {
+
+
+  constructor(public navCtrl: NavController, private userService: UserService) {
+  	this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+
+
+
+
   	window.addEventListener("resize", playVideos, false);
 	window.addEventListener("scroll", playVideos, false);
 	// var players = ['example_video_1', 'example_video_2'];
