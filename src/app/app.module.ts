@@ -20,7 +20,7 @@ import { AlertDirective } from '../directives/alert/alert';
 
 // used to create fake backend
 import { fakeBackendProvider } from '../helpers/fake-backend';
-import { MockBackend, MockConnection } from '@angular/http/testing';
+import { MockBackend } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
 
