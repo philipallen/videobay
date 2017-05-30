@@ -47,7 +47,7 @@ import { BaseRequestOptions } from '@angular/http';
     // IonicModule.forRoot(MyApp),
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        { component: HomePage, name: 'Home', segment: 'home' },
+        { component: HomePage, name: 'Home', segment: 'home', defaultHistory: [HomePage] },
         { component: ListPage, name: 'List', segment: 'list', defaultHistory: [HomePage] },
         { component: ListPage, name: 'List', segment: 'list/:item' }
       ]

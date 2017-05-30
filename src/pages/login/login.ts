@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-// import { Router, ActivatedRoute } from '@angular/router';
  
 import { AlertService } from '../../services/alert.service';
 import { AuthenticationService } from '../../services/authentication.service';
-import { NavController } from 'ionic-angular';
+import { Nav, NavController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
  
 @Component({
-//     moduleId: module.id,
   	selector: 'page-login',
     templateUrl: 'login.html'
 })
@@ -21,17 +19,12 @@ export class LoginPage implements OnInit {
  
     constructor(
 		public navCtrl: NavController,
-//         private route: ActivatedRoute,
-//         private router: Router,
+		public nav: Nav,
         private authenticationService: AuthenticationService,
         private alertService: AlertService) { }
  
     ngOnInit() {
-        // reset login status
         this.authenticationService.logout();
- 
-        // get return url from route parameters or default to '/'
-//         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
  
     login() {
@@ -39,8 +32,8 @@ export class LoginPage implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-//                     this.router.navigate([this.returnUrl]);
-					this.navCtrl.push(HomePage, {});
+					// this.navCtrl.push(HomePage, {});
+    				this.nav.setRoot(HomePage);
                 },
                 error => {
                     this.alertService.error(error);
@@ -52,14 +45,13 @@ export class LoginPage implements OnInit {
 	    this.navCtrl.push(RegisterPage);
 	}
 
-	//TODO below to guard from leaving this page?
 	// ionViewCanLeave(): boolean{
-	//    // here we can either return true or false
-	//    // depending on if we want to leave this view
-	//    if(isValid(randomValue)){
-	//       return true;
-	//     } else {
+ //   		if(!localStorage.getItem('currentUser')){
+	//       console.log('no current user');
 	//       return false;
-	//     }
-	//  }
+	//     } else {
+	//       console.log('there is a current user');
+	//       return true;
+ //    	}
+ //  	}
 }
