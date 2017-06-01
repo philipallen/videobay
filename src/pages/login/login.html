@@ -1,16 +1,3 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>LoginPage</ion-title>
-  </ion-navbar>
-
-</ion-header> -->
 <ion-header>
   <ion-navbar>
     <ion-title>Login</ion-title>
@@ -18,19 +5,16 @@
 </ion-header>
 
 <ion-content>
- 
 	<div padding>
 	    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-	    	<ion-list>
-		    	<ion-item>
-				    <ion-label floating>Username</ion-label>
-				    <ion-input name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required></ion-input>
-			  	</ion-item>
-			  	<ion-item>
-				    <ion-label floating>Password</ion-label>
-				    <ion-input name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required></ion-input>
-			  	</ion-item>
-			</ion-list>  	
+	    	<ion-item>
+			    <ion-label floating>Username</ion-label>
+			    <ion-input name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required></ion-input>
+		  	</ion-item>
+		  	<ion-item>
+			    <ion-label floating>Password</ion-label>
+			    <ion-input name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required></ion-input>
+		  	</ion-item>
 
 	        <!-- <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
 	            <label for="username">Username</label>
@@ -43,12 +27,9 @@
 	            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
 	        </div> -->
 	        <div class="form-group">
-	        	<button [disabled]="loading" block ion-button>Login</button>
-	        	<button (click)="toRegisterPage()" color="light" block ion-button>Register</button>
-	            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-	            <!-- <a (click)="toRegisterPage()" class="btn btn-link">Register</a> -->
-	        </div>
+	        	<p><button block ion-button>Login</button></p>
+	        </div>	
 	    </form>
+	    <p><button (click)="toRegisterPage()" color="light" block ion-button>Register</button></p>
 	</div>
- 
 </ion-content>
