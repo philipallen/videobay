@@ -39,7 +39,7 @@ export class RegisterPage {
     }
 
     toLoginPage() {
-	    this.navCtrl.push(LoginPage);
+	    this.navCtrl.pop();
 	}
 
 }

@@ -14,3 +14,15 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+ion-item.ng-dirty.ng-invalid .item-inner {
+  border-bottom: 1px solid $text-input-highlight-color-invalid;
+}
+
+ion-label[floating] {
+	color: $subdued-text-color;
+}
