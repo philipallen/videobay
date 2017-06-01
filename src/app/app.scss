@@ -26,3 +26,7 @@ ion-item.ng-dirty.ng-invalid .item-inner {
 ion-label[floating] {
 	color: $subdued-text-color;
 }
+
+input {
+	outline: none !important; //removes the dotted line on focus in chrome
+}
