@@ -1,3 +1,7 @@
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
+
+ion-item.ng-dirty.ng-invalid .item-inner {
+  border-bottom: 1px solid $text-input-highlight-color-invalid;
+}
