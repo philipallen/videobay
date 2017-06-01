@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
 	login() {
 		let loadingPopup = this.loadingCtrl.create({
 	      	// content: 'Loading data...' //Can add text content here
-	      	// dismissOnPageChange: true
+	      	dismissOnPageChange: true
 	    });
 	    
 		loadingPopup.present();

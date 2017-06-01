@@ -9,11 +9,11 @@
 	    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
 	    	<ion-item>
 			    <ion-label floating>Username</ion-label>
-			    <ion-input name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required></ion-input>
+			    <ion-input name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
 		  	</ion-item>
 		  	<ion-item>
 			    <ion-label floating>Password</ion-label>
-			    <ion-input name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required></ion-input>
+			    <ion-input name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
 		  	</ion-item>
 	        <div class="form-group">
 	        	<p><button block ion-button>Login</button></p>

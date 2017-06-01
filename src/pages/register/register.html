@@ -20,19 +20,19 @@
 	    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm">
 	    	<ion-item>
 			    <ion-label floating>First Name</ion-label>
-			    <ion-input name="firstName" type="text" [(ngModel)]="model.firstName" #firstName="ngModel" required></ion-input>
+			    <ion-input autocomplete="off" name="firstName" type="text" [(ngModel)]="model.firstName" #firstName="ngModel" required></ion-input>
 		  	</ion-item>
 		  	<ion-item>
 			    <ion-label floating>Last Name</ion-label>
-			    <ion-input name="lastName" type="text" [(ngModel)]="model.lastName" #lastName="ngModel" required></ion-input>
+			    <ion-input autocomplete="off" name="lastName" type="text" [(ngModel)]="model.lastName" #lastName="ngModel" required></ion-input>
 		  	</ion-item>
 		  	<ion-item>
 			    <ion-label floating>Username</ion-label>
-			    <ion-input name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required></ion-input>
+			    <ion-input autocomplete="off" autocapitalize="off" autocorrect="off" name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required></ion-input>
 		  	</ion-item>
 		  	<ion-item>
 			    <ion-label floating>Password</ion-label>
-			    <ion-input name="password" type="text" [(ngModel)]="model.password" #password="ngModel" required></ion-input>
+			    <ion-input autocomplete="off" autocapitalize="off" autocorrect="off" name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required></ion-input>
 		  	</ion-item>
 	        <div class="form-group">
 	    		<p><button [disabled]="!f.form.valid" block ion-button>Register</button></p>
