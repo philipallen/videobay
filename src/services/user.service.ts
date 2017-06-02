@@ -6,7 +6,11 @@ import { User } from '../models/users';
 @Injectable()
 export class UserService {
     constructor(private http: Http) { }
- 
+     
+    getLoggedInUser() {
+        return JSON.parse(localStorage.getItem('currentUser'));
+    }
+
     getAll() {
         return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
     }

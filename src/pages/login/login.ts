@@ -5,7 +5,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Nav, NavController, LoadingController, AlertController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
-import { RegisterPage } from '../register/register';
+// import { RegisterPage } from '../register/register';
 
 @Component({
 	selector: 'page-login',
@@ -14,7 +14,7 @@ import { RegisterPage } from '../register/register';
 
 export class LoginPage implements OnInit {
 	model: any = {};
-	loading = false;
+	// loading = false;
 	returnUrl: string;
 
 	constructor(
@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
 		private alertService: AlertService) { }
 
 	ngOnInit() {
-		this.authenticationService.logout();
+		// this.authenticationService.logout();
 	}
 
 	login() {
@@ -39,6 +39,7 @@ export class LoginPage implements OnInit {
 		this.authenticationService.login(this.model.username, this.model.password)
 			.subscribe(
 				data => {
+    				console.log(this.authenticationService.loggedIn);
     				this.nav.setRoot(HomePage);
 				},
 				error => {
@@ -53,9 +54,9 @@ export class LoginPage implements OnInit {
 				});
 	}
 
-	toRegisterPage() {
-		this.navCtrl.push(RegisterPage);
-	}
+	// toRegisterPage() {
+	// 	this.navCtrl.push(RegisterPage);
+	// }
 
 	// ionViewCanLeave(): boolean{
  //   		if(!localStorage.getItem('currentUser')){

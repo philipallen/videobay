@@ -6,7 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   templateUrl: 'app.html',
@@ -15,7 +17,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -23,21 +25,33 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
+    public userService: UserService,
     private authenticationService: AuthenticationService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Login', component: LoginPage },
+      { title: 'Register', component: RegisterPage }
     ];
+
+
 
   }
 
+  // toLogin() {
+  //   this.nav.push(LoginPage);
+  // }
+
   logout() {
-    console.log('trying to logout');
+    this.authenticationService.logout();
+    console.log('now logged out');
+    console.log(this.authenticationService.loggedIn);
+    console.log(this.userService.getLoggedInUser());
     // this.authenticationService.logout(); Not sure whether to have logout here or in login.ts
-    this.nav.setRoot(LoginPage);
+    this.nav.setRoot(HomePage);
   }
 
   initializeApp() {
@@ -46,12 +60,14 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      console.log(this.userService.getLoggedInUser());
     });
   }
 
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    // this.nav.setRoot(page.component);
+    this.nav.push(page.component);
   }
 }
