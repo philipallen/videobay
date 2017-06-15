@@ -4,6 +4,8 @@ import { NavController } from 'ionic-angular';
 import { User } from '../../models/users';
 import { UserService } from '../../services/user.service';
 
+import videojs from 'video.js'
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -65,6 +67,28 @@ export class HomePage {
 
 	   return scrollIsAboveElement && elementIsVisibleOnScreen;
 	}
+  }
+
+  togglePause(e) {
+  	//video.js 
+  		//node packages
+  		//package.json
+  		//imported into this file
+  		//index.html reference
+  		//home.html usage
+
+  	//videogular
+  		//node packages
+  		//package.json
+  		
+
+  	let myPlayer = videojs(e.srcElement);
+  	console.log(e);
+   //  if (myPlayer.paused()) {
+   //  	myPlayer.play();
+  	// } else {
+   //  	myPlayer.pause();
+  	// }
   }
 
 }

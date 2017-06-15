@@ -7,78 +7,30 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
+<ion-content>
   <!--https://stackoverflow.com/questions/25439368/play-video-when-user-scrolls-specifically-using-video-js-->
   <!--http://playerjs.io/-->
-  <video id="1" class="video-js" controls preload="auto" width="640" height="264"
-  poster="" data-setup="{}">
-    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-  <video id="2" class="video-js" controls preload="auto" width="640" height="264"
-  poster="" data-setup="{}">
-    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-  <video id="3" class="video-js" controls preload="auto" width="640" height="264"
-  poster="" data-setup="{}">
-    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-  <video id="4" class="video-js" controls preload="auto" width="640" height="264"
-  poster="" data-setup="{}">
-    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-  <video id="5" class="video-js" controls preload="auto" width="640" height="264"
-  poster="" data-setup="{}">
-    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-  <video id="6" class="video-js" controls preload="auto" width="640" height="264"
-  poster="" data-setup="{}">
-    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-  <video id="7" class="video-js" controls preload="auto" width="640" height="264"
-  poster="" data-setup="{}">
-    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-card>
+    <ion-item>
+      <h2>Giant bicycle</h2>
+      <p>Dun Laoghaire, Co. Dublin</p>
+    </ion-item>
+
+    <video id="1" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls (click)="togglePause($event)" preload="auto" 
+    poster="" data-setup="{}">
+      <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+      <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+      <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+      </p>
+    </video>
+
+    <ion-card-content>
+      <p>Men's bicycle. Perfect condition.</p>
+      <p text-right>11h ago</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
