@@ -23,6 +23,8 @@ import { fakeBackendProvider } from '../helpers/fake-backend';
 import { MockBackend } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
+import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angular2-moment
+
 
 // import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 // Routing Module
@@ -43,6 +45,7 @@ import { BaseRequestOptions } from '@angular/http';
   imports: [
     BrowserModule,
     HttpModule,
+    MomentModule,
     // AppRoutingModule,
     // IonicModule.forRoot(MyApp),
     IonicModule.forRoot(MyApp, {}, {

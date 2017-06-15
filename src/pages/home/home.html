@@ -11,12 +11,16 @@
   <!--https://stackoverflow.com/questions/25439368/play-video-when-user-scrolls-specifically-using-video-js-->
   <!--http://playerjs.io/-->
 
-  <ion-card>
-    <ion-item>
-      <h2>Giant bicycle</h2>
-      <p>Dun Laoghaire, Co. Dublin</p>
-    </ion-item>
+  <div *ngFor="let advert of adverts">
+    
+  </div>
 
+  <ion-card *ngFor="let advert of adverts">
+    <ion-item>
+      <h2>{{advert.title}}</h2>
+      <p>{{advert.city}}, {{advert.county}}</p>
+      <p item-end>{{advert.price | currency:'EUR':true}}</p>
+    </ion-item>
     <video id="1" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls (click)="togglePause($event)" preload="auto" 
     poster="" data-setup="{}">
       <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
@@ -26,10 +30,9 @@
         <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
       </p>
     </video>
-
     <ion-card-content>
-      <p>Men's bicycle. Perfect condition.</p>
-      <p text-right>11h ago</p>
+      <p>{{advert.description}}</p>
+      <p text-right>{{advert.dateAdded | amTimeAgo}}</p>
     </ion-card-content>
   </ion-card>
 
