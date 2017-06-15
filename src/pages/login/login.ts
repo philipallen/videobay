@@ -39,7 +39,6 @@ export class LoginPage implements OnInit {
 		this.authenticationService.login(this.model.username, this.model.password)
 			.subscribe(
 				data => {
-    				console.log(this.authenticationService.loggedIn);
     				this.nav.setRoot(HomePage);
 				},
 				error => {
