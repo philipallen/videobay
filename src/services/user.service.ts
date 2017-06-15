@@ -7,6 +7,10 @@ import { User } from '../models/users';
 export class UserService {
     constructor(private http: Http) { }
      
+    someoneLoggedIn() {
+        return JSON.parse(localStorage.getItem('currentUser')) ? true : false;
+    }
+
     getLoggedInUser() {
         return JSON.parse(localStorage.getItem('currentUser'));
     }

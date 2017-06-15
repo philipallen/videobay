@@ -7,19 +7,20 @@
 
   <ion-content>
     <ion-list>
-      <div>Logged in as {{this.userService.getLoggedInUser()}}</div>
-      <!-- <ng-template #elseBlock>Alternate text while primary text is hidden</ng-template> -->
+      <div *ngIf="this.userService.someoneLoggedIn()">Hello {{this.userService.getLoggedInUser().firstName}}</div>
 
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p.component)" >
         {{p.title}}
       </button>
-      <!-- <button menuClose ion-item  (click)="toLogin()">
-        Login
-      </button>
-      <button menuClose ion-item  (click)="toLogin()">
-        Register
-      </button> -->
-      <button menuClose ion-item  (click)="logout()">
+      <div *ngIf="!this.userService.someoneLoggedIn()">
+        <button menuClose ion-item  (click)="toLogin()">
+          Login
+        </button>
+        <button menuClose ion-item  (click)="toRegister()">
+          Register
+        </button>
+      </div>
+      <button *ngIf="this.userService.someoneLoggedIn()" menuClose ion-item  (click)="logout()">
         Logout
       </button>
     </ion-list>

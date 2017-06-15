@@ -29,27 +29,25 @@ export class MyApp {
     private authenticationService: AuthenticationService) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Login', component: LoginPage },
-      { title: 'Register', component: RegisterPage }
+      { title: 'List', component: ListPage }
+      // { title: 'Login', component: LoginPage },
+      // { title: 'Register', component: RegisterPage }
     ];
-
-
-
   }
 
-  // toLogin() {
-  //   this.nav.push(LoginPage);
-  // }
+  //this could probably be better and use the openPage function directly? 
+  toLogin() {
+    this.openPage(LoginPage);
+  }
+  toRegister() {
+    this.openPage(RegisterPage);
+  }
 
   logout() {
     this.authenticationService.logout();
-    console.log('now logged out');
-    console.log(this.authenticationService.loggedIn);
-    console.log(this.userService.getLoggedInUser());
+    console.log('logged out');
     // this.authenticationService.logout(); Not sure whether to have logout here or in login.ts
     this.nav.setRoot(HomePage);
   }
@@ -68,6 +66,6 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     // this.nav.setRoot(page.component);
-    this.nav.push(page.component);
+    this.nav.push(page);
   }
 }
