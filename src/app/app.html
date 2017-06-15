@@ -7,7 +7,9 @@
 
   <ion-content>
     <ion-list>
-      <div *ngIf="this.userService.someoneLoggedIn()">Hello {{this.userService.getLoggedInUser().firstName}}</div>
+      <ion-list-header *ngIf="this.userService.someoneLoggedIn()" color="light">
+        Hello {{this.userService.getLoggedInUser().firstName}}
+      </ion-list-header>
 
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p.component)" >
         {{p.title}}
