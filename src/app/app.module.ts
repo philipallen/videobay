@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { PlaceAdvertPage } from '../pages/placeadvert/placeadvert';
@@ -38,7 +37,6 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     LoginPage,
     RegisterPage,
     PlaceAdvertPage,
@@ -53,8 +51,6 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     IonicModule.forRoot(MyApp, {}, {
       links: [
         { component: HomePage, name: 'Home', segment: 'home' },
-        { component: ListPage, name: 'List', segment: 'list', defaultHistory: [HomePage] },
-        { component: ListPage, name: 'List', segment: 'list/:item' },
         { component: PlaceAdvertPage, name: 'PlaceAdvert', segment: 'placeadvert', defaultHistory: [HomePage] },
         { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] }
       ]
@@ -64,7 +60,6 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     LoginPage,
     RegisterPage,
     PlaceAdvertPage
