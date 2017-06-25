@@ -2,52 +2,27 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { User } from '../../models/users';
-import { Advert } from '../../models/adverts';
+import { Advert } from '../../models/advert';
 import { UserService } from '../../services/user.service';
+import { AdvertsService } from '../../services/adverts.service';
 
 import videojs from 'video.js'
 
 @Component({
 	selector: 'page-home',
-	templateUrl: 'home.html'
+	templateUrl: 'home.html',
+	providers: [AdvertsService]
 })
 export class HomePage {
 	currentUser: User;
     users: User[] = [];
     adverts: Advert[] = [];
 
-
-
-  	constructor(public navCtrl: NavController, private userService: UserService) {
+  	constructor(
+  		public navCtrl: NavController, 
+  		private userService: UserService,
+  		private advertsService: AdvertsService) {
 	  	this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-
-	  	//*******************************
-	  	//Fake data for videos
-	  	//(to be swapped with real later)
-	  	//*******************************
-	  	this.adverts = [
-	  		{
-		  		id: 1,
-			    title: "Giant bicycle",
-			    city: "Dun Laoghaire",
-			    county: "Co. Dublin",
-			    country: "Ireland",
-			    description: "Men's bicycle. Perfect condition. Collection only.",
-			    price: 50,
-			    dateAdded: 1497538869000
-			},
-			{
-		  		id: 2,
-			    title: "Portable Sony projector",
-			    city: "Greystones",
-			    county: "Co. Wicklow",
-			    country: "Ireland",
-			    description: "",
-			    price: 125.50,
-			    dateAdded: 1497366993000
-			},
-	  	]
 
 
 	  	//*******************************
@@ -98,6 +73,14 @@ export class HomePage {
 
 		   return scrollIsAboveElement && elementIsVisibleOnScreen;
 		}
+  	}
+
+  	getAdverts(): void {
+  		this.advertsService.getAdverts().then(adverts => this.adverts = adverts);
+  	}
+
+  	ngOnInit(): void {
+  		this.getAdverts();
   	}
 
   	togglePause(e) {

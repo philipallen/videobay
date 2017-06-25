@@ -19,7 +19,7 @@
     <ion-item>
       <h2>{{advert.title}}</h2>
       <p>{{advert.city}}, {{advert.county}}</p>
-      <p item-end>{{advert.price | currency:'EUR':true}}</p>
+      <ion-badge  item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
     </ion-item>
     <video id="1" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls (click)="togglePause($event)" preload="auto" 
     poster="" data-setup="{}">
