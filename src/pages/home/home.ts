@@ -90,6 +90,20 @@ export class HomePage {
   		this.navCtrl.push(PlaceAdvertPage);
   	}
 
+  	searchAdverts(ev: any) {
+	    console.log('basic search that does not work properly. conceptual.')
+
+	    let val = ev.target.value;
+
+	    if (val && val.trim() != '') {
+	      	this.adverts = this.adverts.filter((advert) => {
+	        	return (advert.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+	      	})
+	    } else {
+	    	this.getAdverts();
+	    }
+  	}
+
   	togglePause(e) {
 	  	//video.js 
 	  		//node packages

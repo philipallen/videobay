@@ -11,9 +11,8 @@
   <!--https://stackoverflow.com/questions/25439368/play-video-when-user-scrolls-specifically-using-video-js-->
   <!--http://playerjs.io/-->
 
-  <div *ngFor="let advert of adverts">
-    
-  </div>
+
+  <ion-searchbar (ionInput)="searchAdverts($event)"></ion-searchbar>
 
   <ion-card *ngFor="let advert of adverts">
     <ion-item>
