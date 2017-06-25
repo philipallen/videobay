@@ -7,9 +7,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  
- 
+<ion-content padding text-center>
+
+ 	<p *ngIf="!this.userService.someoneLoggedIn()">You need to login or register to place an advert</p>
 
   	<button ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
 

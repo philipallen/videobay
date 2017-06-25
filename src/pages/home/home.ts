@@ -3,10 +3,8 @@ import { NavController } from 'ionic-angular';
 
 import { PlaceAdvertPage } from '../placeadvert/placeadvert';
 
-import { User } from '../../models/users';
 import { Advert } from '../../models/advert';
 
-import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
 
 import videojs from 'video.js'
@@ -17,16 +15,11 @@ import videojs from 'video.js'
 	providers: [AdvertsService]
 })
 export class HomePage {
-	currentUser: User;
-    users: User[] = [];
     adverts: Advert[] = [];
 
   	constructor(
   		public navCtrl: NavController, 
-  		private userService: UserService,
   		private advertsService: AdvertsService) {
-	  	this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
 
 	  	//*******************************
 	  	//Logic around autoplaying videos
