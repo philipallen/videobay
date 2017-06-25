@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { PlaceAdvertPage } from '../placeadvert/placeadvert';
+
 import { User } from '../../models/users';
 import { Advert } from '../../models/advert';
+
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
 
@@ -81,6 +84,10 @@ export class HomePage {
 
   	ngOnInit(): void {
   		this.getAdverts();
+  	}
+
+  	toPlaceAdvert() {
+  		this.navCtrl.push(PlaceAdvertPage);
   	}
 
   	togglePause(e) {
