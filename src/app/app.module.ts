@@ -55,6 +55,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
         { component: HomePage, name: 'Home', segment: 'home' },
         { component: ListPage, name: 'List', segment: 'list', defaultHistory: [HomePage] },
         { component: ListPage, name: 'List', segment: 'list/:item' },
+        { component: PlaceAdvertPage, name: 'PlaceAdvert', segment: 'placeadvert', defaultHistory: [HomePage] },
         { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] }
       ]
     })

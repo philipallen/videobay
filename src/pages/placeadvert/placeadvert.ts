@@ -6,6 +6,7 @@ import { NavController } from 'ionic-angular';
 	templateUrl: 'placeadvert.html'
 })
 export class PlaceAdvertPage {
+	model: any = {};
 
   	constructor(
   		public navCtrl: NavController) {

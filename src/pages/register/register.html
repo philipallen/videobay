@@ -18,19 +18,19 @@
 	<div class="col-md-6 col-md-offset-3">
 	    <h2>Register</h2>
 	    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm">
-	    	<ion-item>
+	    	<ion-item no-padding>
 			    <ion-label floating>First Name</ion-label>
 			    <ion-input autocomplete="off" name="firstName" type="text" [(ngModel)]="model.firstName" #firstName="ngModel" required></ion-input>
 		  	</ion-item>
-		  	<ion-item>
+		  	<ion-item no-padding>
 			    <ion-label floating>Last Name</ion-label>
 			    <ion-input autocomplete="off" name="lastName" type="text" [(ngModel)]="model.lastName" #lastName="ngModel" required></ion-input>
 		  	</ion-item>
-		  	<ion-item>
+		  	<ion-item no-padding>
 			    <ion-label floating>Username</ion-label>
 			    <ion-input autocomplete="off" autocapitalize="off" autocorrect="off" name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required></ion-input>
 		  	</ion-item>
-		  	<ion-item>
+		  	<ion-item no-padding>
 			    <ion-label floating>Password</ion-label>
 			    <ion-input autocomplete="off" autocapitalize="off" autocorrect="off" name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required></ion-input>
 		  	</ion-item>
