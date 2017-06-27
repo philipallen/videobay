@@ -34,9 +34,9 @@ export class LoginPage implements OnInit {
 	      	// content: 'Loading data...' //Can add text content here
 	      	dismissOnPageChange: true
 	    });
-	    
+
 		loadingPopup.present();
-		this.authenticationService.login(this.model.username, this.model.password)
+		this.authenticationService.login(this.model.screenName, this.model.password)
 			.subscribe(
 				data => {
     				this.nav.setRoot(HomePage);
