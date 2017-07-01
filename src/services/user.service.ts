@@ -8,9 +8,9 @@ import { User } from '../models/users';
 @Injectable()
 export class UserService {
 
-     //private baseUrl = 'http://81.169.165.110:1099/videobay/api/';
+    private baseUrl = 'http://81.169.165.110:1099/videobay/api/';
 
-    private baseUrl = 'http://localhost:8080/videobay/api/';
+    //private baseUrl = 'http://localhost:8080/videobay/api/';
     constructor(private http: Http) { }
 
     someoneLoggedIn() {
