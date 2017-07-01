@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 
 import { User } from '../models/users';
 
@@ -44,9 +44,11 @@ export class UserService {
 
     getByUsernameAndPassword(user: User){
       let params: URLSearchParams = new URLSearchParams();
-      params.set('user', user.screenName);
-      params.set('cnt', user.password);
-      return this.http.get(this.baseUrl + 'user' ,{search: params}).map((response: Response) => response.json())
+      params.append('username', user.screenName);
+      params.set('password', user.password);
+      let options : RequestOptions = new RequestOptions({search: params});
+
+      return this.http.get(this.baseUrl + 'user' ,options).map((response: Response) => response.json())
     }
 
     // private helper methods

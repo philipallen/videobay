@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AlertService } from '../../services/alert.service';
-import { AuthenticationService } from '../../services/authentication.service';
+import { UserService } from '../../services/user.service';
 import { Nav, NavController, LoadingController, AlertController } from 'ionic-angular';
+import {User} from '../../models/users';
 
 import { HomePage } from '../home/home';
 // import { RegisterPage } from '../register/register';
@@ -13,7 +14,7 @@ import { HomePage } from '../home/home';
 })
 
 export class LoginPage implements OnInit {
-	model: any = {};
+	model: any={};
 	// loading = false;
 	returnUrl: string;
 
@@ -22,7 +23,7 @@ export class LoginPage implements OnInit {
 		private alertCtrl: AlertController,
 		public navCtrl: NavController,
 		public nav: Nav,
-		private authenticationService: AuthenticationService,
+		private userService: UserService,
 		private alertService: AlertService) { }
 
 	ngOnInit() {
@@ -36,15 +37,16 @@ export class LoginPage implements OnInit {
 	    });
 
 		loadingPopup.present();
-		this.authenticationService.login(this.model.screenName, this.model.password)
+		this.userService.getByUsernameAndPassword(this.model)
 			.subscribe(
 				data => {
-    				this.nav.setRoot(HomePage);
+					localStorage.setItem('currentUser', JSON.stringify(data));
+    			this.nav.setRoot(HomePage);
 				},
 				error => {
 					let alert = this.alertCtrl.create({
 					    title: 'Login failed',
-					    message: error,
+					    message: error._body,
 				    	buttons: ['OK']
 				  	});
 					loadingPopup.dismiss();
