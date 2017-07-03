@@ -78,7 +78,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     // },
 
     // providers used to create fake backend
-    fakeBackendProvider,
+    //fakeBackendProvider,
     MockBackend,
     BaseRequestOptions
   ]

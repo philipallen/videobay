@@ -24,12 +24,16 @@
 		  	</ion-item>
 		  	<ion-item no-padding>
 			    <ion-label floating>Last Name</ion-label>
-			    <ion-input autocomplete="off" name="lastName" type="text" [(ngModel)]="model.lastName" #lastName="ngModel" required></ion-input>
+			    <ion-input autocomplete="off" name="surName" type="text" [(ngModel)]="model.surName" #surName="ngModel" required></ion-input>
 		  	</ion-item>
 		  	<ion-item no-padding>
 			    <ion-label floating>Username</ion-label>
-			    <ion-input autocomplete="off" autocapitalize="off" autocorrect="off" name="username" type="text" [(ngModel)]="model.username" #username="ngModel" required></ion-input>
+			    <ion-input autocomplete="off" autocapitalize="off" autocorrect="off" name="screenName" type="text" [(ngModel)]="model.screenName" #screenName="ngModel" required></ion-input>
 		  	</ion-item>
+        <ion-item no-padding>
+          <ion-label floating>Email</ion-label>
+          <ion-input autocomplete="off" autocapitalize="off" autocorrect="off" name="email" type="text" [(ngModel)]="model.email" #email="ngModel" required></ion-input>
+        </ion-item>
 		  	<ion-item no-padding>
 			    <ion-label floating>Password</ion-label>
 			    <ion-input autocomplete="off" autocapitalize="off" autocorrect="off" name="password" type="password" [(ngModel)]="model.password" #password="ngModel" required></ion-input>
