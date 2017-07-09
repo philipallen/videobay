@@ -1,3 +1,6 @@
+//NOT BEING USED YET, BUT SEEMS LIKE A GOOD IDEA AS IT ALLOWS US TO DISPLAY INLINE WARNING AND ERROR MESSAGES, RATHER
+//THAN USING THE STANDARD IONIC POPUP. KEEPING FOR NOW, AS MIGHT BE USEFUL IN THE FUTURE
+
 import { Injectable } from '@angular/core';
 // import { Router, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';

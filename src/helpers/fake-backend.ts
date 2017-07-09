@@ -1,3 +1,5 @@
+//THIS ISN'T REQUIRED, BUT MAY BE USEFUL FOR REFERENCE STILL
+
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod, XHRBackend, RequestOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 

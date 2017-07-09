@@ -33,7 +33,6 @@ export class UserService {
         return this.http.post(this.baseUrl + 'user', user).map((response: Response) => response.json());
     }
 
-
     update(user: User) {
         return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
     }
@@ -52,7 +51,6 @@ export class UserService {
     }
 
     // private helper methods
-
     private jwt() {
         // create authorization header with jwt token
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
