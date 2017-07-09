@@ -11,7 +11,17 @@
 
  	<p *ngIf="!this.userService.someoneLoggedIn()">You need to login or register to place an advert</p>
 
-  	<button ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
+  	<button (click)="recordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
+
+  	<video *ngIf="videoData" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls preload="auto" 
+    poster="" data-setup="{}">
+      <source [src]="videoData[0].fullPath" type='video/mp4'>
+      <!-- <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'> -->
+      <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+      </p>
+    </video>
 
 	<form name="form" (ngSubmit)="f.form.valid && placeAdvert()" #f="ngForm" novalidate>
     	<ion-item no-padding>

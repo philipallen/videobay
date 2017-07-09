@@ -11,6 +11,7 @@ import { PlaceAdvertPage } from '../pages/placeadvert/placeadvert';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 
 import { AlertService } from '../services/alert.service';
 import { UserService } from '../services/user.service';
@@ -67,6 +68,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AlertService,
     UserService,
