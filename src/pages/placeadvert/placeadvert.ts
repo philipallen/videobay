@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import { UserService } from '../../services/user.service';
 
@@ -17,7 +17,8 @@ export class PlaceAdvertPage {
 	constructor(
 		public navCtrl: NavController,
   	public userService: UserService,
-    private mediaCapture: MediaCapture) {
+    private mediaCapture: MediaCapture,
+    private alertCtrl: AlertController) {
 	}
 
   recordVideo() {
@@ -29,10 +30,51 @@ export class PlaceAdvertPage {
       );
   }
 
+  reRecordVideo() {
+    this.videoData = null;
+    this.recordVideo();
+  }
+
 	placeAdvert() {
 		console.log(this.userService.someoneLoggedIn());
 		console.log('try to place advert');
 		console.log(this.model);
 	}
 
+  tryToGoBack() {
+    if (this.videoData) {
+      let alertPopup = this.alertCtrl.create({
+        title: "Warning",
+        message: "Are you sure you want to leave? You'll lose your advert.",
+        buttons: [
+        {
+          text: 'Nah, stay',
+          role: 'cancel'
+        },
+        {
+          text: 'Yeah, leave',
+          handler: () => {
+            this.videoData = null;
+            this.goBack();
+          }
+        }]
+      });
+
+      alertPopup.present();
+    } else {
+      this.goBack();
+    }
+  }
+
+  goBack() {
+    this.navCtrl.pop();
+  }
+
 }
+
+
+
+
+
+
+
