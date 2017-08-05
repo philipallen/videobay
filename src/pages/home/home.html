@@ -20,7 +20,7 @@
       <p>{{advert.city}}, {{advert.county}}</p>
       <ion-badge  item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
     </ion-item>
-    <video id="1" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls (click)="togglePause($event)" preload="auto" 
+    <video id="1" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls (click)="togglePause($event)" preload="auto" 
     poster="" data-setup="{}">
       <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
       <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
