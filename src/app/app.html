@@ -22,9 +22,14 @@
           Register
         </button>
       </div>
-      <button *ngIf="this.userService.someoneLoggedIn()" menuClose ion-item  (click)="logout()">
-        Logout
-      </button>
+      <div *ngIf="this.userService.someoneLoggedIn()">
+        <button menuClose ion-item  (click)="toMyAdverts()">
+          My Adverts
+        </button>
+        <button menuClose ion-item  (click)="logout()">
+          Logout
+        </button>
+      </div>
     </ion-list>
   </ion-content>
 

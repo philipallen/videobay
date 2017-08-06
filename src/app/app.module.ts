@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { AdvertsPage } from '../pages/adverts/adverts';
+import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { PlaceAdvertPage } from '../pages/placeadvert/placeadvert';
@@ -38,6 +39,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
   declarations: [
     MyApp,
     AdvertsPage,
+    MyAdvertsPage,
     LoginPage,
     RegisterPage,
     PlaceAdvertPage,
@@ -61,6 +63,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
   entryComponents: [
     MyApp,
     AdvertsPage,
+    MyAdvertsPage,
     LoginPage,
     RegisterPage,
     PlaceAdvertPage

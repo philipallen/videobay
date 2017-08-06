@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AdvertsPage } from '../pages/adverts/adverts';
+import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AuthenticationService } from '../services/authentication.service';
@@ -39,8 +40,13 @@ export class MyApp {
   toLogin() {
     this.openPage(LoginPage);
   }
+
   toRegister() {
     this.openPage(RegisterPage);
+  }
+  
+  toMyAdverts() {
+    this.openPage(MyAdvertsPage);
   }
 
   logout() {
