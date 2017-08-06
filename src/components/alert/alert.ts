@@ -7,7 +7,7 @@ import { AlertService } from '../../services/alert.service';
     templateUrl: 'alert.html'
 })
  
-export class AlertDirective {
+export class AlertComponent {
     message: any;
  
     constructor(private alertService: AlertService) { }

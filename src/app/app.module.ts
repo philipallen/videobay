@@ -17,7 +17,7 @@ import { AlertService } from '../services/alert.service';
 import { UserService } from '../services/user.service';
 import { AuthenticationService } from '../services/authentication.service';
 
-import { AlertDirective } from '../directives/alert/alert';
+import { AlertComponent } from '../components/alert/alert';
 
 // used to create fake backend
 // import { fakeBackendProvider } from '../mock/fake-backend';
@@ -41,7 +41,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     LoginPage,
     RegisterPage,
     PlaceAdvertPage,
-    AlertDirective
+    AlertComponent
   ],
   imports: [
     BrowserModule,
