@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
 import { Nav, NavController, LoadingController, AlertController } from 'ionic-angular';
-import {User} from '../../models/users';
+import {User} from '../../models/user';
 
 import { AdvertsPage } from '../adverts/adverts';
 // import { RegisterPage } from '../register/register';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 
-import { User } from '../models/users';
+import { User } from '../models/user';
 
 
 
