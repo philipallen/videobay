@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { AdvertsPage } from '../pages/adverts/adverts';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { AuthenticationService } from '../services/authentication.service';
@@ -16,7 +16,7 @@ import { UserService } from '../services/user.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = AdvertsPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -29,7 +29,7 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', component: HomePage }
+      { title: 'Adverts', component: AdvertsPage }
       // { title: 'Login', component: LoginPage },
       // { title: 'Register', component: RegisterPage }
     ];
@@ -47,7 +47,7 @@ export class MyApp {
     this.authenticationService.logout();
     console.log('logged out');
     // this.authenticationService.logout(); Not sure whether to have logout here or in login.ts
-    this.nav.setRoot(HomePage);
+    this.nav.setRoot(AdvertsPage);
   }
 
   initializeApp() {

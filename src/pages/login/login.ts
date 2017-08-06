@@ -5,7 +5,7 @@ import { UserService } from '../../services/user.service';
 import { Nav, NavController, LoadingController, AlertController } from 'ionic-angular';
 import {User} from '../../models/users';
 
-import { HomePage } from '../home/home';
+import { AdvertsPage } from '../adverts/adverts';
 // import { RegisterPage } from '../register/register';
 
 @Component({
@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
 			.subscribe(
 				data => {
 					localStorage.setItem('currentUser', JSON.stringify(data));
-    			this.nav.setRoot(HomePage);
+    			this.nav.setRoot(AdvertsPage);
 				},
 				error => {
 					let alert = this.alertCtrl.create({

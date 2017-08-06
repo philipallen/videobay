@@ -10,11 +10,11 @@ import { AdvertsService } from '../../services/adverts.service';
 import videojs from 'video.js'
 
 @Component({
-	selector: 'page-home',
-	templateUrl: 'home.html',
+	selector: 'page-adverts',
+	templateUrl: 'adverts.html',
 	providers: [AdvertsService]
 })
-export class HomePage {
+export class AdvertsPage {
     adverts: Advert[] = [];
 
   	constructor(

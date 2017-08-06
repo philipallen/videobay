@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { AdvertsPage } from '../pages/adverts/adverts';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { PlaceAdvertPage } from '../pages/placeadvert/placeadvert';
@@ -37,7 +37,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    AdvertsPage,
     LoginPage,
     RegisterPage,
     PlaceAdvertPage,
@@ -51,8 +51,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     // IonicModule.forRoot(MyApp),
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        { component: HomePage, name: 'Home', segment: 'home' },
-        { component: PlaceAdvertPage, name: 'PlaceAdvert', segment: 'placeadvert', defaultHistory: [HomePage] },
+        { component: AdvertsPage, name: 'Adverts', segment: 'adverts' },
+        { component: PlaceAdvertPage, name: 'PlaceAdvert', segment: 'placeadvert', defaultHistory: [AdvertsPage] },
         { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] }
       ]
     })
@@ -60,7 +60,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    AdvertsPage,
     LoginPage,
     RegisterPage,
     PlaceAdvertPage
