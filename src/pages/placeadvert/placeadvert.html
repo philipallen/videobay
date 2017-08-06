@@ -39,6 +39,10 @@
 		    <ion-label floating>Price</ion-label>
 		    <ion-input name="price" type="number" [(ngModel)]="model.price" #price="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
 	  	</ion-item>
+	  	<ion-item no-padding>
+		    <ion-label floating>Eir Code</ion-label>
+		    <ion-input name="location" type="number" [(ngModel)]="model.location" #location="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
+	  	</ion-item>
         <div class="form-group">
         	<p><button [disabled]="!f.form.valid" block ion-button>Place advert</button></p>
         </div>
