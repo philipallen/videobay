@@ -6,19 +6,25 @@ export const ADVERTS: Advert[] = [
 	    title: "Giant bicycle",
 	    city: "Dun Laoghaire",
 	    county: "Co. Dublin",
-	    country: "Ireland",
+		country: "Ireland",
+		state: "OPEN",
 	    description: "Men's bicycle. Perfect condition. Collection only.",
 	    price: 50,
-	    dateAdded: 1497538869000
+		created: 1497538869000,
+		user: {},
+		videoUrl: ""
 	},
 	{
   		id: 2,
 	    title: "Portable Sony projector",
 	    city: "Greystones",
 	    county: "Co. Wicklow",
-	    country: "Ireland",
+		country: "Ireland",
+		state: "OPEN",
 	    description: "",
 	    price: 125.50,
-	    dateAdded: 1497366993000
+		created: 1497366993000,
+		user: {},
+		videoUrl: ""
 	}
 ]

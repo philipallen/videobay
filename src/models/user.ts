@@ -1,3 +1,5 @@
+import { Advert } from '../models/advert';
+
 export class User {
     id: number;
     screenName: string;
@@ -5,4 +7,5 @@ export class User {
     firstName: string;
     surName: string;
     email: string;
+    adverts: Advert[];
 }
