@@ -1,5 +1,9 @@
 {
   "name": "noTabs",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [{
+    "path": "/api",
+    "proxyUrl": "http://81.169.165.110:1099/videobay/api"
+  }]
 }
