@@ -3,8 +3,6 @@ import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angul
 
 import { User } from '../models/user';
 
-
-
 @Injectable()
 export class UserService {
 
@@ -32,6 +30,6 @@ export class UserService {
       params.set('password', user.password);
       let options : RequestOptions = new RequestOptions({search: params});
 
-      return this.http.get(this.baseUrl + '/user' ,options).map((response: Response) => response.json())
+      return this.http.get(this.baseUrl + '/users' ,options).map((response: Response) => response.json())
     }
 }

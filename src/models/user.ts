@@ -9,3 +9,4 @@ export class User {
     email: string;
     adverts: Advert[];
 }
+//todo eventually sync this up with the rest endpoints types

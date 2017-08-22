@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { PlaceAdvertPage } from '../placeadvert/placeadvert';
-
 import { Advert } from '../../models/advert';
-
 import { AdvertsService } from '../../services/adverts.service';
 
 import videojs from 'video.js'
@@ -16,6 +14,7 @@ import videojs from 'video.js'
 })
 export class AdvertsPage {
     adverts: Advert[] = [];
+	errorMessage: any;
 
   	constructor(
   		public navCtrl: NavController, 
@@ -72,7 +71,10 @@ export class AdvertsPage {
   	}
 
   	getAdverts(): void {
-  		this.advertsService.getAdverts().then(adverts => this.adverts = adverts);
+		  this.advertsService.getAdverts().then(adverts => this.adverts = adverts); //mock data
+		//   this.advertsService.getAdverts().subscribe( //real endpoint
+		// 		adverts  => this.adverts = adverts,
+		// 		error =>  this.errorMessage = <any>error);
   	}
 
   	ngOnInit(): void {
