@@ -44,28 +44,15 @@ export class PlaceAdvertPage {
         console.log('try to place advert');
         console.log(this.model);
 
-        let userId = 1;
-        let data = {
+        let userId = this.userService.getLoggedInUser().id;
+        let data = { //TODO cast this to the Advert class
+            "title": this.model.title,
+            "description": this.model.description,
+            "price": Number(this.model.price),
             "country": "IRL",
-            "county": "Dublin",
-            "created": "Tue Aug 22 2017 20:38:19 GMT+0100 (IST)",
-            "description": "Test video",
-            "id": 0,
-            "price": 100,
-            "state": "OPEN",
-            "title": "This is a test",
-            "user": {
-                "adverts": [
-                    {}
-                ],
-                "email": "string",
-                "firstName": "phil",
-                "id": 1,
-                "password": "g8uein",
-                "screenName": "philallen",
-                "surName": "allen"
-            },
-            "videoUrl": "string"
+            "videoUrl": "string", //TODO add a video
+            "created": null, //TODO add a timestamp
+            "county": this.model.county //TODO add a typeahead select
         }
 
         this.advertsService.saveAdvert(data, userId).subscribe(
