@@ -5,6 +5,7 @@ import { PlaceAdvertPage } from '../placeadvert/placeadvert';
 
 import { Advert } from '../../models/advert';
 
+import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
 
 import videojs from 'video.js'
@@ -16,20 +17,25 @@ import videojs from 'video.js'
 })
 export class MyAdvertsPage {
     myAdverts: Advert[] = [];
+    errorMessage: any;
 
   	constructor(
   		public navCtrl: NavController, 
+		public userService: UserService,
   		private advertsService: AdvertsService) {
 
 	  	
   	}
 
   	getAdverts(): void {
-  		// this.advertsService.getAdverts().then(adverts => this.adverts = adverts);
+		let userId = this.userService.getLoggedInUser().id;
+  		this.advertsService.getMyAdverts(userId).subscribe(
+            response => this.myAdverts = response,
+            error => this.errorMessage = <any>error);
   	}
 
   	ngOnInit(): void {
-  		// this.getAdverts();
+  		this.getAdverts();
   	}
 
   	toPlaceAdvert() {

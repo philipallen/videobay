@@ -27,7 +27,16 @@ export class AdvertsService {
     //     return this.http.get('/api/adverts/countries/ireland/dublin', options)
     //                     .map(this.extractData)
     //                     .catch(this.handleError);
-	// } 
+    // } 
+    
+    getMyAdverts(userId: number): Observable<any> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options : RequestOptions = new RequestOptions({headers: headers});
+
+        return this.http.get('/api/adverts/users/' + userId, options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
 	
 	saveAdvert(data: any, userId: number): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });

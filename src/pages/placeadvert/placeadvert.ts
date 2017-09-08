@@ -56,8 +56,8 @@ export class PlaceAdvertPage {
         }
 
         this.advertsService.saveAdvert(data, userId).subscribe(
-            response => this.response = response,
-            error => this.errorMessage = <any>error);
+            response => this.response = response, //todo inform ui saved successfully
+            error => this.errorMessage = <any>error); //todo add ui error handling
     }
 
 
