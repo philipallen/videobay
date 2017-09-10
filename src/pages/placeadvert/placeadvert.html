@@ -38,14 +38,24 @@
 	  	<ion-item no-padding>
 		    <ion-label floating>Price</ion-label>
 		    <ion-input name="price" type="number" [(ngModel)]="model.price" #price="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
-	  	</ion-item>
-	  	<ion-item no-padding>
+			</ion-item>
+
+			<ion-item no-padding>
+				<ion-label>County</ion-label>
+				<ion-select [(ngModel)]="model.county" name="county">
+					<ion-option *ngFor="let county of countiesList" [value]="county">{{county}}</ion-option>
+					<!-- <ion-option *ngFor="let employee of employees" [value]="employee"></ion-option> -->
+					
+				</ion-select>
+			</ion-item>
+	  	<!-- <ion-item no-padding>
 		    <ion-label floating>County</ion-label>
 		    <ion-input name="county" type="text" [(ngModel)]="model.county" #county="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
-	  	</ion-item>
-        <div class="form-group">
-        	<p><button [disabled]="!f.form.valid" block ion-button>Place advert</button></p>
-        </div>
+			</ion-item> -->
+			
+			<div class="form-group">
+				<p><button [disabled]="!f.form.valid" block ion-button>Place advert</button></p>
+			</div>
     </form>
 
 </ion-content>

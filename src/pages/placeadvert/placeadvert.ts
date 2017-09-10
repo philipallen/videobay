@@ -5,6 +5,8 @@ import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
 
+import { COUNTIES } from '../../mock/counties';
+
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 
 @Component({
@@ -17,6 +19,7 @@ export class PlaceAdvertPage {
     videoData: any;
     errorMessage: any;
     response: any;
+    countiesList = COUNTIES;
 
     constructor(
         public navCtrl: NavController,
