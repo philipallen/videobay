@@ -8,7 +8,7 @@ import { AdvertsPage } from '../pages/adverts/adverts';
 import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { PlaceAdvertPage } from '../pages/placeadvert/placeadvert';
+import { PlaceAdvertPage } from '../pages/place-advert/place-advert';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -56,6 +56,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
         { component: AdvertsPage, name: 'Adverts', segment: 'adverts' },
         { component: PlaceAdvertPage, name: 'PlaceAdvert', segment: 'placeadvert', defaultHistory: [AdvertsPage] },
         { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] }
+        //TODO add pages here for URL linkage
       ]
     })
   ],

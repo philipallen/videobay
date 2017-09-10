@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { PlaceAdvertPage } from '../placeadvert/placeadvert';
+import { PlaceAdvertPage } from '../place-advert/place-advert';
 
 import { Advert } from '../../models/advert';
 

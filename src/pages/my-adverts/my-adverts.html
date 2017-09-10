@@ -33,11 +33,11 @@
         <p text-right>{{advert.created | amTimeAgo}}</p>
       </ion-card-content>
     </ion-card>
-    
-    <ion-fab right bottom (click)="toPlaceAdvert()">
-      <button ion-fab><ion-icon name="add"></ion-icon></button>
-    </ion-fab>
   </div>
+  
+  <ion-fab *ngIf="myAdverts.length" right bottom (click)="toPlaceAdvert()">
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 
   <div *ngIf="!myAdverts.length">
     <h5 padding >You don't have any adverts.</h5>

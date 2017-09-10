@@ -10,8 +10,8 @@ import { COUNTIES } from '../../mock/counties';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 
 @Component({
-    selector: 'page-placeadvert',
-    templateUrl: 'placeadvert.html',
+    selector: 'page-place-advert',
+    templateUrl: 'place-advert.html',
     providers: [MediaCapture, AdvertsService]
 })
 export class PlaceAdvertPage {
