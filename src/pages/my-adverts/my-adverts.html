@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar> <!--TODO sort the back button here as probably shouldn't show.-->
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -8,32 +8,40 @@
 </ion-header>
 
 <ion-content>
-  <!--https://stackoverflow.com/questions/25439368/play-video-when-user-scrolls-specifically-using-video-js-->
-  <!--http://playerjs.io/-->
+  <div *ngIf="myAdverts.length"> <!--TODO view is weird using it this way as shows no adverts until adverts load-->
+    <!--TODO change this component so you can click on it and edit-->
+    <ion-card *ngFor="let advert of myAdverts">
+      <ion-item>
+        <h2>{{advert.title}}</h2>
+        <p>{{advert.city || 'No city specified'}}, {{advert.county}}</p>
+        <ion-badge  item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
+      </ion-item>
+      <video *ngIf="advert.videoUrl" id="1" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls (click)="togglePause($event)" preload="auto" 
+      poster="" data-setup="{}">
+        <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+        <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a web browser that
+          <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+      </video>
+      <div style="height: 200px; background-color: blue;" *ngIf="!advert.videoUrl">
+        video placeholder
+      </div>  
+      <ion-card-content>
+        <p>{{advert.description}}</p>
+        <p text-right>{{advert.created | amTimeAgo}}</p>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-fab right bottom (click)="toPlaceAdvert()">
+      <button ion-fab><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+  </div>
 
-  <ion-card *ngFor="let advert of myAdverts">
-    <ion-item>
-      <h2>{{advert.title}}</h2>
-      <p>{{advert.city}}, {{advert.county}}</p>
-      <ion-badge  item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
-    </ion-item>
-    <video id="1" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls (click)="togglePause($event)" preload="auto" 
-    poster="" data-setup="{}">
-      <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-      <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-      <p class="vjs-no-js">
-        To view this video please enable JavaScript, and consider upgrading to a web browser that
-        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-      </p>
-    </video>
-    <ion-card-content>
-      <p>{{advert.description}}</p>
-      <p text-right>{{advert.dateAdded | amTimeAgo}}</p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-fab right bottom (click)="toPlaceAdvert()">
-    <button ion-fab><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
+  <div *ngIf="!myAdverts.length">
+    <h5 padding >You don't have any adverts.</h5>
+    <button margin ion-button large><ion-icon name="add"></ion-icon> Place Advert</button>
+  </div>  
 
 </ion-content>

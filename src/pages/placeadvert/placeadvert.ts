@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
+import { MyAdvertsPage } from '../my-adverts/my-adverts';
 
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 
@@ -51,18 +52,43 @@ export class PlaceAdvertPage {
             "price": Number(this.model.price),
             "country": "IRL",
             "videoUrl": "string", //TODO add a video
-            "created": null, //TODO add a timestamp
             "county": this.model.county //TODO add a typeahead select
         }
 
         this.advertsService.saveAdvert(data, userId).subscribe(
-            response => this.response = response, //todo inform ui saved successfully
+            response => {
+                this.response = response;
+                let alert = this.alertCtrl.create({
+                    title: 'Success',
+                    subTitle: 'Your advert was created.',
+                    buttons: [
+                        {
+                            text: 'Place another advert',
+                            handler: () => {
+                                this.resetPage();
+                            }
+                        },
+                        {
+                            text: 'Go to My Adverts',
+                            handler: () => {
+                                this.navCtrl.push(MyAdvertsPage);
+                            }
+                        }
+                    ]
+                });
+                alert.present();
+            }, //todo inform ui saved successfully
             error => this.errorMessage = <any>error); //todo add ui error handling
+    }
+
+    resetPage() {
+        this.videoData = null;
+        this.model = {};
     }
 
 
     tryToGoBack() {
-        if (this.videoData) {
+        if (this.videoData || Object.keys(this.model).length) { //todo check if Object.keys is supported on devices
             let alertPopup = this.alertCtrl.create({
                 title: "Warning",
                 message: "Are you sure you want to leave? You'll lose your advert.",
@@ -74,7 +100,7 @@ export class PlaceAdvertPage {
                     {
                         text: 'Yeah, leave',
                         handler: () => {
-                            this.videoData = null;
+                            this.resetPage();
                             this.goBack();
                         }
                     }]
