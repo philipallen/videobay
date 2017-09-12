@@ -41,7 +41,7 @@
 
   <div *ngIf="!myAdverts.length">
     <h5 padding >You don't have any adverts.</h5>
-    <button margin ion-button large><ion-icon name="add"></ion-icon> Place Advert</button>
+    <button margin ion-button large (click)="toPlaceAdvert()"><ion-icon name="add"></ion-icon> Place Advert</button>
   </div>  
 
 </ion-content>

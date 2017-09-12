@@ -1,61 +1,54 @@
 <ion-header>
-  <ion-navbar hideBackButton>
-    <ion-buttons left>
-        <button ion-button (click)="tryToGoBack()">
+	<ion-navbar hideBackButton>
+		<ion-buttons left>
+			<button ion-button (click)="tryToGoBack()">
             <ion-icon class="customIcon" name="arrow-back"></ion-icon>
         </button>
-    </ion-buttons>
-    <ion-title>Place Advert</ion-title>
-  </ion-navbar>
+		</ion-buttons>
+		<ion-title>Place Advert</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding text-center>
 
- 	<p *ngIf="!this.userService.someoneLoggedIn()">You need to login or register to place an advert</p>
+	<p *ngIf="!this.userService.someoneLoggedIn()">You need to login or register to place an advert</p>
 
-  	<button *ngIf="!videoData" (click)="recordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
+	<button *ngIf="!videoData" (click)="recordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
 
-  	<video *ngIf="videoData" style="height: 250px;" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls preload="auto" 
-    poster="" data-setup="{}">
-      <source [src]="videoData[0].fullPath" type='video/mp4'>
-      <p class="vjs-no-js">
-        To view this video please enable JavaScript, and consider upgrading to a web browser that
-        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-      </p>
-    </video>
+	<video *ngIf="videoData" style="height: 250px;" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls
+	 preload="auto" poster="" data-setup="{}">
+		<source [src]="videoData[0].fullPath" type='video/mp4'>
+		<p class="vjs-no-js">
+			To view this video please enable JavaScript, and consider upgrading to a web browser that
+			<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+		</p>
+	</video>
 
-    <button *ngIf="videoData" (click)="reRecordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Re-do advert</button>
+	<button *ngIf="videoData" (click)="reRecordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Re-do advert</button>
 
 	<form name="form" (ngSubmit)="f.form.valid && placeAdvert()" #f="ngForm" novalidate>
-    	<ion-item no-padding>
-		    <ion-label floating>Advert title</ion-label>
-		    <ion-input name="title" type="text" [(ngModel)]="model.title" #title="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
-	  	</ion-item>
-	  	<ion-item no-padding>
-		    <ion-label floating>Description</ion-label>
-		    <ion-input name="description" type="text" [(ngModel)]="model.description" #description="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
-	  	</ion-item>
-	  	<ion-item no-padding>
-		    <ion-label floating>Price</ion-label>
-		    <ion-input name="price" type="number" [(ngModel)]="model.price" #price="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
-			</ion-item>
-
-			<ion-item no-padding>
-				<ion-label>County</ion-label>
-				<ion-select [(ngModel)]="model.county" name="county">
-					<ion-option *ngFor="let county of countiesList" [value]="county">{{county}}</ion-option>
-					<!-- <ion-option *ngFor="let employee of employees" [value]="employee"></ion-option> -->
-					
-				</ion-select>
-			</ion-item>
-	  	<!-- <ion-item no-padding>
-		    <ion-label floating>County</ion-label>
-		    <ion-input name="county" type="text" [(ngModel)]="model.county" #county="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
-			</ion-item> -->
-			
-			<div class="form-group">
-				<p><button [disabled]="!f.form.valid" block ion-button>Place advert</button></p>
-			</div>
-    </form>
+		<ion-item no-padding>
+			<ion-label floating>Advert title</ion-label>
+			<ion-input name="title" type="text" [(ngModel)]="model.title" #title="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
+		</ion-item>
+		<ion-item no-padding>
+			<ion-label floating>Description</ion-label>
+			<ion-input name="description" type="text" [(ngModel)]="model.description" #description="ngModel" required autocapitalize="off"
+			 autocorrect="off"></ion-input>
+		</ion-item>
+		<ion-item no-padding>
+			<ion-label floating>Price</ion-label>
+			<ion-input name="price" type="number" [(ngModel)]="model.price" #price="ngModel" autocapitalize="off" autocorrect="off"></ion-input>
+		</ion-item>
+		<ion-item no-padding>
+			<ion-label>County</ion-label>
+			<ion-select required [(ngModel)]="model.county" name="county">
+				<ion-option *ngFor="let county of countiesList" [value]="county">{{county}}</ion-option>
+			</ion-select>
+		</ion-item>
+		<div class="form-group">
+			<p><button [disabled]="!f.form.valid" block ion-button>Place advert</button></p>
+		</div>
+	</form>
 
 </ion-content>
