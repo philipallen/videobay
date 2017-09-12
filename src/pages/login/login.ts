@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
-import { Nav, NavController, LoadingController, AlertController } from 'ionic-angular';
-import {User} from '../../models/user';
+import { Nav, NavController, AlertController } from 'ionic-angular';
+import { User } from '../../models/user';
+import { LoadingComponent } from '../../components/loader';
 
 import { AdvertsPage } from '../adverts/adverts';
 // import { RegisterPage } from '../register/register';
 
 @Component({
 	selector: 'page-login',
-	templateUrl: 'login.html'
+	templateUrl: 'login.html',
+	providers: [LoadingComponent]
 })
 
 export class LoginPage implements OnInit {
@@ -19,7 +21,7 @@ export class LoginPage implements OnInit {
 	returnUrl: string;
 
 	constructor(
-		private loadingCtrl: LoadingController,
+		private loadingComponent: LoadingComponent,
 		private alertCtrl: AlertController,
 		public navCtrl: NavController,
 		public nav: Nav,
@@ -31,17 +33,18 @@ export class LoginPage implements OnInit {
 	}
 
 	login() {
-		let loadingPopup = this.loadingCtrl.create({
-	      	// content: 'Loading data...' //Can add text content here
-	      	dismissOnPageChange: true
-	    });
+		//TODO this also appears on the login page. Refactor?
+		// let loadingPopup = this.loadingCtrl.create({
+	    //   	// content: 'Loading data...' //Can add text content here
+	    //   	dismissOnPageChange: true
+	    // });
 
-		loadingPopup.present();
+		this.loadingComponent.present();
 		this.userService.getByUsernameAndPassword(this.model)
 			.subscribe(
 				data => {
 					localStorage.setItem('currentUser', JSON.stringify(data));
-    			this.nav.setRoot(AdvertsPage);
+    				this.nav.setRoot(AdvertsPage);
 				},
 				error => {
 					let alert = this.alertCtrl.create({
@@ -49,7 +52,7 @@ export class LoginPage implements OnInit {
 					    message: error._body,
 				    	buttons: ['OK']
 				  	});
-					loadingPopup.dismiss();
+					this.loadingComponent.dismiss();
 					//this.alertService.error(error);
 					alert.present();
 				});

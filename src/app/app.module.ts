@@ -19,6 +19,7 @@ import { UserService } from '../services/user.service';
 import { AuthenticationService } from '../services/authentication.service';
 
 import { AlertComponent } from '../components/alert/alert';
+import { LoadingComponent } from '../components/loader';
 
 // used to create fake backend
 // import { fakeBackendProvider } from '../mock/fake-backend';
@@ -43,7 +44,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     LoginPage,
     RegisterPage,
     PlaceAdvertPage,
-    AlertComponent
+    AlertComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +56,10 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     IonicModule.forRoot(MyApp, {}, {
       links: [
         { component: AdvertsPage, name: 'Adverts', segment: 'adverts' },
+        { component: MyAdvertsPage, name: 'MyAdverts', segment: 'myadverts' },
         { component: PlaceAdvertPage, name: 'PlaceAdvert', segment: 'placeadvert', defaultHistory: [AdvertsPage] },
+        { component: LoginPage, name: 'Login', segment: 'login', defaultHistory: [AdvertsPage] },
         { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] }
-        //TODO add pages here for URL linkage
       ]
     })
   ],
