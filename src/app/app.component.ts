@@ -7,7 +7,6 @@ import { AdvertsPage } from '../pages/adverts/adverts';
 import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -25,8 +24,7 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    public userService: UserService,
-    private authenticationService: AuthenticationService) {
+    public userService: UserService) {
     this.initializeApp();
 
     this.pages = [
@@ -50,9 +48,8 @@ export class MyApp {
   }
 
   logout() {
-    this.authenticationService.logout();
+    this.userService.logout();
     console.log('logged out');
-    // this.authenticationService.logout(); Not sure whether to have logout here or in login.ts
     this.nav.setRoot(AdvertsPage);
   }
 

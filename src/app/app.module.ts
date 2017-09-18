@@ -16,7 +16,6 @@ import { Camera } from '@ionic-native/camera';
 
 import { AlertService } from '../services/alert.service';
 import { UserService } from '../services/user.service';
-import { AuthenticationService } from '../services/authentication.service';
 
 import { AlertComponent } from '../components/alert/alert';
 import { LoadingComponent } from '../components/loader';
@@ -79,7 +78,6 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AlertService,
     UserService,
-    AuthenticationService,
     // {
     //   provide: LocationStrategy,
     //   useClass: HashLocationStrategy // This strategy with base-href './' allow to move the app to any subsite and works

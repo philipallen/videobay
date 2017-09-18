@@ -7,14 +7,14 @@
 
   <ion-content>
     <ion-list>
-      <ion-list-header *ngIf="this.userService.someoneLoggedIn()" color="light">
+      <ion-list-header *ngIf="this.userService.isSomeoneLoggedIn()" color="light">
         Hello {{this.userService.getLoggedInUser().firstName}}
       </ion-list-header>
 
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p.component)" >
         {{p.title}}
       </button>
-      <div *ngIf="!this.userService.someoneLoggedIn()">
+      <div *ngIf="!this.userService.isSomeoneLoggedIn()">
         <button menuClose ion-item  (click)="toLogin()">
           Login
         </button>
@@ -22,7 +22,7 @@
           Register
         </button>
       </div>
-      <div *ngIf="this.userService.someoneLoggedIn()">
+      <div *ngIf="this.userService.isSomeoneLoggedIn()">
         <button menuClose ion-item  (click)="toMyAdverts()">
           My Adverts
         </button>

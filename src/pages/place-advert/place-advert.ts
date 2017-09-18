@@ -44,7 +44,7 @@ export class PlaceAdvertPage {
     }
 
     placeAdvert() {
-        console.log(this.userService.someoneLoggedIn());
+        console.log(this.userService.isSomeoneLoggedIn());
         console.log('try to place advert');
         console.log(this.model);
 
@@ -88,7 +88,6 @@ export class PlaceAdvertPage {
         this.videoData = null;
         this.model = {};
     }
-
 
     tryToGoBack() {
         if (this.videoData || Object.keys(this.model).length) { //todo check if Object.keys is supported on devices

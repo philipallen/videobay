@@ -28,17 +28,7 @@ export class LoginPage implements OnInit {
 		private userService: UserService,
 		private alertService: AlertService) { }
 
-	ngOnInit() {
-		// this.authenticationService.logout();
-	}
-
 	login() {
-		//TODO this also appears on the login page. Refactor?
-		// let loadingPopup = this.loadingCtrl.create({
-	    //   	// content: 'Loading data...' //Can add text content here
-	    //   	dismissOnPageChange: true
-	    // });
-
 		this.loadingComponent.present();
 		this.userService.getByUsernameAndPassword(this.model)
 			.subscribe(
