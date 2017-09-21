@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
@@ -15,7 +15,7 @@ import { AdvertsPage } from '../adverts/adverts';
 	providers: [LoadingComponent]
 })
 
-export class LoginPage implements OnInit {
+export class LoginPage {
 	model: any={};
 	// loading = false;
 	returnUrl: string;
