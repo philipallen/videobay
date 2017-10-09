@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar> <!--TODO sort the back button here as probably shouldn't show.-->
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Favourites</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="favourites.length"> <!--TODO view is weird using it this way as shows no adverts until adverts load-->
+    <!--TODO refactor with adverts.html markup-->
+    <ion-card *ngFor="let advert of favourites">
+      <ion-item>
+        <h2>{{advert.title}}</h2>
+        <p>{{advert.city}}, {{advert.county}}</p>
+        <ion-badge  item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
+      </ion-item>
+      <!--TODO refactor video to a component-->
+      <video id="1" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls (click)="togglePause($event)" preload="auto" 
+      poster="" data-setup="{}">
+        <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+        <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a web browser that
+          <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+      </video>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p>{{advert.description}}</p>
+            </ion-col>
+            <ion-col *ngIf="this.userService.isSomeoneLoggedIn()" col-1 (click)="toggleFavourite(advert)">
+              <ion-icon color="danger" name="heart-outline" ios="md-heart-outline" md="md-heart-outline"></ion-icon>
+              <!-- <ion-icon color="danger" name="heart" ios="md-heart" md="md-heart"></ion-icon> -->
+            </ion-col>
+          </ion-row>
+        </ion-grid>  
+        <p text-right>{{advert.created | amTimeAgo}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-fab right bottom (click)="toPlaceAdvert()">
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <div *ngIf="!favourites.length">
+    <h5 padding >You don't have any favourite adverts.</h5>
+  </div>  
+
+</ion-content>

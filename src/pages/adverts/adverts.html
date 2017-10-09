@@ -30,7 +30,17 @@
       </p>
     </video>
     <ion-card-content>
-      <p>{{advert.description}}</p>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <p>{{advert.description}}</p>
+          </ion-col>
+          <ion-col *ngIf="this.userService.isSomeoneLoggedIn()" col-1 (click)="toggleFavourite(advert)">
+            <ion-icon color="danger" name="heart-outline" ios="md-heart-outline" md="md-heart-outline"></ion-icon>
+            <!-- <ion-icon color="danger" name="heart" ios="md-heart" md="md-heart"></ion-icon> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
       <p text-right>{{advert.created | amTimeAgo}}</p>
     </ion-card-content>
   </ion-card>

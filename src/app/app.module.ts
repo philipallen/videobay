@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { AdvertsPage } from '../pages/adverts/adverts';
 import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
+import { FavouritesPage } from '../pages/favourites/favourites';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { PlaceAdvertPage } from '../pages/place-advert/place-advert';
@@ -40,6 +41,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     MyApp,
     AdvertsPage,
     MyAdvertsPage,
+    FavouritesPage,
     LoginPage,
     RegisterPage,
     PlaceAdvertPage,
@@ -56,6 +58,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
       links: [
         { component: AdvertsPage, name: 'Adverts', segment: 'adverts' },
         { component: MyAdvertsPage, name: 'MyAdverts', segment: 'myadverts' },
+        { component: FavouritesPage, name: 'Favourites', segment: 'favourites' },
         { component: PlaceAdvertPage, name: 'PlaceAdvert', segment: 'placeadvert', defaultHistory: [AdvertsPage] },
         { component: LoginPage, name: 'Login', segment: 'login', defaultHistory: [AdvertsPage] },
         { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] }
@@ -67,6 +70,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     MyApp,
     AdvertsPage,
     MyAdvertsPage,
+    FavouritesPage,
     LoginPage,
     RegisterPage,
     PlaceAdvertPage

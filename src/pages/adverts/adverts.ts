@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { PlaceAdvertPage } from '../place-advert/place-advert';
 import { Advert } from '../../models/advert';
 import { AdvertsService } from '../../services/adverts.service';
+import { UserService } from '../../services/user.service';
 
 import videojs from 'video.js'
 
@@ -14,10 +15,12 @@ import videojs from 'video.js'
 })
 export class AdvertsPage {
     adverts: Advert[] = [];
+    response: any;
 	errorMessage: any;
 
   	constructor(
   		public navCtrl: NavController, 
+		public userService: UserService,
   		private advertsService: AdvertsService) {
 
 	  	//*******************************
@@ -71,10 +74,10 @@ export class AdvertsPage {
   	}
 
   	getAdverts(): void {
-		  this.advertsService.getAdverts().then(adverts => this.adverts = adverts); //mock data
-		//   this.advertsService.getAdverts().subscribe( //real endpoint
-		// 		adverts  => this.adverts = adverts,
-		// 		error =>  this.errorMessage = <any>error);
+		//   this.advertsService.getAdverts().then(adverts => this.adverts = adverts); //mock data
+		  this.advertsService.getAdverts().subscribe( //real endpoint
+				adverts  => this.adverts = adverts,
+				error =>  this.errorMessage = <any>error);
   	}
 
   	ngOnInit(): void {
@@ -83,7 +86,21 @@ export class AdvertsPage {
 
   	toPlaceAdvert() {
   		this.navCtrl.push(PlaceAdvertPage);
-  	}
+	}
+	  
+	toggleFavourite(advert) {
+		let userId = this.userService.getLoggedInUser().id;
+		// let data = { advertId: advert.id };
+		
+		this.advertsService.addToFavourites(advert.id, userId).subscribe(
+            response => {
+				console.log(response);
+				this.response = response;
+				// todo add toast here
+			},
+            error => this.errorMessage = <any>error //todo add ui error handling
+		);
+	}
 
   	searchAdverts(ev: any) {
 	    console.log('basic search that does not work properly. conceptual.')

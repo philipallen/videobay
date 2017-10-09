@@ -15,21 +15,21 @@
         {{p.title}}
       </button>
       <div *ngIf="!this.userService.isSomeoneLoggedIn()">
-        <button menuClose ion-item  (click)="toLogin()">
+        <button menuClose ion-item (click)="toLogin()">
           Login
         </button>
-        <button menuClose ion-item  (click)="toRegister()">
+        <button menuClose ion-item (click)="toRegister()">
           Register
         </button>
       </div>
       <div *ngIf="this.userService.isSomeoneLoggedIn()">
-        <button menuClose ion-item  (click)="toMyAdverts()">
+        <button menuClose ion-item (click)="toMyAdverts()">
           My Adverts
         </button>
-        <button menuClose ion-item>
+        <button menuClose ion-item (click)="toMyFavourites()">
           My Favourites
         </button>
-        <button menuClose ion-item  (click)="logout()">
+        <button menuClose ion-item (click)="logout()">
           Logout
         </button>
       </div>

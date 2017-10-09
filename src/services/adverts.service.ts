@@ -15,19 +15,20 @@ export class AdvertsService {
 	
 	constructor(private http: Http) { }
 	
-	getAdverts(): Promise<Advert[]> { //mock data
-		return Promise.resolve(ADVERTS)
-	}
+	// getAdverts(): Promise<Advert[]> { //mock data
+	// 	return Promise.resolve(ADVERTS)
+	// }
 
-	// getAdverts(): Observable<any> { //real endpoint
-    //     let headers = new Headers({ 'Content-Type': 'application/json' });
-    //     // let options = new RequestOptions({ headers: headers });
-	// 	let options : RequestOptions = new RequestOptions({headers: headers});
+	getAdverts(): Observable<any> { //real endpoint
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        // let options = new RequestOptions({ headers: headers });
+		let options : RequestOptions = new RequestOptions({headers: headers});
 
-    //     return this.http.get('/api/adverts/countries/ireland/dublin', options)
-    //                     .map(this.extractData)
-    //                     .catch(this.handleError);
-    // } 
+        return this.http.get('/api/adverts/countries/IRL?state=PENDING', options) //TODO this state is hardcoded to get something back from the server.
+        //States are: PENDING, ACTIVE and CLOSED. Pending is just meta data for the advert. Active is when the video has been uploaded and successfully linked to the advert. Closed is when it's sold or expired or whatever.
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    } 
     
     getMyAdverts(userId: number): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -46,8 +47,27 @@ export class AdvertsService {
                         .map(this.extractData)
                         .catch(this.handleError);
     } 
+	
+	getFavourites(userId: number): Observable<any> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options : RequestOptions = new RequestOptions({headers: headers});
+
+        return this.http.get('/api/adverts/users/' + userId + '/favorites', options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
+	
+	addToFavourites(data: any, userId: number): Observable<any> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('/api/adverts/users/' + userId + '/favorites', data, options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    } 
 
     private extractData(res: Response) {
+        if (res.status === 201) return {};
         let body = res.json();
         return body || { };
     }

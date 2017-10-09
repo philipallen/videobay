@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AdvertsPage } from '../pages/adverts/adverts';
+import { FavouritesPage } from '../pages/favourites/favourites';
 import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -45,6 +46,10 @@ export class MyApp {
   
   toMyAdverts() {
     this.openPage(MyAdvertsPage);
+  }
+
+  toMyFavourites() {
+    this.openPage(FavouritesPage);
   }
 
   logout() {

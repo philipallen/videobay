@@ -39,7 +39,7 @@ export class LoginPage {
 				error => {
 					let alert = this.alertCtrl.create({
 					    title: 'Login failed',
-					    message: error._body,
+					    message: error,
 				    	buttons: ['OK']
 				  	});
 					this.loadingComponent.dismiss();
