@@ -6,8 +6,6 @@ import { Advert } from '../../models/advert';
 import { AdvertsService } from '../../services/adverts.service';
 import { UserService } from '../../services/user.service';
 
-import videojs from 'video.js'
-
 @Component({
 	selector: 'page-adverts',
 	templateUrl: 'adverts.html',
@@ -74,8 +72,11 @@ export class AdvertsPage {
   	}
 
   	getAdverts(): void {
-		//   this.advertsService.getAdverts().then(adverts => this.adverts = adverts); //mock data
-		  this.advertsService.getAdverts().subscribe( //real endpoint
+		//mock data
+		//this.advertsService.getAdverts().then(adverts => this.adverts = adverts); 
+		
+		//real endpoint
+		this.advertsService.getAdverts().subscribe( 
 				adverts  => this.adverts = adverts,
 				error =>  this.errorMessage = <any>error);
   	}
@@ -115,27 +116,4 @@ export class AdvertsPage {
 	    	this.getAdverts();
 	    }
   	}
-
-  	togglePause(e) {
-	  	//video.js 
-	  		//node packages
-	  		//package.json
-	  		//imported into this file
-	  		//index.html reference
-	  		//home.html usage
-
-	  	//videogular
-	  		//node packages
-	  		//package.json
-
-
-	  	let myPlayer = videojs(e.srcElement);
-	  	console.log(e);
-	   //  if (myPlayer.paused()) {
-	   //  	myPlayer.play();
-	  	// } else {
-	   //  	myPlayer.pause();
-	  	// }
-  	}
-
 }

@@ -4,7 +4,7 @@ import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
 import { Nav, NavController, AlertController } from 'ionic-angular';
 import { User } from '../../models/user';
-import { LoadingComponent } from '../../components/loader';
+import { LoadingComponent } from '../../components/loading-component';
 
 import { AdvertsPage } from '../adverts/adverts';
 // import { RegisterPage } from '../register/register';

@@ -19,7 +19,8 @@ import { AlertService } from '../services/alert.service';
 import { UserService } from '../services/user.service';
 
 import { AlertComponent } from '../components/alert/alert';
-import { LoadingComponent } from '../components/loader';
+import { LoadingComponent } from '../components/loading-component';
+import { AdvertComponent } from '../components/advert/advert-component';
 
 // used to create fake backend
 // import { fakeBackendProvider } from '../mock/fake-backend';
@@ -46,7 +47,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     RegisterPage,
     PlaceAdvertPage,
     AlertComponent,
-    LoadingComponent
+    LoadingComponent,
+    AdvertComponent
   ],
   imports: [
     BrowserModule,

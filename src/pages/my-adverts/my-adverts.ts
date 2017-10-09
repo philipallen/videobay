@@ -5,7 +5,7 @@ import { PlaceAdvertPage } from '../place-advert/place-advert';
 
 import { Advert } from '../../models/advert';
 
-import { LoadingComponent } from '../../components/loader';
+import { LoadingComponent } from '../../components/loading-component';
 
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';

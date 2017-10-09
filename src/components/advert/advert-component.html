@@ -1,0 +1,31 @@
+<ion-card>
+    <ion-item>
+        <h2>{{advert.title}}</h2>
+        <p>{{advert.city}}, {{advert.county}}</p>
+        <ion-badge  item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
+    </ion-item>
+    <!--TODO refactor video to a component-->
+    <video id="1" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls (click)="togglePause($event)" preload="auto" 
+    poster="" data-setup="{}">
+        <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+        <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+        <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>
+    <ion-card-content>
+        <ion-grid>
+        <ion-row>
+            <ion-col>
+            <p>{{advert.description}}</p>
+            </ion-col>
+            <ion-col *ngIf="loggedIn" col-1 (click)="toggleFavourite(advert)">
+            <ion-icon color="danger" name="heart-outline" ios="md-heart-outline" md="md-heart-outline"></ion-icon>
+            <!-- <ion-icon color="danger" name="heart" ios="md-heart" md="md-heart"></ion-icon> -->
+            </ion-col>
+        </ion-row>
+        </ion-grid>  
+        <p text-right>{{advert.created | amTimeAgo}}</p>
+    </ion-card-content>
+</ion-card>
