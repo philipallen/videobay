@@ -13,7 +13,6 @@ import { UserService } from '../../services/user.service';
 })
 export class AdvertsPage {
     adverts: Advert[] = [];
-    response: any;
 	errorMessage: any;
 
   	constructor(
@@ -87,20 +86,6 @@ export class AdvertsPage {
 
   	toPlaceAdvert() {
   		this.navCtrl.push(PlaceAdvertPage);
-	}
-	  
-	toggleFavourite(advert) {
-		let userId = this.userService.getLoggedInUser().id;
-		// let data = { advertId: advert.id };
-		
-		this.advertsService.addToFavourites(advert.id, userId).subscribe(
-            response => {
-				console.log(response);
-				this.response = response;
-				// todo add toast here
-			},
-            error => this.errorMessage = <any>error //todo add ui error handling
-		);
 	}
 
   	searchAdverts(ev: any) {

@@ -15,7 +15,7 @@
 
   <ion-searchbar (ionInput)="searchAdverts($event)"></ion-searchbar>
 
-  <advert-component *ngFor="let advert of adverts" [advert]="advert" [loggedIn]="this.userService.isSomeoneLoggedIn()"></advert-component>
+  <advert-component *ngFor="let advert of adverts" [advert]="advert" [user]="this.userService.getLoggedInUser()"></advert-component>
 
   <ion-fab right bottom (click)="toPlaceAdvert()">
     <button ion-fab><ion-icon name="add"></ion-icon></button>

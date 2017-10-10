@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { AdvertsService } from '../../services/adverts.service';
 import videojs from 'video.js'
 
 @Component({
@@ -7,11 +7,23 @@ import videojs from 'video.js'
     templateUrl: 'advert-component.html'
 })
 export class AdvertComponent {
-    name: string;
+    response: any;
+	errorMessage: any;
     @Input() advert: any;
-    @Input() loggedIn: boolean;
+    @Input() user: any;
 
-    constructor() {}
+    constructor(private advertsService: AdvertsService) {}
+
+	toggleFavourite(advert) {
+		this.advertsService.addToFavourites(advert.id, this.user.id).subscribe(
+            response => {
+				console.log(response);
+				this.response = response;
+				// todo add toast here
+			},
+            error => this.errorMessage = <any>error //todo add ui error handling
+		);
+	}
 
     //ANY VIDEO CONFIG OR LOGIC IN HERE
   

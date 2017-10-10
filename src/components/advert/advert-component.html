@@ -20,7 +20,7 @@
             <ion-col>
             <p>{{advert.description}}</p>
             </ion-col>
-            <ion-col *ngIf="loggedIn" col-1 (click)="toggleFavourite(advert)">
+            <ion-col *ngIf="user.id" col-1 (click)="toggleFavourite(advert)">
             <ion-icon color="danger" name="heart-outline" ios="md-heart-outline" md="md-heart-outline"></ion-icon>
             <!-- <ion-icon color="danger" name="heart" ios="md-heart" md="md-heart"></ion-icon> -->
             </ion-col>
