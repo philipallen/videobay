@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
-
 import { COUNTIES } from '../../mock/counties';
-
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 
 @Component({
@@ -74,7 +71,7 @@ export class PlaceAdvertPage {
                         {
                             text: 'Go to My Adverts',
                             handler: () => {
-                                this.navCtrl.push(MyAdvertsPage);
+                                this.navCtrl.setRoot(MyAdvertsPage);
                             }
                         }
                     ]

@@ -17,6 +17,10 @@
 
   <advert-component *ngFor="let advert of adverts" [advert]="advert" [user]="this.userService.getLoggedInUser()"></advert-component>
 
+  <div *ngIf="!adverts.length">
+    <h5 padding >There are no adverts.</h5>
+  </div>  
+
   <ion-fab right bottom (click)="toPlaceAdvert()">
     <button ion-fab><ion-icon name="add"></ion-icon></button>
     <!-- <ion-fab-list>

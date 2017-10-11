@@ -11,8 +11,8 @@
         Hello {{this.userService.getLoggedInUser().firstName}}
       </ion-list-header>
 
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p.component)" >
-        {{p.title}}
+      <button menuClose ion-item (click)="toAdverts()">
+        Adverts
       </button>
       <div *ngIf="!this.userService.isSomeoneLoggedIn()">
         <button menuClose ion-item (click)="toLogin()">

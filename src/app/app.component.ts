@@ -16,10 +16,7 @@ import { UserService } from '../services/user.service';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
   rootPage: any = AdvertsPage;
-
-  pages: Array<{title: string, component: any}>;
 
   constructor(
     public platform: Platform, 
@@ -27,29 +24,26 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public userService: UserService) {
     this.initializeApp();
-
-    this.pages = [
-      { title: 'Adverts', component: AdvertsPage }
-      // { title: 'Login', component: LoginPage },
-      // { title: 'Register', component: RegisterPage }
-    ];
   }
 
-  //this could probably be better and use the openPage function directly? 
+  toAdverts() {
+    this.nav.setRoot(AdvertsPage);
+  }
+
   toLogin() {
-    this.openPage(LoginPage);
+    this.nav.push(LoginPage);
   }
 
   toRegister() {
-    this.openPage(RegisterPage);
+    this.nav.push(RegisterPage);
   }
   
   toMyAdverts() {
-    this.openPage(MyAdvertsPage);
+    this.nav.setRoot(MyAdvertsPage);
   }
 
   toMyFavourites() {
-    this.openPage(FavouritesPage);
+    this.nav.setRoot(FavouritesPage);
   }
 
   logout() {
@@ -66,12 +60,5 @@ export class MyApp {
       this.splashScreen.hide();
       console.log(this.userService.getLoggedInUser());
     });
-  }
-
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    // this.nav.setRoot(page.component);
-    this.nav.push(page);
   }
 }

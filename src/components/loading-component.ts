@@ -11,7 +11,6 @@ export class LoadingComponent {
     constructor(private loadingCtrl: LoadingController) {
         this.loadingPopup = this.loadingCtrl.create({
             // content: 'Loading data...' //Can add text content here
-            dismissOnPageChange: true
         });
     }
 
