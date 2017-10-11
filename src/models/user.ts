@@ -8,5 +8,6 @@ export class User {
     surName: string;
     email: string;
     adverts: Advert[];
+    favoriteAds: number[];
 }
 //todo eventually sync this up with the rest endpoints types

@@ -15,7 +15,7 @@
 
   <ion-searchbar (ionInput)="searchAdverts($event)"></ion-searchbar>
 
-  <advert-component *ngFor="let advert of adverts" [advert]="advert" [user]="this.userService.getLoggedInUser()"></advert-component>
+  <advert-component *ngFor="let advert of adverts" [advert]="advert"></advert-component>
 
   <div *ngIf="!adverts.length">
     <h5 padding >There are no adverts.</h5>

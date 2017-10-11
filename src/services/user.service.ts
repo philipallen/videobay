@@ -33,14 +33,14 @@ export class UserService {
     }
 
     getByUsernameAndPassword(user: User): Observable<any>{
-      let params: URLSearchParams = new URLSearchParams();
-      params.append('username', user.screenName);
-      params.set('password', user.password);
-      let options : RequestOptions = new RequestOptions({search: params});
+        let params: URLSearchParams = new URLSearchParams();
+        params.append('username', user.screenName);
+        params.set('password', user.password);
+        let options : RequestOptions = new RequestOptions({search: params});
 
-      return this.http.get(this.baseUrl + '/users' ,options)
-                        .map((response: Response) => response.json())
-                        .catch(this.handleError);
+        return this.http.get(this.baseUrl + '/users' ,options)
+                            .map((response: Response) => response.json())
+                            .catch(this.handleError);
     }
     
     //TODO refactor the below as it also exists in adverts.service.ts

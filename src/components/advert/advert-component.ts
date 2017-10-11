@@ -1,5 +1,4 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
-import { AdvertsService } from '../../services/adverts.service';
 import videojs from 'video.js';
 
 @Component({
@@ -11,24 +10,12 @@ export class AdvertComponent {
     response: any;
 	errorMessage: any;
     @Input() advert: any;
-    @Input() user: any;
 
-    constructor(private advertsService: AdvertsService) {}
+    constructor() {}
       
     ngAfterViewInit() {
         videojs(this.input.nativeElement);
     }
-
-	toggleFavourite(advert) {
-		this.advertsService.addToFavourites(advert.id, this.user.id).subscribe(
-            response => {
-				console.log(response);
-				this.response = response;
-				// todo add toast here
-			},
-            error => this.errorMessage = <any>error //todo add ui error handling
-		);
-	}
 
     //ANY VIDEO CONFIG OR LOGIC IN HERE
     //TODO figure the below out...

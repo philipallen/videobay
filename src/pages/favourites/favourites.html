@@ -9,7 +9,7 @@
 
 <ion-content>
   <div *ngIf="favourites.length"> <!--TODO view is weird using it this way as shows no adverts until adverts load-->
-    <advert-component *ngFor="let advert of favourites" [advert]="advert" [user]="this.userService.getLoggedInUser()"></advert-component>
+    <advert-component *ngFor="let advert of favourites" [advert]="advert"></advert-component>
   </div>
 
   <ion-fab right bottom (click)="toPlaceAdvert()">
