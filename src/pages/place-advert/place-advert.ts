@@ -77,8 +77,11 @@ export class PlaceAdvertPage {
                     ]
                 });
                 alert.present();
-            }, //todo inform ui saved successfully
-            error => this.errorMessage = <any>error //todo add ui error handling
+            },
+            error => {
+                this.errorMessage = <any>error;
+                alert('Error. Advert not saved.');
+            }
         ); 
     }
 

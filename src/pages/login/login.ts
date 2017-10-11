@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
 import { Nav, NavController, AlertController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { LoadingComponent } from '../../components/loading-component';
+import { ToastComponent } from '../../components/toast-component';
 import { AdvertsPage } from '../adverts/adverts';
 
 @Component({
 	selector: 'page-login',
 	templateUrl: 'login.html',
-	providers: [LoadingComponent]
+	providers: [LoadingComponent, ToastComponent]
 })
 
 export class LoginPage {
@@ -18,11 +18,11 @@ export class LoginPage {
 
 	constructor(
 		private loadingComponent: LoadingComponent,
+        private toastComponent: ToastComponent,
 		private alertCtrl: AlertController,
 		public navCtrl: NavController,
 		public nav: Nav,
-		private userService: UserService,
-		private alertService: AlertService) { }
+		private userService: UserService) { }
 
 	login() {
 		this.loadingComponent.present();
@@ -32,6 +32,7 @@ export class LoginPage {
 					localStorage.setItem('currentUser', JSON.stringify(data));
     				this.nav.setRoot(AdvertsPage);
 					this.loadingComponent.dismiss();
+                    this.toastComponent.create('Welcome back ' + data.firstName, 3000);
 				},
 				error => {
 					let alert = this.alertCtrl.create({

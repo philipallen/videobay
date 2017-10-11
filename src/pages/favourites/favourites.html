@@ -11,11 +11,6 @@
   <div *ngIf="favourites.length"> <!--TODO view is weird using it this way as shows no adverts until adverts load-->
     <advert-component *ngFor="let advert of favourites" [advert]="advert"></advert-component>
   </div>
-
-  <ion-fab right bottom (click)="toPlaceAdvert()">
-    <button ion-fab><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
-
   <div *ngIf="!favourites.length">
     <h5 padding >You don't have any favourite adverts.</h5>
   </div>  

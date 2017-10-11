@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { ToastComponent } from '../../components/toast-component';
 import { AdvertsService } from '../../services/adverts.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'favourite-button-component',
-    templateUrl: 'favourite-button-component.html'
+    templateUrl: 'favourite-button-component.html',
+	providers: [ToastComponent]
 })
 export class FavouriteButtonComponent {
     errorMessage: any;
@@ -12,7 +14,8 @@ export class FavouriteButtonComponent {
     @Input() advertId: number;
 
     constructor(private advertsService: AdvertsService,
-		public userService: UserService) {}
+        public userService: UserService,
+		private toastComponent: ToastComponent) {}
 
 	toggleFavourite() {
 		this.advertsService.addToFavourites(this.advertId, this.user.id).subscribe(
@@ -22,8 +25,8 @@ export class FavouriteButtonComponent {
                         data => {
                             localStorage.setItem('currentUser', JSON.stringify(data));
                             this.user = data;
+                            this.toastComponent.create('Added to favourites');
                         },
-                        // todo add toast here
                         error => {
                             alert('error: did not get user');
                         });
@@ -31,7 +34,7 @@ export class FavouriteButtonComponent {
             error => {
                 this.errorMessage = <any>error;
                 alert('error: did not add to favourites');
-            } //todo add better ui error handling
+            }
 		);
     }
     

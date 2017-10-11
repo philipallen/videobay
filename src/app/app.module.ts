@@ -15,11 +15,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 
-import { AlertService } from '../services/alert.service';
 import { UserService } from '../services/user.service';
 
-import { AlertComponent } from '../components/alert/alert';
 import { LoadingComponent } from '../components/loading-component';
+import { ToastComponent } from '../components/toast-component';
 import { FavouriteButtonComponent } from '../components/favourite-button/favourite-button-component';
 import { AdvertComponent } from '../components/advert/advert-component';
 
@@ -47,8 +46,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     LoginPage,
     RegisterPage,
     PlaceAdvertPage,
-    AlertComponent,
     LoadingComponent,
+    ToastComponent,
     FavouriteButtonComponent,
     AdvertComponent
   ],
@@ -84,7 +83,6 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     SplashScreen,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AlertService,
     UserService,
     // {
     //   provide: LocationStrategy,

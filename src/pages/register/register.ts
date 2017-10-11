@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
-
-import { AlertService } from '../../services/alert.service';
+import { ToastComponent } from '../../components/toast-component';
 import { UserService } from '../../services/user.service';
-
 import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
+  providers: [ToastComponent]
 })
 export class RegisterPage {
 
@@ -18,10 +17,9 @@ export class RegisterPage {
 
     constructor(
     	public navCtrl: NavController,
-        // private router: Router,
+        private toastComponent: ToastComponent,
         private alertCtrl: AlertController,
-        private userService: UserService,
-        private alertService: AlertService) { }
+        private userService: UserService) { }
 
     register() {
         this.loading = true;
@@ -29,11 +27,8 @@ export class RegisterPage {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    // set success message and pass true paramater to persist the message after redirecting to the login page
-                    this.alertService.success('Registration successful', true);
-                    console.log(data);
-                    // this.router.navigate(['/login']);
                     this.navCtrl.push(LoginPage, {});
+                    this.toastComponent.create('Registered successfully', 3000);
                 },
                 error => {
                     console.log(error);
@@ -43,9 +38,7 @@ export class RegisterPage {
                         buttons: ['OK']
                       });
 
-                    //this.alertService.error(error);
                     alert.present();
-                    //this.alertService.error(error);
                     //this.loading = false;
                 });
     }
