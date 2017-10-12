@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { AdvertsPage } from '../pages/adverts/adverts';
 import { FavouritesPage } from '../pages/favourites/favourites';
 import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
@@ -11,8 +10,7 @@ import { RegisterPage } from '../pages/register/register';
 import { UserService } from '../services/user.service';
 
 @Component({
-  templateUrl: 'app.html',
-  // selector: 'ion-app',
+  templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -48,7 +46,6 @@ export class MyApp {
 
   logout() {
     this.userService.logout();
-    console.log('logged out');
     this.nav.setRoot(AdvertsPage);
   }
 

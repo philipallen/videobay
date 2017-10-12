@@ -2,15 +2,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { PlaceAdvertPage } from '../place-advert/place-advert';
-
 import { Advert } from '../../models/advert';
-
 import { LoadingComponent } from '../../components/loading-component';
-
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
-
-import videojs from 'video.js'
 
 @Component({
 	selector: 'page-my-adverts',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { Http, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { User } from '../models/user';
@@ -45,16 +45,15 @@ export class UserService {
     
     //TODO refactor the below as it also exists in adverts.service.ts
     private handleError (error: Response | any) {
-        // In a real world app, you might use a remote logging infrastructure
         let errMsg: string;
         if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+            errMsg = error.text();
+            // const body = error.json() || '';
+            // const err = body.error || JSON.stringify(body);
+            // errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {
             errMsg = error.message ? error.message : error.toString();
         }
-        console.error(errMsg);
         return Observable.throw(errMsg);
     }
 }

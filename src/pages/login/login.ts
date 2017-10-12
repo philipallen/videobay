@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Nav, NavController, NavParams, AlertController } from 'ionic-angular';
-import { User } from '../../models/user';
 import { LoadingComponent } from '../../components/loading-component';
 import { ToastComponent } from '../../components/toast-component';
 import { AdvertsPage } from '../adverts/adverts';

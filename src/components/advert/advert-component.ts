@@ -20,7 +20,7 @@ export class AdvertComponent {
     //ANY VIDEO CONFIG OR LOGIC IN HERE
     //TODO figure the below out...
     togglePause(e) {
-        let myPlayer = videojs(e.srcElement);
+        // let myPlayer = videojs(e.srcElement);
         console.log(e);
     //  if (myPlayer.paused()) {
     //  	myPlayer.play();
