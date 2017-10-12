@@ -5,6 +5,7 @@ import { AdvertsService } from '../../services/adverts.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
 import { COUNTIES } from '../../mock/counties';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
+import { LoginPage } from '../login/login';
 
 @Component({
     selector: 'page-place-advert',
@@ -117,6 +118,10 @@ export class PlaceAdvertPage {
 
     goBack() {
         this.navCtrl.pop();
+    }
+
+    toLogin() {
+        this.navCtrl.push(LoginPage, { goBackAfterLogin: true });
     }
 
 }

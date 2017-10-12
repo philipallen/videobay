@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Nav, NavController, AlertController } from 'ionic-angular';
+import { Nav, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { LoadingComponent } from '../../components/loading-component';
 import { ToastComponent } from '../../components/toast-component';
@@ -15,14 +15,18 @@ import { AdvertsPage } from '../adverts/adverts';
 export class LoginPage {
 	model: any={};
 	returnUrl: string;
+	goBackAfterLogin: boolean;
 
 	constructor(
 		private loadingComponent: LoadingComponent,
         private toastComponent: ToastComponent,
 		private alertCtrl: AlertController,
 		public navCtrl: NavController,
+		public navParams: NavParams,
 		public nav: Nav,
-		private userService: UserService) { }
+		private userService: UserService) {
+			this.goBackAfterLogin = navParams.get('goBackAfterLogin');
+	}
 
 	login() {
 		this.loadingComponent.present();
@@ -30,7 +34,11 @@ export class LoginPage {
 			.subscribe(
 				data => {
 					localStorage.setItem('currentUser', JSON.stringify(data));
-    				this.nav.setRoot(AdvertsPage);
+					if (this.goBackAfterLogin) {
+						this.nav.pop();
+					} else {
+						this.nav.setRoot(AdvertsPage);
+					}
 					this.loadingComponent.dismiss();
                     this.toastComponent.create('Welcome back ' + data.firstName, 3000);
 				},

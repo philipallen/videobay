@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { LoadingComponent } from '../../components/loading-component';
 import { PlaceAdvertPage } from '../place-advert/place-advert';
 import { Advert } from '../../models/advert';
 import { AdvertsService } from '../../services/adverts.service';
@@ -9,7 +9,7 @@ import { UserService } from '../../services/user.service';
 @Component({
 	selector: 'page-adverts',
 	templateUrl: 'adverts.html',
-	providers: [AdvertsService]
+	providers: [AdvertsService, LoadingComponent]
 })
 export class AdvertsPage {
     adverts: Advert[] = [];
@@ -18,6 +18,7 @@ export class AdvertsPage {
   	constructor(
   		public navCtrl: NavController, 
 		public userService: UserService,
+		private loadingComponent: LoadingComponent,
   		private advertsService: AdvertsService) {
 
 	  	//*******************************
@@ -75,9 +76,17 @@ export class AdvertsPage {
 		//this.advertsService.getAdverts().then(adverts => this.adverts = adverts); 
 		
 		//real endpoint
+		this.loadingComponent.present();
 		this.advertsService.getAdverts().subscribe( 
-				adverts  => this.adverts = adverts,
-				error =>  this.errorMessage = <any>error);
+				adverts  => {
+					this.adverts = adverts;
+					this.loadingComponent.dismiss();
+				},
+				error =>  {
+					this.errorMessage = <any>error;
+					this.loadingComponent.dismiss();
+					alert('Error getting adverts');
+				});
   	}
 
   	ngOnInit(): void {
