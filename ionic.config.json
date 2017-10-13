@@ -2,12 +2,12 @@
   "name": "noTabs",
   "app_id": "",
   "type": "ionic-angular",
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://81.169.165.110:1099/videobay/api"
-    }
-  ],
+  // "proxies": [
+  //   {
+  //     "path": "/api",
+  //     "proxyUrl": "http://81.169.165.110:1099/videobay/api"
+  //   }
+  // ],
   "integrations": {
     "cordova": {}
   }

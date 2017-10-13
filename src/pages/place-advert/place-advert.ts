@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef  } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
@@ -6,6 +6,7 @@ import { MyAdvertsPage } from '../my-adverts/my-adverts';
 import { COUNTIES } from '../../mock/counties';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 import { LoginPage } from '../login/login';
+import videojs from 'video.js';
 
 @Component({
     selector: 'page-place-advert',
@@ -13,6 +14,7 @@ import { LoginPage } from '../login/login';
     providers: [MediaCapture, AdvertsService]
 })
 export class PlaceAdvertPage {
+    @ViewChild('video') input: ElementRef; 
     model: any = {};
     videoData: any;
     errorMessage: any;
@@ -28,11 +30,17 @@ export class PlaceAdvertPage {
     }
 
     recordVideo() {
-        let options: CaptureImageOptions = { limit: 1 };
+        let options: CaptureImageOptions = { 
+            limit: 1
+        };
         this.mediaCapture.captureVideo(options)
             .then(
-            (data: MediaFile[]) => this.videoData = data,
-            (err: CaptureError) => alert(err)
+                (data: MediaFile[]) => {
+                    this.videoData = data;
+                    // videojs(this.input.nativeElement);
+                    console.log(data);
+                },
+                (err: CaptureError) => alert(err)
             );
     }
 

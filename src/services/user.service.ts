@@ -6,8 +6,8 @@ import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
-    private baseUrl = '/api'; //use a proxy - set in ionic.config.json
-    // private baseUrl = 'http://81.169.165.110:1099/videobay/api/';
+    // private baseUrl = '/api'; //use a proxy - set in ionic.config.json
+    private baseUrl = 'http://81.169.165.110:1099/videobay/api';
     //private baseUrl = 'http://localhost:8080/videobay/api/';
 
     constructor(private http: Http) { }
