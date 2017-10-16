@@ -46,7 +46,7 @@ export class AdvertsService {
         return this.http.post(this.baseUrl + '/adverts/byUser/' + userId, data, options)
                         .map(this.extractData)
                         .catch(this.handleError);
-    } 
+    }
 	
 	getFavourites(userId: number): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });

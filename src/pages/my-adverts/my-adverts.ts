@@ -40,7 +40,13 @@ export class MyAdvertsPage {
 
   	ngOnInit(): void {
   		this.getAdverts();
-  	}
+	}
+	
+	deleteAdvert(advert) {
+		//TODO awaiting endpoint here to update an advert.
+		// Need to update the status to 'CLOSED'
+		alert('Update advert:' + advert.id + ' here. Awaiting backend');
+	} 
 
   	toCreateAdvert(advert) {
   		this.navCtrl.push(CreateAdvertPage, {advert: advert});
