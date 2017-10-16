@@ -19,13 +19,23 @@
     </video>
     <ion-card-content>
         <ion-grid>
-        <ion-row>
-            <ion-col>
-            <p>{{advert.description}}</p>
-            </ion-col>
-            <favourite-button-component [advertId]="advert.id"></favourite-button-component>
-        </ion-row>
+            <ion-row>
+                <ion-col col-10>
+                    <p>{{advert.description}}</p>
+                </ion-col>
+                <ion-col>
+                    <favourite-button-component text-center [advertId]="advert.id"></favourite-button-component>
+                </ion-col>    
+            </ion-row>
+            <ion-row>
+                <ion-col col-10>
+                    <button ion-button>Offer</button>
+                    <button ion-button color="light">Ask a question</button>
+                </ion-col>
+                <ion-col>
+                    <p class="small" text-center>{{advert.created | amTimeAgo}}</p>
+                </ion-col>
+            </ion-row>
         </ion-grid>  
-        <p text-right>{{advert.created | amTimeAgo}}</p>
     </ion-card-content>
 </ion-card>

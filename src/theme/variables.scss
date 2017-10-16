@@ -35,20 +35,30 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
+$card-ios-padding-left: 5px;
+$card-ios-padding-right: 5px;
+$card-ios-margin-left: 0;
+$card-ios-margin-right: 0;
 
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$card-md-padding-left: 5px;
+$card-md-padding-right: 5px;
+$card-md-margin-left: 0;
+$card-md-margin-right: 0;
 
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
+$card-wp-padding-left: 5px;
+$card-wp-padding-right: 5px;
+$card-wd-margin-left: 0;
+$card-wd-margin-right: 0;
 
 
 
@@ -62,12 +72,6 @@ $colors: (
 
 @import "ionic.theme.default";
 
-$card-ios-margin-left: 0;
-$card-md-margin-left: 0;
-$card-wd-margin-left: 0;
-$card-ios-margin-right: 0;
-$card-md-margin-right: 0;
-$card-wd-margin-right: 0;
 
 // Ionicons
 // --------------------------------------------------

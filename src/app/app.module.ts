@@ -57,7 +57,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     MomentModule,
     // AppRoutingModule,
     // IonicModule.forRoot(MyApp),
-    IonicModule.forRoot(MyApp, {}, {
+    IonicModule.forRoot(MyApp, { mode: 'ios' }, {
       links: [
         { component: AdvertsPage, name: 'Adverts', segment: 'adverts' },
         { component: MyAdvertsPage, name: 'MyAdverts', segment: 'myadverts' },
