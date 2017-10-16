@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { PlaceAdvertPage } from '../place-advert/place-advert';
+import { CreateAdvertPage } from '../create-advert/create-advert';
 import { Advert } from '../../models/advert';
 import { LoadingComponent } from '../../components/loading-component';
 import { UserService } from '../../services/user.service';
@@ -41,8 +41,8 @@ export class FavouritesPage {
   		this.getFavourites();
   	}
 
-  	toPlaceAdvert() {
-  		this.navCtrl.push(PlaceAdvertPage);
+  	toCreateAdvert() {
+  		this.navCtrl.push(CreateAdvertPage);
   	}
 
 }

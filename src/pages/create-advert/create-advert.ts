@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef  } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
@@ -9,13 +9,14 @@ import { LoginPage } from '../login/login';
 import videojs from 'video.js';
 
 @Component({
-    selector: 'page-place-advert',
-    templateUrl: 'place-advert.html',
+    selector: 'page-create-advert',
+    templateUrl: 'create-advert.html',
     providers: [MediaCapture, AdvertsService]
 })
-export class PlaceAdvertPage {
+export class CreateAdvertPage {
     @ViewChild('video') input: ElementRef; 
     model: any = {};
+    editingAnAdvert: boolean = false;
     videoData: any;
     errorMessage: any;
     response: any;
@@ -23,10 +24,15 @@ export class PlaceAdvertPage {
 
     constructor(
         public navCtrl: NavController,
+		public navParams: NavParams,
         public userService: UserService,
         private mediaCapture: MediaCapture,
         private alertCtrl: AlertController,
         private advertsService: AdvertsService) {
+            if (navParams.get('advert')) {
+                this.model = navParams.get('advert');
+                this.editingAnAdvert = true;
+            }
     }
 
     recordVideo() {
@@ -49,10 +55,12 @@ export class PlaceAdvertPage {
         this.recordVideo();
     }
 
-    placeAdvert() {
-        console.log(this.userService.isSomeoneLoggedIn());
-        console.log('try to place advert');
-        console.log(this.model);
+    createAdvert() {
+        //TODO Awaiting backend
+        if (this.editingAnAdvert) {
+            alert('Waiting on a PUT endpoint to update an advert');
+            return true;
+        }
 
         let userId = this.userService.getLoggedInUser().id;
         let data = { //TODO cast this to the Advert class
@@ -72,7 +80,7 @@ export class PlaceAdvertPage {
                     subTitle: 'Your advert was created.',
                     buttons: [
                         {
-                            text: 'Place another advert',
+                            text: 'Create another advert',
                             handler: () => {
                                 this.resetPage();
                             }
@@ -100,6 +108,12 @@ export class PlaceAdvertPage {
     }
 
     tryToGoBack() {
+        //TODO Awaiting backend
+        if (this.editingAnAdvert) {
+            this.goBack();
+            return true;
+        }
+
         if (this.videoData || Object.keys(this.model).length) { //todo check if Object.keys is supported on devices
             let alertPopup = this.alertCtrl.create({
                 title: "Warning",

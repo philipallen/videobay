@@ -5,14 +5,15 @@
             <ion-icon class="customIcon" name="arrow-back"></ion-icon>
         </button>
 		</ion-buttons>
-		<ion-title>Place Advert</ion-title>
+		<ion-title *ngIf="!editingAnAdvert">Create Advert</ion-title>
+		<ion-title *ngIf="editingAnAdvert">Edit Advert</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding text-center>
 
 	<div *ngIf="!this.userService.isSomeoneLoggedIn()">
-		<p>You need to login or register to place an advert</p>
+		<p>You need to login or register to create an advert</p>
 		<p><button block ion-button (click)="toLogin()">Login</button></p>
 	</div>
 
@@ -37,7 +38,7 @@
 
 		<button *ngIf="videoData" (click)="reRecordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Re-do advert</button>
 
-		<form name="form" (ngSubmit)="f.form.valid && placeAdvert()" #f="ngForm" novalidate>
+		<form name="form" (ngSubmit)="f.form.valid && createAdvert()" #f="ngForm" novalidate>
 			<ion-item no-padding>
 				<ion-label floating>Advert title</ion-label>
 				<ion-input name="title" type="text" [(ngModel)]="model.title" #title="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
@@ -58,7 +59,10 @@
 				</ion-select>
 			</ion-item>
 			<div class="form-group">
-				<p><button [disabled]="!f.form.valid" block ion-button>Place advert</button></p>
+				<p>
+					<button *ngIf="!editingAnAdvert" [disabled]="!f.form.valid" block ion-button>Create advert</button>
+					<button *ngIf="editingAnAdvert" [disabled]="!f.form.valid" block ion-button>Save changes</button>
+				</p>
 			</div>
 		</form>
 	</div>

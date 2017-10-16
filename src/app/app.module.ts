@@ -9,7 +9,7 @@ import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
 import { FavouritesPage } from '../pages/favourites/favourites';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { PlaceAdvertPage } from '../pages/place-advert/place-advert';
+import { CreateAdvertPage } from '../pages/create-advert/create-advert';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -45,7 +45,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     FavouritesPage,
     LoginPage,
     RegisterPage,
-    PlaceAdvertPage,
+    CreateAdvertPage,
     LoadingComponent,
     ToastComponent,
     FavouriteButtonComponent,
@@ -62,7 +62,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
         { component: AdvertsPage, name: 'Adverts', segment: 'adverts' },
         { component: MyAdvertsPage, name: 'MyAdverts', segment: 'myadverts' },
         { component: FavouritesPage, name: 'Favourites', segment: 'favourites' },
-        { component: PlaceAdvertPage, name: 'PlaceAdvert', segment: 'placeadvert', defaultHistory: [AdvertsPage] },
+        { component: CreateAdvertPage, name: 'CreateAdvert', segment: 'createadvert', defaultHistory: [AdvertsPage] },
         { component: LoginPage, name: 'Login', segment: 'login', defaultHistory: [AdvertsPage] },
         { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] }
       ]
@@ -76,7 +76,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     FavouritesPage,
     LoginPage,
     RegisterPage,
-    PlaceAdvertPage
+    CreateAdvertPage
   ],
   providers: [
     StatusBar,

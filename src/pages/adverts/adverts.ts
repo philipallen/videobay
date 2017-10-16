@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoadingComponent } from '../../components/loading-component';
-import { PlaceAdvertPage } from '../place-advert/place-advert';
+import { CreateAdvertPage } from '../create-advert/create-advert';
 import { Advert } from '../../models/advert';
 import { AdvertsService } from '../../services/adverts.service';
 import { UserService } from '../../services/user.service';
@@ -93,8 +93,8 @@ export class AdvertsPage {
   		this.getAdverts();
   	}
 
-  	toPlaceAdvert() {
-  		this.navCtrl.push(PlaceAdvertPage);
+  	toCreateAdvert() {
+  		this.navCtrl.push(CreateAdvertPage);
 	}
 
   	searchAdverts(ev: any) {

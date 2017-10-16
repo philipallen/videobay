@@ -8,40 +8,39 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="myAdverts.length"> <!--TODO view is weird using it this way as shows no adverts until adverts load-->
-    <!--TODO change this component so you can click on it and edit-->
+  <div *ngIf="myAdverts.length">
     <ion-card *ngFor="let advert of myAdverts">
       <ion-item>
         <h2>{{advert.title}}</h2>
         <p>{{advert.city || 'No city specified'}}, {{advert.county}}</p>
         <ion-badge  item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
       </ion-item>
-      <!-- <video *ngIf="advert.videoUrl" id="1" class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered" controls (click)="togglePause($event)" preload="auto" 
-      poster="" data-setup="{}">
-        <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-        <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-        <p class="vjs-no-js">
-          To view this video please enable JavaScript, and consider upgrading to a web browser that
-          <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-        </p>
-      </video> -->
-      <!-- <div style="height: 200px; background-color: blue;" *ngIf="!advert.videoUrl">
-        video placeholder
-      </div>   -->
       <ion-card-content>
-        <p>{{advert.description}}</p>
-        <p text-right>{{advert.created | amTimeAgo}}</p>
+          <ion-grid>
+              <ion-row>
+                  <ion-col col-10>
+                      <p>{{advert.description}}</p>
+                  </ion-col> 
+                  <ion-col>
+                      <p class="small" text-center>{{advert.created | amTimeAgo}}</p>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                <button (click)="toCreateAdvert(advert)" ion-button>Edit</button>
+                <button ion-button color="danger">Delete</button>
+              </ion-row>
+          </ion-grid>
       </ion-card-content>
     </ion-card>
   </div>
   
-  <ion-fab *ngIf="myAdverts.length" right bottom (click)="toPlaceAdvert()">
+  <ion-fab *ngIf="myAdverts.length" right bottom (click)="toCreateAdvert()">
     <button ion-fab><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
   <div *ngIf="!myAdverts.length">
     <h5 padding >You don't have any adverts.</h5>
-    <button margin ion-button large (click)="toPlaceAdvert()"><ion-icon name="add"></ion-icon> Place Advert</button>
+    <button margin ion-button large (click)="toCreateAdvert()"><ion-icon name="add"></ion-icon> Create Advert</button>
   </div>  
 
 </ion-content>
