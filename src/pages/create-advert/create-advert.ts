@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef  } from '@angular/core';
 import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
+import { PermissionsService } from '../../services/permissions.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
 import { COUNTIES } from '../../mock/counties';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
@@ -28,11 +29,20 @@ export class CreateAdvertPage {
         public userService: UserService,
         private mediaCapture: MediaCapture,
         private alertCtrl: AlertController,
-        private advertsService: AdvertsService) {
+        private advertsService: AdvertsService,
+        public permissionsService: PermissionsService) {
             if (navParams.get('advert')) {
                 this.model = navParams.get('advert');
                 this.editingAnAdvert = true;
             }
+    }
+
+  	ngOnInit(): void {
+        this.permissionsService.checkStoragePermissions().then(permissionOk => {
+            if (!permissionOk) {
+                alert('You\'ll need to allow the app access to your phone\'s storage to place an advert.');
+            }
+        });
     }
 
     recordVideo() {

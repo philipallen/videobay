@@ -14,8 +14,10 @@ import { CreateAdvertPage } from '../pages/create-advert/create-advert';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 import { UserService } from '../services/user.service';
+import { PermissionsService } from '../services/permissions.service';
 
 import { LoadingComponent } from '../components/loading-component';
 import { ToastComponent } from '../components/toast-component';
@@ -82,8 +84,10 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     StatusBar,
     SplashScreen,
     Camera,
+    Diagnostic,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
+    PermissionsService,
     // {
     //   provide: LocationStrategy,
     //   useClass: HashLocationStrategy // This strategy with base-href './' allow to move the app to any subsite and works

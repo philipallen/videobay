@@ -29,12 +29,11 @@ export class UserService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
-        //TODO show a message confirming log out?
     }
 
     getByUsernameAndPassword(user: User): Observable<any>{
         let params: URLSearchParams = new URLSearchParams();
-        params.append('username', user.screenName);
+        params.append('username', user.screenName.toLowerCase());
         params.set('password', user.password);
         let options : RequestOptions = new RequestOptions({search: params});
 

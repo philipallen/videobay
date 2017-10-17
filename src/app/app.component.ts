@@ -8,6 +8,7 @@ import { MyAdvertsPage } from '../pages/my-adverts/my-adverts';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { UserService } from '../services/user.service';
+import { PermissionsService } from '../services/permissions.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,8 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    public userService: UserService) {
+    public userService: UserService,
+    public permissionsService: PermissionsService) {
     this.initializeApp();
   }
 
@@ -55,6 +57,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.permissionsService.checkStoragePermissions().then(permissionOk => {
+        if (!permissionOk) {
+          alert('You\'ll need to allow the app access to your phone\'s storage to place an advert. Don\'t worry, we\'ll ask you again later.');
+        }
+      });
       console.log(this.userService.getLoggedInUser());
     });
   }
