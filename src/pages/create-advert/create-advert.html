@@ -20,21 +20,7 @@
 	<div *ngIf="this.userService.isSomeoneLoggedIn()">
 		<button *ngIf="!videoData" (click)="recordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
 
-		<video *ngIf="videoData" style="height: 250px;" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls
-		preload="auto" poster="" data-setup="{}">
-			<source [src]="videoData[0].fullPath" type='video/mp4'>
-			<source [src]="videoData[0].fullPath" type='video/webm'>
-			<p class="vjs-no-js">
-				To view this video please enable JavaScript, and consider upgrading to a web browser that
-				<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-			</p>
-		</video>
-
-		<!--<video width="400" controls preload="metadata">
-			<source src="file:///storage/emulated/0/DCIM/Camera/VID_20171013_150917.mp4" type="video/mp4">
-			<source src="file:///storage/emulated/0/DCIM/Camera/VID_20171013_150917.mp4 " type="video/ogg">
-			Your browser does not support HTML5 video.
-		</video>-->
+		<video-component *ngIf="videoData" [src]="videoData[0].fullPath"></video-component>
 
 		<button *ngIf="videoData" (click)="reRecordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Re-do advert</button>
 
@@ -53,7 +39,7 @@
 				<ion-input name="price" type="number" [(ngModel)]="model.price" #price="ngModel" autocapitalize="off" autocorrect="off"></ion-input>
 			</ion-item>
 			<ion-item no-padding>
-				<ion-label>County</ion-label>
+				<ion-label floating>County</ion-label>
 				<ion-select required [(ngModel)]="model.county" name="county">
 					<ion-option *ngFor="let county of countiesList" [value]="county">{{county}}</ion-option>
 				</ion-select>

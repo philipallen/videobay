@@ -23,6 +23,7 @@ import { LoadingComponent } from '../components/loading-component';
 import { ToastComponent } from '../components/toast-component';
 import { FavouriteButtonComponent } from '../components/favourite-button/favourite-button-component';
 import { AdvertComponent } from '../components/advert/advert-component';
+import { VideoComponent } from '../components/video/video-component';
 
 // used to create fake backend
 // import { fakeBackendProvider } from '../mock/fake-backend';
@@ -51,7 +52,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     LoadingComponent,
     ToastComponent,
     FavouriteButtonComponent,
-    AdvertComponent
+    AdvertComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

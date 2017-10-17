@@ -7,7 +7,6 @@ import { MyAdvertsPage } from '../my-adverts/my-adverts';
 import { COUNTIES } from '../../mock/counties';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 import { LoginPage } from '../login/login';
-import videojs from 'video.js';
 
 @Component({
     selector: 'page-create-advert',
@@ -53,8 +52,6 @@ export class CreateAdvertPage {
             .then(
                 (data: MediaFile[]) => {
                     this.videoData = data;
-                    // videojs(this.input.nativeElement);
-                    console.log(data);
                 },
                 (err: CaptureError) => alert(err)
             );
