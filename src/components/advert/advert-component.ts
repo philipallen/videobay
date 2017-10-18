@@ -1,5 +1,4 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
-import videojs from 'video.js';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'advert-component',
