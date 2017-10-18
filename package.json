@@ -24,6 +24,7 @@
         "@ionic-native/camera": "^3.14.0",
         "@ionic-native/core": "3.7.0",
         "@ionic-native/diagnostic": "^4.3.1",
+        "@ionic-native/file-transfer": "^4.3.2",
         "@ionic-native/media-capture": "^3.14.0",
         "@ionic-native/splash-screen": "3.7.0",
         "@ionic-native/status-bar": "3.7.0",
@@ -34,6 +35,7 @@
         "cordova-plugin-console": "^1.0.7",
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-file-transfer": "^1.6.3",
         "cordova-plugin-media-capture": "^1.4.3",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.3",
@@ -74,7 +76,8 @@
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
             "cordova-plugin-media-capture": {},
-            "cordova.plugins.diagnostic": {}
+            "cordova.plugins.diagnostic": {},
+            "cordova-plugin-file-transfer": {}
         },
         "platforms": [
             "android"

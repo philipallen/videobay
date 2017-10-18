@@ -21,6 +21,7 @@
 		<button *ngIf="!videoData" (click)="recordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
 
 		<video-component *ngIf="videoData" [src]="videoData[0].fullPath"></video-component>
+		<!-- <video-component [src]="mockVideo"></video-component> -->
 
 		<button *ngIf="videoData" (click)="reRecordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Re-do advert</button>
 

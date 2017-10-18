@@ -15,6 +15,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { Diagnostic } from '@ionic-native/diagnostic';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
 import { UserService } from '../services/user.service';
 import { PermissionsService } from '../services/permissions.service';
@@ -87,6 +88,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     SplashScreen,
     Camera,
     Diagnostic,
+    FileTransfer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
     PermissionsService,
