@@ -52,6 +52,7 @@ export class CreateAdvertPage {
     }
 
     recordVideo() {
+        this.resetVideo();
         let options: CaptureImageOptions = { 
             limit: 1
         };
@@ -73,11 +74,6 @@ export class CreateAdvertPage {
 
     resetVideo() {
         this.videoData = null;
-    }
-
-    reRecordVideo() {
-        this.resetVideo();
-        this.recordVideo();
     }
 
     createAdvert() {

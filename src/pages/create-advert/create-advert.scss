@@ -10,12 +10,12 @@ page-create-advert {
 
     .upload-label {
         font-size: 16px;
-        font-weight: 700;
+        display: flex;
+        justify-content: center;
         color: white;
-        display: inline-block;
-        padding: 10px;
+        padding: 12px 25px;
         margin: 16px 0;
-        border-radius: 7px;
+        border-radius: 64px;
         cursor: pointer;
         background-color: color($colors, secondary);
 

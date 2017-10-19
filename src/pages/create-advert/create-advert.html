@@ -18,19 +18,15 @@
 	</div>
 
 	<div *ngIf="this.userService.isSomeoneLoggedIn()">
-		<div *ngIf="!isUsingCordova">
-			<input id="fileUpload" type="file" (change)="fileChangeEvent($event)" accept=".mp4, .ogg, .webm"/>
-			<label class="upload-label" for="fileUpload" (click)="resetVideo()">
-				<ion-icon md="md-download" ios="md-download" wp="md-download" name="download"></ion-icon>
-				Choose a video
-			</label>
-		</div>
+		<input id="fileUpload" type="file" (change)="fileChangeEvent($event)" accept="video/*"/>
+		<label class="upload-label" for="fileUpload" (click)="resetVideo()">
+			<ion-icon padding-right md="md-download" ios="md-download" wp="md-download" name="download"></ion-icon>
+			Choose a video
+		</label>
 
-		<button *ngIf="isUsingCordova && !videoData" (click)="recordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
+		<button *ngIf="isUsingCordova" block (click)="recordVideo()" ion-button color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
 
 		<video-component *ngIf="videoData" [src]="videoData[0].fullPath"></video-component>
-
-		<button *ngIf="isUsingCordova && videoData" (click)="reRecordVideo()" ion-button block color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Re-do advert</button>
 
 		<form name="form" (ngSubmit)="f.form.valid && createAdvert()" #f="ngForm" novalidate>
 			<ion-item no-padding>
