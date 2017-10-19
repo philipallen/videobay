@@ -73,7 +73,7 @@ export class AdvertsPage {
 
   	getAdverts(): void {
 		//mock data
-		//this.advertsService.getAdverts().then(adverts => this.adverts = adverts); 
+		// this.advertsService.getAdverts().then(adverts => this.adverts = adverts); 
 		
 		//real endpoint
 		this.loadingComponent.present();
