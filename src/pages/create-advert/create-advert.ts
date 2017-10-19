@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef  } from '@angular/core';
-import { NavController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, NavParams, Platform } from 'ionic-angular';
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
 import { FileUploadService } from '../../services/file-upload.service';
@@ -8,6 +8,8 @@ import { MyAdvertsPage } from '../my-adverts/my-adverts';
 import { COUNTIES } from '../../mock/counties';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 import { LoginPage } from '../login/login';
+
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'page-create-advert',
@@ -22,9 +24,10 @@ export class CreateAdvertPage {
     errorMessage: any;
     response: any;
     countiesList = COUNTIES;
-    mockVideo = 'assets/VID_20171017_115445.mp4';
+    isUsingCordova = this.platform.is('cordova');
 
     constructor(
+        private sanitizer:DomSanitizer,
         public navCtrl: NavController,
 		public navParams: NavParams,
         public userService: UserService,
@@ -32,7 +35,8 @@ export class CreateAdvertPage {
         private alertCtrl: AlertController,
         private advertsService: AdvertsService,
         private fileUploadService: FileUploadService,
-        public permissionsService: PermissionsService) {
+        public permissionsService: PermissionsService,
+        public platform: Platform) {
             if (navParams.get('advert')) {
                 this.model = navParams.get('advert');
                 this.editingAnAdvert = true;
@@ -56,12 +60,23 @@ export class CreateAdvertPage {
                 (data: MediaFile[]) => {
                     this.videoData = data;
                 },
-                (err: CaptureError) => alert(err)
+                (err: CaptureError) => alert('Video not captured. Error: ' + err)
             );
     }
 
-    reRecordVideo() {
+    fileChangeEvent(fileInput: any) {
+        if (fileInput.target.files && fileInput.target.files[0]) {
+            this.videoData = [{ fullPath: '' }];
+            this.videoData[0].fullPath = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(fileInput.target.files[0]));
+        }
+    }
+
+    resetVideo() {
         this.videoData = null;
+    }
+
+    reRecordVideo() {
+        this.resetVideo();
         this.recordVideo();
     }
 
@@ -88,40 +103,52 @@ export class CreateAdvertPage {
 
         this.advertsService.saveAdvert(data, userId).subscribe(
             response => {
-                // TODO change the advert ID to whatever you get back from the server response
-                // Awaiting backend changes before doing this. 
-                // Then the below needs testing
-                this.fileUploadService.uploadVideo(this.videoData[0], 12).then(uploaded => {
-                    if (uploaded) {
-                        let alert = this.alertCtrl.create({
-                            title: 'Success',
-                            subTitle: 'Your advert was created.',
-                            buttons: [
-                                {
-                                    text: 'Create another advert',
-                                    handler: () => {
-                                        this.resetPage();
-                                    }
-                                },
-                                {
-                                    text: 'Go to My Adverts',
-                                    handler: () => {
-                                        this.navCtrl.setRoot(MyAdvertsPage);
-                                    }
-                                }
-                            ]
-                        });
-                        alert.present();
-                    } else {
-                        alert('Error, video not uploaded properly');
-                    }
-                });
+                if (this.isUsingCordova) {
+                    // TODO change the advert ID to whatever you get back from the server response
+                    // Awaiting backend changes before doing this. 
+                    // Then the below needs testing
+                    this.fileUploadService.uploadVideoCordova(this.videoData[0], 12).then(uploaded => {
+                        if (uploaded) {
+                            this.createdSuccessfully();
+                        } else {
+                            alert('Error, video not uploaded properly');
+                        }
+                    });
+                }
+                if (!this.isUsingCordova) {
+                    // TODO change the advert ID to whatever you get back from the server response
+                    // Awaiting backend changes before doing this. 
+                    // Then the below needs testing
+                    this.fileUploadService.uploadVideoDesktop(this.videoData[0], 12)
+                }
             },
             error => {
                 this.errorMessage = <any>error;
                 alert('Error. Advert metadata not saved correctly.');
             }
         ); 
+    }
+
+    createdSuccessfully() {
+        let alert = this.alertCtrl.create({
+            title: 'Success',
+            subTitle: 'Your advert was created.',
+            buttons: [
+                {
+                    text: 'Create another advert',
+                    handler: () => {
+                        this.resetPage();
+                    }
+                },
+                {
+                    text: 'Go to My Adverts',
+                    handler: () => {
+                        this.navCtrl.setRoot(MyAdvertsPage);
+                    }
+                }
+            ]
+        });
+        alert.present();
     }
 
     resetPage() {

@@ -11,7 +11,7 @@ export class FileUploadService {
     
     constructor(private transfer: FileTransfer) { }
 
-    uploadVideo(file: any, advertId: number): Promise<boolean> {
+    uploadVideoCordova(file: any, advertId: number): Promise<boolean> {
         const fileTransfer: FileTransferObject = this.transfer.create();
         let options: FileUploadOptions = {
             fileKey: 'file',
@@ -31,5 +31,9 @@ export class FileUploadService {
                 }
             );
         });
+    }
+
+    uploadVideoDesktop(file: any, advertId: number) {
+        console.log('hi');
     }
 }

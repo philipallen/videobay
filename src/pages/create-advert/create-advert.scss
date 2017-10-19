@@ -1,3 +1,26 @@
 page-create-advert {
+    #fileUpload {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
 
+    .upload-label {
+        font-size: 16px;
+        font-weight: 700;
+        color: white;
+        display: inline-block;
+        padding: 10px;
+        margin: 16px 0;
+        border-radius: 7px;
+        cursor: pointer;
+        background-color: color($colors, secondary);
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
 }
