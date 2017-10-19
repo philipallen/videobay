@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FileUploadService {
@@ -33,7 +31,24 @@ export class FileUploadService {
         });
     }
 
-    uploadVideoDesktop(file: any, advertId: number) {
-        console.log('hi');
+    uploadVideoDesktop(file: any, advertId: number): Promise<any> {
+        return new Promise((resolve, reject) => {
+            let xhr:XMLHttpRequest = new XMLHttpRequest();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 201) {
+                        resolve(JSON.parse(xhr.response));
+                    } else {
+                        reject(xhr.response);
+                    }
+                }
+            };
+    
+            xhr.open('POST', this.baseUrl + '/uploads/' + advertId, true);
+    
+            let formData = new FormData();
+            formData.append("file", file, "file");
+            xhr.send(formData);
+        });
     }
 }

@@ -20,7 +20,7 @@ export class CreateAdvertPage {
     @ViewChild('video') input: ElementRef; 
     model: any = {};
     editingAnAdvert: boolean = false;
-    videoData: any;
+    videoData: Array<any> = [];
     errorMessage: any;
     response: any;
     countiesList = COUNTIES;
@@ -67,13 +67,14 @@ export class CreateAdvertPage {
 
     fileChangeEvent(fileInput: any) {
         if (fileInput.target.files && fileInput.target.files[0]) {
-            this.videoData = [{ fullPath: '' }];
+            // this.videoData = [];
+            this.videoData[0] = fileInput.target.files[0];
             this.videoData[0].fullPath = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(fileInput.target.files[0]));
         }
     }
 
     resetVideo() {
-        this.videoData = null;
+        this.videoData = [];
     }
 
     createAdvert() {
@@ -83,7 +84,7 @@ export class CreateAdvertPage {
             return true;
         }
 
-        if (!this.videoData) {
+        if (!this.videoData.length) {
             alert('You need to add a video');
             return true;
         }
@@ -115,7 +116,13 @@ export class CreateAdvertPage {
                     // TODO change the advert ID to whatever you get back from the server response
                     // Awaiting backend changes before doing this. 
                     // Then the below needs testing
-                    this.fileUploadService.uploadVideoDesktop(this.videoData[0], 12)
+                    this.fileUploadService.uploadVideoDesktop(this.videoData[0], 12).then(response => {
+                        if (response) { //todo test this. Might never go into error as response is the thing being passed back from the servive regardless.
+                            this.createdSuccessfully();
+                        } else {
+                            alert('Error, video not uploaded properly');
+                        }
+                    });
                 }
             },
             error => {
@@ -148,7 +155,7 @@ export class CreateAdvertPage {
     }
 
     resetPage() {
-        this.videoData = null;
+        this.resetVideo();
         this.model = {};
     }
 
@@ -159,7 +166,7 @@ export class CreateAdvertPage {
             return true;
         }
 
-        if (this.videoData || Object.keys(this.model).length) { //todo check if Object.keys is supported on devices
+        if (this.videoData.length || Object.keys(this.model).length) { //todo check if Object.keys is supported on devices
             let alertPopup = this.alertCtrl.create({
                 title: "Warning",
                 message: "Are you sure you want to leave? You'll lose your advert.",

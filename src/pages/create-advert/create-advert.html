@@ -18,15 +18,15 @@
 	</div>
 
 	<div *ngIf="this.userService.isSomeoneLoggedIn()">
+		<button *ngIf="isUsingCordova" block (click)="recordVideo()" ion-button color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record a video</button>
+
 		<input id="fileUpload" type="file" (change)="fileChangeEvent($event)" accept="video/*"/>
 		<label class="upload-label" for="fileUpload" (click)="resetVideo()">
 			<ion-icon padding-right md="md-download" ios="md-download" wp="md-download" name="download"></ion-icon>
-			Choose a video
+			Choose an existing video
 		</label>
 
-		<button *ngIf="isUsingCordova" block (click)="recordVideo()" ion-button color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record Advert</button>
-
-		<video-component *ngIf="videoData" [src]="videoData[0].fullPath"></video-component>
+		<video-component *ngIf="videoData.length" [src]="videoData[0].fullPath"></video-component>
 
 		<form name="form" (ngSubmit)="f.form.valid && createAdvert()" #f="ngForm" novalidate>
 			<ion-item no-padding>
