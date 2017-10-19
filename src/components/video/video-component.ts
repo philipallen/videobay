@@ -8,6 +8,7 @@ import videojs from 'video.js';
 export class VideoComponent {
     @ViewChild('video') input: ElementRef; 
     @Input() src: string;
+    @Input() poster: string;
 
     constructor() {}
       

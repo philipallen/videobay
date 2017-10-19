@@ -14,7 +14,7 @@
   <!--http://playerjs.io/-->
 
   <ion-searchbar (ionInput)="searchAdverts($event)"></ion-searchbar>
-
+  <p padding>{{adverts.length}} adverts listed</p>
   <advert-component *ngFor="let advert of adverts" [advert]="advert"></advert-component>
 
   <div *ngIf="!adverts.length">
