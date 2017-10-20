@@ -13,7 +13,7 @@ export class VideoComponent {
     constructor() {}
       
     ngAfterViewInit() {
-        videojs(this.input.nativeElement);
+        // videojs(this.input.nativeElement); //This made the app really slow on the phone. 
     }
 
     //ANY VIDEO CONFIG OR LOGIC IN HERE
