@@ -1,24 +1,24 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" color="light"></ion-icon>
     </button>
     <ion-title>Adverts</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="page-adverts">
 
 
   <!--https://stackoverflow.com/questions/25439368/play-video-when-user-scrolls-specifically-using-video-js-->
   <!--http://playerjs.io/-->
 
   <ion-searchbar (ionInput)="searchAdverts($event)"></ion-searchbar>
-  <p padding>{{adverts.length}} adverts listed</p>
+  <h6 padding>{{adverts.length}} adverts listed</h6>
   <advert-component *ngFor="let advert of adverts" [advert]="advert"></advert-component>
 
   <div *ngIf="!adverts.length">
-    <h5 padding >There are no adverts.</h5>
+    <h6 padding >There are no adverts.</h6>
   </div>  
 
   <ion-fab right bottom (click)="toCreateAdvert()">

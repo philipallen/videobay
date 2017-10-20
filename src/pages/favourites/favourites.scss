@@ -1,3 +1,15 @@
 page-favourites {
+    .header .toolbar-background {
+        background-color: color($colors, secondary);
+        border-color: color($colors, secondary);
+    }
+    
+    .toolbar-title {
+        color: color($colors, light);
+    }
+}
 
+.page-favourites {
+    background: color($colors, secondary);
+    color: color($colors, light);
 }

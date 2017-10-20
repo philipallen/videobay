@@ -1,6 +1,6 @@
 <div *ngIf="user && user.id" (click)="toggleFavourite()">
     <ion-icon 
-        color="danger" 
+        color="secondary" 
         [name]="isFavourited() ? 'heart' :'heart-outline'"
         [ios]="isFavourited() ? 'md-heart' :'md-heart-outline'"
         [md]="isFavourited() ? 'md-heart' :'md-heart-outline'">

@@ -1,46 +1,50 @@
 <ion-header>
-  <ion-navbar> <!--TODO sort the back button here as probably shouldn't show.-->
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+	<ion-navbar>
+		<!--TODO sort the back button here as probably shouldn't show.-->
+		<button ion-button menuToggle>
+      <ion-icon name="menu" color="light"></ion-icon>
     </button>
-    <ion-title>My Adverts</ion-title>
-  </ion-navbar>
+		<ion-title>My Adverts</ion-title>
+	</ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div *ngIf="myAdverts.length">
-    <ion-card *ngFor="let advert of myAdverts">
-      <ion-item>
-        <h2>{{advert.title}}</h2>
-        <p>{{advert.city || 'No city specified'}}, {{advert.county}}</p>
-        <ion-badge  item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
-      </ion-item>
-      <ion-card-content>
-          <ion-grid>
-              <ion-row>
-                  <ion-col col-10>
-                      <p>{{advert.description}}</p>
-                  </ion-col> 
-                  <ion-col>
-                      <p class="small" text-center>{{advert.created | amTimeAgo}}</p>
-                  </ion-col>
-              </ion-row>
-              <ion-row>
-                <button (click)="toCreateAdvert(advert)" ion-button>Edit</button>
-                <button (click)="deleteAdvert(advert)" ion-button color="danger">Delete</button>
-              </ion-row>
-          </ion-grid>
-      </ion-card-content>
-    </ion-card>
-  </div>
-  
-  <ion-fab *ngIf="myAdverts.length" right bottom (click)="toCreateAdvert()">
-    <button ion-fab><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
+<ion-content class="page-my-adverts">
+	<div *ngIf="myAdverts.length">
+		<h6 padding>You have {{myAdverts.length}} live adverts.</h6>
+		<ion-card *ngFor="let advert of myAdverts">
+			<ion-item>
+				<h2>{{advert.title}}</h2>
+				<p>{{advert.city || 'No city specified'}}, {{advert.county}}</p>
+				<ion-badge item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
+			</ion-item>
+			<ion-card-content>
+				<ion-grid>
+					<ion-row>
+						<ion-col col-10>
+							<p>{{advert.description}}</p>
+						</ion-col>
+					</ion-row>
+					<ion-row align-items-end>
+						<ion-col col-8>
+							<button (click)="toCreateAdvert(advert)" ion-button>Edit</button>
+							<button (click)="deleteAdvert(advert)" ion-button color="danger">Delete</button>
+						</ion-col>
+						<ion-col>
+							<p class="small" text-right>{{advert.created | amTimeAgo}}</p>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-card-content>
+		</ion-card>
+	</div>
 
-  <div *ngIf="!myAdverts.length">
-    <h5 padding >You don't have any adverts.</h5>
-    <button margin ion-button (click)="toCreateAdvert()"><ion-icon padding-right name="add"></ion-icon> Create Advert</button>
-  </div>  
+	<ion-fab *ngIf="myAdverts.length" right bottom (click)="toCreateAdvert()">
+		<button ion-fab><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+
+	<div *ngIf="!myAdverts.length">
+		<h5 padding>You don't have any adverts.</h5>
+		<button margin ion-button (click)="toCreateAdvert()"><ion-icon padding-right name="add"></ion-icon> Create Advert</button>
+	</div>
 
 </ion-content>

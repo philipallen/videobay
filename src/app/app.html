@@ -1,40 +1,49 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+	<ion-header>
+		<ion-toolbar>
+			<ion-title *ngIf="this.userService.isSomeoneLoggedIn()">Hello {{this.userService.getLoggedInUser().firstName}}</ion-title>
+			<ion-title *ngIf="!this.userService.isSomeoneLoggedIn()">Hello</ion-title>
+		</ion-toolbar>
+	</ion-header>
 
-  <ion-content>
-    <ion-list>
-      <ion-list-header *ngIf="this.userService.isSomeoneLoggedIn()" color="light">
-        Hello {{this.userService.getLoggedInUser().firstName}}
-      </ion-list-header>
-
-      <button menuClose ion-item (click)="toAdverts()">
-        Adverts
-      </button>
-      <div *ngIf="!this.userService.isSomeoneLoggedIn()">
-        <button menuClose ion-item (click)="toLogin()">
-          Login
-        </button>
-        <button menuClose ion-item (click)="toRegister()">
-          Register
-        </button>
-      </div>
-      <div *ngIf="this.userService.isSomeoneLoggedIn()">
-        <button menuClose ion-item (click)="toMyAdverts()">
-          My Adverts
-        </button>
-        <button menuClose ion-item (click)="toMyFavourites()">
-          My Favourites
-        </button>
-        <button menuClose ion-item (click)="logout()">
-          Logout
-        </button>
-      </div>
-    </ion-list>
-  </ion-content>
+	<ion-content>
+		<ion-list>
+			<ion-card>
+				<button menuClose ion-item (click)="toAdverts()">
+					Adverts
+				</button>
+			</ion-card>  
+			<div *ngIf="!this.userService.isSomeoneLoggedIn()">
+				<ion-card>
+					<button menuClose ion-item (click)="toLogin()">
+						Login
+					</button>
+				</ion-card>
+				<ion-card>
+					<button menuClose ion-item (click)="toRegister()">
+						Register
+					</button>
+				</ion-card>
+			</div>
+			<div *ngIf="this.userService.isSomeoneLoggedIn()">
+				<ion-card>
+					<button menuClose ion-item (click)="toMyAdverts()">
+						My Adverts
+					</button>
+				</ion-card>
+				<ion-card>
+					<button menuClose ion-item (click)="toMyFavourites()">
+						My Favourites
+					</button>
+				</ion-card>
+				<ion-card>
+					<button menuClose ion-item (click)="logout()">
+						Logout
+					</button>
+				</ion-card>
+			</div>
+		</ion-list>
+	</ion-content>
 
 </ion-menu>
 

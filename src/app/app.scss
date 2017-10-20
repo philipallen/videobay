@@ -15,10 +15,38 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+
+/*  --------------
+	Menu restyling
+    -------------- */
+.menu-inner {
+    .content {
+        background-color: color($colors, light);
+    }
+
+    .toolbar-background {
+        background-color: color($colors, light);
+	}
+}
+
+/*  ----------------
+	html tag styling
+    ---------------- */
+h6 {
+	margin-top: 1rem;
+}
+
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
 
+input {
+	outline: none !important; //removes the dotted line on focus in chrome
+}
+
+/*  -----------------
+	ionic tag styling
+    ----------------- */
 ion-item.ng-dirty.ng-invalid .item-inner {
   border-bottom: 1px solid $text-input-highlight-color-invalid;
 }
@@ -27,10 +55,9 @@ ion-label[floating] {
 	color: $subdued-text-color;
 }
 
-input {
-	outline: none !important; //removes the dotted line on focus in chrome
-}
-
+/*  --------
+	utilites
+    -------- */
 .center-h {
 	margin: 0 auto;
 }

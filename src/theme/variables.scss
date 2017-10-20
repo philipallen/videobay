@@ -24,43 +24,51 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    #AA3939,
+  secondary:  #7A9F35,
+  tertiary:   #D49A6A,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
 
-
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+//card
 $card-ios-padding-left: 5px;
 $card-ios-padding-right: 5px;
 $card-ios-margin-left: 0;
 $card-ios-margin-right: 0;
-
-
+$card-ios-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+$card-ios-padding-top: 0;
+$card-ios-padding-bottom: 0;
+//badge
+$badge-ios-background-color: color($colors, secondary);
+//searchbar
+$searchbar-ios-background-color: rgba(0, 0, 0, 0);
+$searchbar-ios-input-height: 5rem;
+.searchbar-ios .searchbar-search-icon {
+  top: 18px !important;
+}
+//toolbar
+$toolbar-background: color($colors, light);
+$toolbar-ios-border-color: color($colors, light);
+$toolbar-ios-padding: 10px;
+$toolbar-ios-title-font-weight: normal;
+$toolbar-ios-height: 54px;
+$toolbar-ios-title-text-align: center;
+//menu - more menu restyling in app.scss
+$menu-ios-background: color($colors, secondary);
 
 // App Material Design Variables
 // --------------------------------------------------
-// Material Design only Sass variables can go here
-$card-md-padding-left: 5px;
-$card-md-padding-right: 5px;
-$card-md-margin-left: 0;
-$card-md-margin-right: 0;
-
+// Material Design only Sass variables can go here - BUT DOESN'T MATTER AS USING IOS STYLING
 
 
 // App Windows Variables
 // --------------------------------------------------
-// Windows only Sass variables can go here
-$card-wp-padding-left: 5px;
-$card-wp-padding-right: 5px;
-$card-wd-margin-left: 0;
-$card-wd-margin-right: 0;
-
-
+// Windows only Sass variables can go here - BUT DOESN'T MATTER AS USING IOS STYLING
 
 
 // App Theme
