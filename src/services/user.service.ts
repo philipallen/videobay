@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { User } from '../models/user';
@@ -42,7 +42,22 @@ export class UserService {
                             .catch(this.handleError);
     }
     
+    resetPassword(username: string): Observable<any> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options : RequestOptions = new RequestOptions({headers: headers});
+
+        return this.http.get(this.baseUrl + '/users/resetpw/?username=' + username, options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
+
     //TODO refactor the below as it also exists in adverts.service.ts
+    private extractData(res: Response) {
+        if (res.status === 201) return {};
+        let body = res.json();
+        return body || { };
+    }
+    
     private handleError (error: Response | any) {
         let errMsg: string;
         if (error instanceof Response) {

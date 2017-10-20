@@ -10,6 +10,7 @@ import { FavouritesPage } from '../pages/favourites/favourites';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { CreateAdvertPage } from '../pages/create-advert/create-advert';
+import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -50,6 +51,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     LoginPage,
     RegisterPage,
     CreateAdvertPage,
+    ForgotPasswordPage,
     LoadingComponent,
     ToastComponent,
     FavouriteButtonComponent,
@@ -69,7 +71,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
         { component: FavouritesPage, name: 'Favourites', segment: 'favourites' },
         { component: CreateAdvertPage, name: 'CreateAdvert', segment: 'createadvert', defaultHistory: [AdvertsPage] },
         { component: LoginPage, name: 'Login', segment: 'login', defaultHistory: [AdvertsPage] },
-        { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] }
+        { component: RegisterPage, name: 'Register', segment: 'register', defaultHistory: [LoginPage] },
+        { component: ForgotPasswordPage, name: 'ForgotPassword', segment: 'forgot-password', defaultHistory: [LoginPage] }
       ]
     })
   ],
@@ -81,7 +84,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     FavouritesPage,
     LoginPage,
     RegisterPage,
-    CreateAdvertPage
+    CreateAdvertPage,
+    ForgotPasswordPage
   ],
   providers: [
     StatusBar,
