@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-
 import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
     // private baseUrl = '/api'; //use a proxy - set in ionic.config.json
     private baseUrl = 'http://81.169.165.110:1099/videobay/api';
-    //private baseUrl = 'http://localhost:8080/videobay/api/';
 
     constructor(private http: Http) { }
 
@@ -20,10 +18,13 @@ export class UserService {
         return JSON.parse(localStorage.getItem('currentUser'));
     }
 
-    //TODO maybe change the below to match other http requests, such as getByUsernameAndPassword
-    //This is used in register.ts
     create(user: User) {
-        return this.http.post(this.baseUrl + '/users', user).map((response: Response) => response.json());
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options : RequestOptions = new RequestOptions({headers: headers});
+        
+        return this.http.post(this.baseUrl + '/users', user, options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
     }
     
     logout() {
@@ -32,14 +33,12 @@ export class UserService {
     }
 
     getByUsernameAndPassword(user: User): Observable<any>{
-        let params: URLSearchParams = new URLSearchParams();
-        params.append('username', user.screenName.toLowerCase());
-        params.set('password', user.password);
-        let options : RequestOptions = new RequestOptions({search: params});
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options : RequestOptions = new RequestOptions({headers: headers});
 
-        return this.http.get(this.baseUrl + '/users' ,options)
-                            .map((response: Response) => response.json())
-                            .catch(this.handleError);
+        return this.http.get(this.baseUrl + '/users?username=' + user.screenName.toLowerCase() + '&password=' + user.password, options)
+                        .map((response: Response) => response.json())
+                        .catch(this.handleError);
     }
     
     resetPassword(username: string): Observable<any> {
