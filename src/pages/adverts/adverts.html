@@ -16,6 +16,7 @@
   <ion-searchbar (ionInput)="searchAdverts($event)"></ion-searchbar>
   <h6 padding>{{adverts.length}} adverts listed</h6>
   <advert-component *ngFor="let advert of adverts" [advert]="advert"></advert-component>
+  <!--TODO use virtualScroll on ngFors perhaps-->
 
   <div *ngIf="!adverts.length">
     <h6 padding >There are no adverts.</h6>
