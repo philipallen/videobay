@@ -104,7 +104,7 @@ export class CreateAdvertPage {
                     // TODO change the advert ID to whatever you get back from the server response
                     // Awaiting backend changes before doing this. 
                     // Then the below needs testing
-                    this.fileUploadService.uploadVideoCordova(this.videoData[0], 1).then(uploaded => {
+                    this.fileUploadService.uploadVideoCordova(this.videoData[0], response.id).then(uploaded => {
                         if (uploaded) {
                             this.createdSuccessfully();
                         } else {
@@ -116,7 +116,7 @@ export class CreateAdvertPage {
                     // TODO change the advert ID to whatever you get back from the server response
                     // Awaiting backend changes before doing this. 
                     // Then the below needs testing
-                    this.fileUploadService.uploadVideoDesktop(this.videoData[0], 1).then(response => {
+                    this.fileUploadService.uploadVideoDesktop(this.videoData[0], response.id).then(response => {
                         if (response) { //todo test this. Might never go into error as response is the thing being passed back from the servive regardless.
                             this.createdSuccessfully();
                         } else {
