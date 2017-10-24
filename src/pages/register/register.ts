@@ -27,7 +27,7 @@ export class RegisterPage {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    this.navCtrl.push(LoginPage, {});
+                    this.navCtrl.push(LoginPage, { username: this.model.screenName });
                     this.toastComponent.create('Registered successfully', 3000);
                 },
                 error => {

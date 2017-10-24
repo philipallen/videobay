@@ -25,6 +25,7 @@ export class LoginPage {
 		public navParams: NavParams,
 		private userService: UserService) {
 			this.goBackAfterLogin = navParams.get('goBackAfterLogin');
+			this.model.screenName = navParams.get('username');
 	}
 
 	login() {
