@@ -57,18 +57,27 @@ export class AdvertsService {
                         .catch(this.handleError);
     }
 	
-	addToFavourites(data: any, userId: number): Observable<any> {
+	addToFavourites(advertId: any, userId: number): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.baseUrl + '/adverts/users/' + userId + '/favorites', data, options)
+        return this.http.post(this.baseUrl + '/adverts/users/' + userId + '/favorites', advertId, options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    } 
+	
+	removeFromFavourites(advertId: any, userId: number): Observable<any> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers, body: advertId });
+
+        return this.http.delete(this.baseUrl + '/adverts/users/' + userId + '/favorites', options)
                         .map(this.extractData)
                         .catch(this.handleError);
     } 
 
-    private extractData(res: Response) {
+    private extractData(res: Response) { //todo refactor as in user.service too
         if (res.status === 201) return {};
-        let body = res.json();
+        let body = res.text().length === 0 ? '' : res.json();
         return body || { };
     }
 

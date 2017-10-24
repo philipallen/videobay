@@ -15,27 +15,36 @@ export class FavouriteButtonComponent {
 
     constructor(private advertsService: AdvertsService,
         public userService: UserService,
-		private toastComponent: ToastComponent) {}
+        private toastComponent: ToastComponent) {}
+        
+    updateUserDetail(message) {
+        this.userService.getByUsernameAndPassword(this.user)
+            .subscribe(
+                data => {
+                    this.user = data;
+                    this.toastComponent.create(message);
+                },
+                error => this.erroredRequest(error, 'error did not update user details')
+            );
+    }
+
+    erroredRequest(error, message) {
+        this.errorMessage = <any>error; //todo sort this later
+        alert(message);
+    }
 
 	toggleFavourite() {
-		this.advertsService.addToFavourites(this.advertId, this.user.id).subscribe(
-            response => {
-                this.userService.getByUsernameAndPassword(this.user)
-                    .subscribe(
-                        data => {
-                            localStorage.setItem('currentUser', JSON.stringify(data));
-                            this.user = data;
-                            this.toastComponent.create('Added to favourites');
-                        },
-                        error => {
-                            alert('error: did not get user');
-                        });
-			},
-            error => {
-                this.errorMessage = <any>error;
-                alert('error: did not add to favourites');
-            }
-		);
+        if (this.isFavourited()) {
+            this.advertsService.removeFromFavourites(this.advertId, this.user.id).subscribe(
+                response => this.updateUserDetail('Removed from favourites'),
+                error => this.erroredRequest(error, 'error did not remove from favourties')
+            );
+        } else {
+            this.advertsService.addToFavourites(this.advertId, this.user.id).subscribe(
+                response => this.updateUserDetail('Added to favourites'),
+                error => this.erroredRequest(error, 'error did not add to favourties')
+            );
+        }
     }
     
     isFavourited() {

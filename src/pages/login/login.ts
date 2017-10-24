@@ -32,7 +32,6 @@ export class LoginPage {
 		this.loadingComponent.present();
 		this.userService.getByUsernameAndPassword(this.model).subscribe(
 			data => {
-				localStorage.setItem('currentUser', JSON.stringify(data));
 				if (this.goBackAfterLogin) {
 					this.navCtrl.pop();
 				} else {

@@ -23,7 +23,7 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public userService: UserService,
     public permissionsService: PermissionsService) {
-    this.initializeApp();
+      this.initializeApp();
   }
 
   toAdverts() {
@@ -52,6 +52,18 @@ export class MyApp {
   }
 
   initializeApp() {
+    //When starting the app, or on page refresh, get the latest user details from the server
+    //This might cause problems if this happens slower than the platform.ready() below.
+    //Keep an eye on this. Might be buggy.
+    if (this.userService.isSomeoneLoggedIn()) {
+      this.userService.getByUsernameAndPassword(this.userService.getLoggedInUser()).subscribe(
+        response => {},
+        error => {
+            alert('error: did not get logged in user');
+        }
+      )
+    }
+
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -62,7 +74,6 @@ export class MyApp {
           alert('You\'ll need to allow the app access to your phone\'s storage to place an advert. Don\'t worry, we\'ll ask you again later.');
         }
       });
-      console.log(this.userService.getLoggedInUser());
     });
   }
 }

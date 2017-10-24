@@ -37,7 +37,10 @@ export class UserService {
 		let options : RequestOptions = new RequestOptions({headers: headers});
 
         return this.http.get(this.baseUrl + '/users?username=' + user.screenName.toLowerCase() + '&password=' + user.password, options)
-                        .map((response: Response) => response.json())
+                        .map((res:Response) => { 
+                            this.setLoggedInUser(res); 
+                            return this.extractData(res) 
+                        })
                         .catch(this.handleError);
     }
     
@@ -50,10 +53,14 @@ export class UserService {
                         .catch(this.handleError);
     }
 
+    private setLoggedInUser(res: Response) {
+        localStorage.setItem('currentUser', JSON.stringify(res.json()));
+    }
+
     //TODO refactor the below as it also exists in adverts.service.ts
     private extractData(res: Response) {
         if (res.status === 201) return {};
-        let body = res.json();
+        let body = res.text().length === 0 ? '' : res.json(); 
         return body || { };
     }
     
