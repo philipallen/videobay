@@ -5,8 +5,7 @@
             <ion-icon class="customIcon" name="arrow-back"></ion-icon>
         </button>
 		</ion-buttons>
-		<ion-title *ngIf="!editingAnAdvert">Create Advert</ion-title>
-		<ion-title *ngIf="editingAnAdvert">Edit Advert</ion-title>
+		<ion-title>Create Advert</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -28,33 +27,7 @@
 
 		<video-component *ngIf="videoData.length" [src]="videoData[0].fullPath"></video-component>
 
-		<form name="form" (ngSubmit)="f.form.valid && createAdvert()" #f="ngForm" novalidate>
-			<ion-item no-padding>
-				<ion-label floating>Advert title</ion-label>
-				<ion-input name="title" type="text" [(ngModel)]="model.title" #title="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
-			</ion-item>
-			<ion-item no-padding>
-				<ion-label floating>Description</ion-label>
-				<ion-input name="description" type="text" [(ngModel)]="model.description" #description="ngModel" required autocapitalize="off"
-				autocorrect="off"></ion-input>
-			</ion-item>
-			<ion-item no-padding>
-				<ion-label floating>Price</ion-label>
-				<ion-input name="price" type="number" [(ngModel)]="model.price" #price="ngModel" autocapitalize="off" autocorrect="off"></ion-input>
-			</ion-item>
-			<ion-item no-padding>
-				<ion-label floating>County</ion-label>
-				<ion-select required [(ngModel)]="model.county" name="county">
-					<ion-option *ngFor="let county of countiesList" [value]="county">{{county}}</ion-option>
-				</ion-select>
-			</ion-item>
-			<div class="form-group">
-				<p>
-					<button *ngIf="!editingAnAdvert" [disabled]="!f.form.valid" block ion-button>Create advert</button>
-					<button *ngIf="editingAnAdvert" [disabled]="!f.form.valid" block ion-button>Save changes</button>
-				</p>
-			</div>
-		</form>
+		<advert-form-component [model]="model" [buttonText]="'Create advert'" (onsubmit)="createAdvert()"></advert-form-component>
 	</div>
 
 </ion-content>

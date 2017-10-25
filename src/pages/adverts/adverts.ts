@@ -5,6 +5,7 @@ import { CreateAdvertPage } from '../create-advert/create-advert';
 import { Advert } from '../../models/advert';
 import { AdvertsService } from '../../services/adverts.service';
 import { UserService } from '../../services/user.service';
+import { CONSTANTS } from '../../constants/constants';
 
 @Component({
 	selector: 'page-adverts',
@@ -73,11 +74,11 @@ export class AdvertsPage {
 
   	getAdverts(): void {
 		//mock data
-		// this.advertsService.getAdverts().then(adverts => this.adverts = adverts); 
+		// this.advertsService.getAdvertsByCountryAndState().then(adverts => this.adverts = adverts); 
 		
 		//real endpoint
 		this.loadingComponent.present();
-		this.advertsService.getAdverts().subscribe( 
+		this.advertsService.getAdvertsByCountryAndState('IRL', CONSTANTS.ADVERT_STATE_OPEN).subscribe( 
 				adverts  => {
 					this.adverts = adverts;
 					this.loadingComponent.dismiss();

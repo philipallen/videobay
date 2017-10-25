@@ -6,15 +6,14 @@ import { FileUploadService } from '../../services/file-upload.service';
 import { PermissionsService } from '../../services/permissions.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
-import { LoginPage } from '../login/login';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-    selector: 'page-create-advert',
-    templateUrl: 'create-advert.html',
+    selector: 'page-edit-advert',
+    templateUrl: 'edit-advert.html',
     providers: [MediaCapture, AdvertsService, FileUploadService]
 })
-export class CreateAdvertPage {
+export class EditAdvertPage {
     @ViewChild('video') input: ElementRef; 
     model: any = {};
     videoData: Array<any> = [];
@@ -23,7 +22,7 @@ export class CreateAdvertPage {
     isUsingCordova = this.platform.is('cordova');
 
     constructor(
-        private sanitizer:DomSanitizer,
+        private sanitizer: DomSanitizer,
         public navCtrl: NavController,
 		public navParams: NavParams,
         public userService: UserService,
@@ -33,15 +32,13 @@ export class CreateAdvertPage {
         private fileUploadService: FileUploadService,
         public permissionsService: PermissionsService,
         public platform: Platform) {
-            if (navParams.get('advert')) {
-                this.model = navParams.get('advert');
-            }
+            this.model = navParams.get('advert');
     }
 
   	ngOnInit(): void {
         this.permissionsService.checkStoragePermissions().then(permissionOk => {
             if (!permissionOk) {
-                alert('You\'ll need to allow the app access to your phone\'s storage to place an advert.');
+                alert('You\'ll need to allow the app access to your phone\'s storage to edit an advert.');
             }
         });
     }
@@ -71,43 +68,31 @@ export class CreateAdvertPage {
         this.videoData = [];
     }
 
-    createAdvert() {
-        if (!this.videoData.length) {
-            alert('You need to add a video');
-            return true;
-        }
-
+    editAdvert() {
         let userId = this.userService.getLoggedInUser().id;
-        let data = { //TODO cast this to the Advert class
-            "title": this.model.title,
-            "description": this.model.description,
-            "price": Number(this.model.price),
-            "country": "IRL",
-            "county": this.model.county
-        }
-
-        this.advertsService.addAdvertByUser(data, userId).subscribe(
+        this.advertsService.updateAdvertsForUser(this.model, userId).subscribe(
             response => {
-                if (this.isUsingCordova) { 
-                    // The below needs testing
-                    this.fileUploadService.uploadVideoCordova(this.videoData[0], response.id).then(uploaded => {
-                        if (uploaded) {
-                            this.createdSuccessfully();
-                        } else {
-                            alert('Error, video not uploaded properly');
-                        }
-                    });
-                }
-                if (!this.isUsingCordova) {
-                    // The the below needs testing
-                    this.fileUploadService.uploadVideoDesktop(this.videoData[0], response.id).then(response => {
-                        if (response) { //todo test this. Might never go into error as response is the thing being passed back from the servive regardless.
-                            this.createdSuccessfully();
-                        } else {
-                            alert('Error, video not uploaded properly');
-                        }
-                    });
-                }
+                this.editedSuccessfully();
+                // if (this.isUsingCordova) { 
+                //     // The below needs testing
+                //     this.fileUploadService.uploadVideoCordova(this.videoData[0], response.id).then(uploaded => {
+                //         if (uploaded) {
+                //             this.editedSuccessfully();
+                //         } else {
+                //             alert('Error, video not uploaded properly');
+                //         }
+                //     });
+                // }
+                // if (!this.isUsingCordova) {
+                //     // The the below needs testing
+                //     this.fileUploadService.uploadVideoDesktop(this.videoData[0], response.id).then(response => {
+                //         if (response) { //todo test this. Might never go into error as response is the thing being passed back from the servive regardless.
+                //             this.editedSuccessfully();
+                //         } else {
+                //             alert('Error, video not uploaded properly');
+                //         }
+                //     });
+                // }
             },
             error => {
                 this.errorMessage = <any>error;
@@ -116,17 +101,11 @@ export class CreateAdvertPage {
         ); 
     }
 
-    createdSuccessfully() {
+    editedSuccessfully() {
         let alert = this.alertCtrl.create({
             title: 'Success',
-            subTitle: 'Your advert was created.',
+            subTitle: 'Your advert was saved.',
             buttons: [
-                {
-                    text: 'Create another advert',
-                    handler: () => {
-                        this.resetPage();
-                    }
-                },
                 {
                     text: 'Go to My Adverts',
                     handler: () => {
@@ -144,6 +123,7 @@ export class CreateAdvertPage {
     }
 
     tryToGoBack() {
+        //TODO this will all changes for edit advert
         if (this.videoData.length || Object.keys(this.model).length) { //todo check if Object.keys is supported on devices
             let alertPopup = this.alertCtrl.create({
                 title: "Warning",
@@ -171,11 +151,6 @@ export class CreateAdvertPage {
     goBack() {
         this.navCtrl.pop();
     }
-
-    toLogin() {
-        this.navCtrl.push(LoginPage, { goBackAfterLogin: true });
-    }
-
 }
 
 

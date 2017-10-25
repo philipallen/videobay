@@ -10,7 +10,7 @@
 
 <ion-content class="page-my-adverts">
 	<div *ngIf="myAdverts.length">
-		<h6 padding>You have {{myAdverts.length}} live adverts.</h6>
+		<h6 padding>You have {{myAdverts.length}} live advert{{myAdverts.length == 1 ? '' : 's'}}.</h6>
 		<ion-card *ngFor="let advert of myAdverts">
 			<ion-item>
 				<h2>{{advert.title}}</h2>
@@ -26,7 +26,7 @@
 					</ion-row>
 					<ion-row align-items-end>
 						<ion-col col-8>
-							<button (click)="toCreateAdvert(advert)" ion-button color="tertiary">Edit</button>
+							<button (click)="toEditAdvert(advert)" ion-button color="tertiary">Edit</button>
 							<button (click)="deleteAdvert(advert)" ion-button color="danger">Delete</button>
 						</ion-col>
 						<ion-col>

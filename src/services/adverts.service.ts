@@ -14,23 +14,32 @@ export class AdvertsService {
 	private baseUrl = 'http://81.169.165.110:1099/videobay/api';
 	
 	constructor(private http: Http) { }
-	
-	// getAdverts(): Promise<Advert[]> { //mock data
+    
+    /* MOCK DATA (comment this back in and the below getAdverts out to see mock data) */
+	// getAdvertsByCountryAndState(): Promise<Advert[]> { 
 	// 	return Promise.resolve(ADVERTS)
 	// }
 
-	getAdverts(): Observable<any> { //real endpoint
+	getAdvertsByCountryAndState(county: string, state: string): Observable<any> { //real endpoint
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        // let options = new RequestOptions({ headers: headers });
 		let options : RequestOptions = new RequestOptions({headers: headers});
 
-        return this.http.get(this.baseUrl + '/adverts/countries/IRL?state=PENDING', options) //TODO this state is hardcoded to get something back from the server.
-        //States are: PENDING, ACTIVE and CLOSED. Pending is just meta data for the advert. Active is when the video has been uploaded and successfully linked to the advert. Closed is when it's sold or expired or whatever.
+        return this.http.get(this.baseUrl + '/adverts/countries/' + county + '?state=' + state, options)
+        //States are: [CLOSE, OPEN, PENDING]. Pending is just meta data for the advert. Active is when the video has been uploaded and successfully linked to the advert. Closed is when it's sold or expired or whatever.
                         .map(this.extractData)
                         .catch(this.handleError);
-    } 
+    }
+
+    updateAdvertsForUser(data: any, userId: number): Observable<any> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options : RequestOptions = new RequestOptions({headers: headers});
+
+        return this.http.put(this.baseUrl + '/adverts/users/' + userId, data, options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
     
-    getMyAdverts(userId: number): Observable<any> {
+    getAdvertsByUser(userId: number): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options : RequestOptions = new RequestOptions({headers: headers});
 
@@ -39,7 +48,7 @@ export class AdvertsService {
                         .catch(this.handleError);
     }
 	
-	saveAdvert(data: any, userId: number): Observable<any> {
+	addAdvertByUser(data: any, userId: number): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 

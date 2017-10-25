@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { EditAdvertPage } from '../edit-advert/edit-advert';
 import { CreateAdvertPage } from '../create-advert/create-advert';
 import { Advert } from '../../models/advert';
 import { LoadingComponent } from '../../components/loading-component';
 import { UserService } from '../../services/user.service';
 import { AdvertsService } from '../../services/adverts.service';
+import { CONSTANTS } from '../../constants/constants';
 
 @Component({
 	selector: 'page-my-adverts',
@@ -27,7 +28,7 @@ export class MyAdvertsPage {
   	getAdverts(): void {
 		this.loadingComponent.present();
 		let userId = this.userService.getLoggedInUser().id;
-  		this.advertsService.getMyAdverts(userId).subscribe(
+  		this.advertsService.getAdvertsByUser(userId).subscribe(
             response => {
 				this.myAdverts = response;
 				this.loadingComponent.dismiss();
@@ -35,6 +36,7 @@ export class MyAdvertsPage {
             error => {
 				this.errorMessage = <any>error;
 				this.loadingComponent.dismiss();
+				alert('Error: there was an error getting your adverts');
 			});
   	}
 
@@ -43,13 +45,29 @@ export class MyAdvertsPage {
 	}
 	
 	deleteAdvert(advert) {
-		//TODO awaiting endpoint here to update an advert.
-		// Need to update the status to 'CLOSED'
-		alert('Update advert:' + advert.id + ' here. Awaiting backend');
+		this.loadingComponent.present();
+		let userId = this.userService.getLoggedInUser().id;
+		let advertToDelete = advert;
+		advertToDelete.state = CONSTANTS.ADVERT_STATE_CLOSED;
+		this.advertsService.updateAdvertsForUser(advertToDelete, userId).subscribe(
+			response => {
+				this.loadingComponent.dismiss();
+				this.getAdverts();
+			},
+			error => {
+				this.errorMessage = <any>error;
+				this.loadingComponent.dismiss();
+				alert('Error: there was an error deleting your advert');
+			}
+		)
 	} 
+	
+	toCreateAdvert() {
+		this.navCtrl.push(CreateAdvertPage);
+	}
 
-  	toCreateAdvert(advert) {
-  		this.navCtrl.push(CreateAdvertPage, {advert: advert});
+  	toEditAdvert(advert) {
+  		this.navCtrl.push(EditAdvertPage, {advert: advert});
   	}
 
 }

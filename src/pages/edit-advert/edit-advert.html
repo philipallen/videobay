@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-navbar hideBackButton>
+		<ion-buttons left>
+			<button ion-button (click)="tryToGoBack()">
+            <ion-icon class="customIcon" name="arrow-back"></ion-icon>
+        </button>
+		</ion-buttons>
+		<ion-title>Edit Advert</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding text-center>
+	<button *ngIf="isUsingCordova" block (click)="recordVideo()" ion-button color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record a video</button>
+
+	<input id="fileUpload" type="file" (change)="fileChangeEvent($event)" accept="video/*"/>
+	<label class="upload-label" for="fileUpload" (click)="resetVideo()">
+		<ion-icon padding-right md="md-download" ios="md-download" wp="md-download" name="download"></ion-icon>
+		Choose an existing video
+	</label>
+
+	<video-component *ngIf="videoData.length" [src]="videoData[0].fullPath"></video-component>
+
+	<advert-form-component [model]="model" [buttonText]="'Save changes'" (onsubmit)="editAdvert()"></advert-form-component>
+</ion-content>

@@ -11,6 +11,7 @@ import { FavouritesPage } from '../pages/favourites/favourites';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { CreateAdvertPage } from '../pages/create-advert/create-advert';
+import { EditAdvertPage } from '../pages/edit-advert/edit-advert';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 
 //ionic native
@@ -29,6 +30,7 @@ import { LoadingComponent } from '../components/loading-component';
 import { ToastComponent } from '../components/toast-component';
 import { FavouriteButtonComponent } from '../components/favourite-button/favourite-button-component';
 import { AdvertComponent } from '../components/advert/advert-component';
+import { AdvertFormComponent } from '../components/advert-form/advert-form-component';
 import { VideoComponent } from '../components/video/video-component';
 
 // used to create fake backend
@@ -56,11 +58,13 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     LoginPage,
     RegisterPage,
     CreateAdvertPage,
+    EditAdvertPage,
     ForgotPasswordPage,
     LoadingComponent,
     ToastComponent,
     FavouriteButtonComponent,
     AdvertComponent,
+    AdvertFormComponent,
     VideoComponent
   ],
   imports: [
@@ -90,6 +94,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     LoginPage,
     RegisterPage,
     CreateAdvertPage,
+    EditAdvertPage,
     ForgotPasswordPage
   ],
   providers: [
