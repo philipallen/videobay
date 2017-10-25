@@ -32,6 +32,7 @@ import { FavouriteButtonComponent } from '../components/favourite-button/favouri
 import { AdvertComponent } from '../components/advert/advert-component';
 import { AdvertFormComponent } from '../components/advert-form/advert-form-component';
 import { VideoComponent } from '../components/video/video-component';
+import { FileUploadComponent } from '../components/file-upload/file-upload-component';
 
 // used to create fake backend
 // import { fakeBackendProvider } from '../mock/fake-backend';
@@ -65,7 +66,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     FavouriteButtonComponent,
     AdvertComponent,
     AdvertFormComponent,
-    VideoComponent
+    VideoComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

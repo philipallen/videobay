@@ -6,7 +6,6 @@ import { FileUploadService } from '../../services/file-upload.service';
 import { PermissionsService } from '../../services/permissions.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'page-edit-advert',
@@ -22,7 +21,6 @@ export class EditAdvertPage {
     isUsingCordova = this.platform.is('cordova');
 
     constructor(
-        private sanitizer: DomSanitizer,
         public navCtrl: NavController,
 		public navParams: NavParams,
         public userService: UserService,
@@ -57,13 +55,6 @@ export class EditAdvertPage {
             );
     }
 
-    fileChangeEvent(fileInput: any) {
-        if (fileInput.target.files && fileInput.target.files[0]) {
-            this.videoData[0] = fileInput.target.files[0];
-            this.videoData[0].fullPath = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(fileInput.target.files[0]));
-        }
-    }
-
     resetVideo() {
         this.videoData = [];
     }
@@ -73,6 +64,7 @@ export class EditAdvertPage {
         this.advertsService.updateAdvertsForUser(this.model, userId).subscribe(
             response => {
                 this.editedSuccessfully();
+                // TODO when the video stuff is working, this can be added back and edited
                 // if (this.isUsingCordova) { 
                 //     // The below needs testing
                 //     this.fileUploadService.uploadVideoCordova(this.videoData[0], response.id).then(uploaded => {

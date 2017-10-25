@@ -7,7 +7,6 @@ import { PermissionsService } from '../../services/permissions.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 import { LoginPage } from '../login/login';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'page-create-advert',
@@ -23,7 +22,6 @@ export class CreateAdvertPage {
     isUsingCordova = this.platform.is('cordova');
 
     constructor(
-        private sanitizer:DomSanitizer,
         public navCtrl: NavController,
 		public navParams: NavParams,
         public userService: UserService,
@@ -58,13 +56,6 @@ export class CreateAdvertPage {
                 },
                 (err: CaptureError) => alert('Video not captured. Error: ' + err)
             );
-    }
-
-    fileChangeEvent(fileInput: any) {
-        if (fileInput.target.files && fileInput.target.files[0]) {
-            this.videoData[0] = fileInput.target.files[0];
-            this.videoData[0].fullPath = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(fileInput.target.files[0]));
-        }
     }
 
     resetVideo() {
