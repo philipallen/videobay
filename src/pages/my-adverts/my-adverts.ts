@@ -30,7 +30,7 @@ export class MyAdvertsPage {
 		let userId = this.userService.getLoggedInUser().id;
   		this.advertsService.getAdvertsByUser(userId).subscribe(
             response => {
-				this.myAdverts = response;
+				this.myAdverts = response.filter(advert => advert.state === CONSTANTS.ADVERT_STATE_OPEN);
 				this.loadingComponent.dismiss();
 			},
             error => {
@@ -46,10 +46,10 @@ export class MyAdvertsPage {
 	
 	deleteAdvert(advert) {
 		this.loadingComponent.present();
-		let userId = this.userService.getLoggedInUser().id;
-		let advertToDelete = advert;
-		advertToDelete.state = CONSTANTS.ADVERT_STATE_CLOSED;
-		this.advertsService.updateAdvertsForUser(advertToDelete, userId).subscribe(
+		// let userId = this.userService.getLoggedInUser().id;
+		// let advertToDelete = advert;
+		// advertToDelete.state = CONSTANTS.ADVERT_STATE_CLOSED;
+		this.advertsService.cancelAdvertById(advert.id).subscribe(
 			response => {
 				this.loadingComponent.dismiss();
 				this.getAdverts();

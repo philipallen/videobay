@@ -38,6 +38,15 @@ export class AdvertsService {
                         .map(this.extractData)
                         .catch(this.handleError);
     }
+
+    cancelAdvertById(advertId: number): Observable<any> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options : RequestOptions = new RequestOptions({headers: headers});
+
+        return this.http.put(this.baseUrl + '/adverts/' + advertId + '/cancellations', options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+    }
     
     getAdvertsByUser(userId: number): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });

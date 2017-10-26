@@ -14,7 +14,7 @@
   <!--http://playerjs.io/-->
 
   <ion-searchbar (ionInput)="searchAdverts($event)"></ion-searchbar>
-  <h6 padding>{{adverts.length}} adverts listed</h6>
+  <h6 padding>{{adverts.length}} advert{{adverts.length == 1 ? '' : 's'}} listed</h6>
   <advert-component *ngFor="let advert of adverts" [advert]="advert"></advert-component>
   <!--TODO use virtualScroll on ngFors perhaps-->
 

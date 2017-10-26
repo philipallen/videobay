@@ -9,7 +9,7 @@
 
 <ion-content class="page-favourites">
   <div *ngIf="favourites.length"> <!--TODO view is weird using it this way as shows no adverts until adverts load-->
-    <h6 padding >You have {{favourites.length}} favourites.</h6>
+    <h6 padding >You have {{favourites.length}} favourite{{favourites.length == 1 ? '' : 's'}}.</h6>
     <advert-component *ngFor="let advert of favourites" [advert]="advert"></advert-component>
   </div>
   <div *ngIf="!favourites.length">
