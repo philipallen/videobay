@@ -29,6 +29,7 @@ import { PermissionsService } from '../services/permissions.service';
 import { LoadingComponent } from '../components/loading-component';
 import { ToastComponent } from '../components/toast-component';
 import { FavouriteButtonComponent } from '../components/favourite-button/favourite-button-component';
+import { RecordVideoButtonComponent } from '../components/record-video-button/record-video-button-component';
 import { AdvertComponent } from '../components/advert/advert-component';
 import { AdvertFormComponent } from '../components/advert-form/advert-form-component';
 import { VideoComponent } from '../components/video/video-component';
@@ -64,6 +65,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     LoadingComponent,
     ToastComponent,
     FavouriteButtonComponent,
+    RecordVideoButtonComponent,
     AdvertComponent,
     AdvertFormComponent,
     VideoComponent,

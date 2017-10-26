@@ -17,7 +17,7 @@
 	</div>
 
 	<div *ngIf="this.userService.isSomeoneLoggedIn()">
-		<button *ngIf="isUsingCordova" block (click)="recordVideo()" ion-button color="secondary" round class="center-h"><ion-icon padding-right name="videocam"></ion-icon>Record a video</button>
+		<record-video-button-component *ngIf="isUsingCordova" [(videoData)]="videoData"></record-video-button-component>
 
 		<file-upload-component [(videoData)]="videoData"></file-upload-component>
 

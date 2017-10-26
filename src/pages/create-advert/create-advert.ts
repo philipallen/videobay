@@ -5,13 +5,12 @@ import { AdvertsService } from '../../services/adverts.service';
 import { FileUploadService } from '../../services/file-upload.service';
 import { PermissionsService } from '../../services/permissions.service';
 import { MyAdvertsPage } from '../my-adverts/my-adverts';
-import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
 import { LoginPage } from '../login/login';
 
 @Component({
     selector: 'page-create-advert',
     templateUrl: 'create-advert.html',
-    providers: [MediaCapture, AdvertsService, FileUploadService]
+    providers: [AdvertsService, FileUploadService]
 })
 export class CreateAdvertPage {
     @ViewChild('video') input: ElementRef; 
@@ -25,7 +24,6 @@ export class CreateAdvertPage {
         public navCtrl: NavController,
 		public navParams: NavParams,
         public userService: UserService,
-        private mediaCapture: MediaCapture,
         private alertCtrl: AlertController,
         private advertsService: AdvertsService,
         private fileUploadService: FileUploadService,
@@ -42,24 +40,6 @@ export class CreateAdvertPage {
                 alert('You\'ll need to allow the app access to your phone\'s storage to place an advert.');
             }
         });
-    }
-
-    recordVideo() {
-        this.resetVideo();
-        let options: CaptureImageOptions = { 
-            limit: 1
-        };
-        this.mediaCapture.captureVideo(options)
-            .then(
-                (data: MediaFile[]) => {
-                    this.videoData = data;
-                },
-                (err: CaptureError) => alert('Video not captured. Error: ' + err)
-            );
-    }
-
-    resetVideo() {
-        this.videoData = [];
     }
 
     createAdvert() {
@@ -130,7 +110,7 @@ export class CreateAdvertPage {
     }
 
     resetPage() {
-        this.resetVideo();
+        this.videoData = [];
         this.model = {};
     }
 
