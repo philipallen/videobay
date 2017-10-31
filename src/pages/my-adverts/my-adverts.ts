@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { EditAdvertPage } from '../edit-advert/edit-advert';
 import { CreateAdvertPage } from '../create-advert/create-advert';
 import { Advert } from '../../models/advert';
@@ -20,6 +20,7 @@ export class MyAdvertsPage {
   	constructor(
 		private loadingComponent: LoadingComponent,
   		public navCtrl: NavController, 
+		private alertCtrl: AlertController,
 		public userService: UserService,
   		private advertsService: AdvertsService) {
 	  	
@@ -43,12 +44,28 @@ export class MyAdvertsPage {
   	ngOnInit(): void {
   		this.getAdverts();
 	}
+
+	tryToDeleteAdvert(advert) {
+		let alertPopup = this.alertCtrl.create({
+			title: "Warning",
+			message: "Are you sure you want to delete your advert? You won't be able to undo this.",
+			buttons: [
+				{
+					text: 'Cancel',
+					role: 'cancel'
+				},
+				{
+					text: 'Yeah, delete it.',
+					handler: () => {
+						this.deleteAdvert(advert);
+					}
+				}]
+		});
+		alertPopup.present();
+    }
 	
 	deleteAdvert(advert) {
 		this.loadingComponent.present();
-		// let userId = this.userService.getLoggedInUser().id;
-		// let advertToDelete = advert;
-		// advertToDelete.state = CONSTANTS.ADVERT_STATE_CLOSED;
 		this.advertsService.cancelAdvertById(advert.id).subscribe(
 			response => {
 				this.loadingComponent.dismiss();
