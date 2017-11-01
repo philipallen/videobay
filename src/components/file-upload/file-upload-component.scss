@@ -1,24 +1,26 @@
-#fileUpload {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
+file-upload-component {
+  #fileUpload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
 
-.upload-label {
-  font-size: 16px;
-  display: flex;
-  justify-content: center;
-  color: white;
-  padding: 12px 25px;
-  margin: 16px 0;
-  border-radius: 64px;
-  cursor: pointer;
-  background-color: color($colors, secondary);
+  .upload-label {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 12px 25px;
+    margin: 16px 0;
+    border-radius: 64px;
+    cursor: pointer;
+    background-color: color($colors, secondary);
 
-  &:hover {
-      opacity: 0.9;
+    &:hover {
+        opacity: 0.9;
+    }
   }
 }
