@@ -59,7 +59,8 @@ export class MyApp {
       this.userService.getByUsernameAndPassword(this.userService.getLoggedInUser()).subscribe(
         response => {},
         error => {
-            alert('error: did not get logged in user');
+            alert('error: did not get logged in user. Will remove from local storage now');
+            this.userService.logout();
         }
       )
     }
