@@ -59,20 +59,19 @@ export class CreateAdvertPage {
 
         this.advertsService.addAdvertByUser(data, userId).subscribe(
             response => {
-                if (this.isUsingCordova) { 
-                    // The below needs testing
-                    this.fileUploadService.uploadVideoCordova(this.videoData[0], response.id).then(uploaded => {
-                        if (uploaded) {
+                //Have to check the video path. If it's an object, it's a blob and so comes from the file system
+                //If it's not an object, then assume it's a string and so comes from a camera
+                if (typeof(this.videoData[0].fullPath) === 'object') {
+                    this.fileUploadService.uploadVideoFromFileSystem(this.videoData[0], response.id).then(response => {
+                        if (response) { //todo test this. Might never go into error as response is the thing being passed back from the servive regardless.
                             this.createdSuccessfully();
                         } else {
                             alert('Error, video not uploaded properly');
                         }
                     });
-                }
-                if (!this.isUsingCordova) {
-                    // The the below needs testing
-                    this.fileUploadService.uploadVideoDesktop(this.videoData[0], response.id).then(response => {
-                        if (response) { //todo test this. Might never go into error as response is the thing being passed back from the servive regardless.
+                } else {
+                    this.fileUploadService.uploadVideoFromCamera(this.videoData[0], response.id).then(uploaded => {
+                        if (uploaded) {
                             this.createdSuccessfully();
                         } else {
                             alert('Error, video not uploaded properly');

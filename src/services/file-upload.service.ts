@@ -9,11 +9,12 @@ export class FileUploadService {
     
     constructor(private transfer: FileTransfer) { }
 
-    uploadVideoCordova(file: any, advertId: number): Promise<boolean> {
+    uploadVideoFromCamera(file: any, advertId: number): Promise<boolean> {
         const fileTransfer: FileTransferObject = this.transfer.create();
+        let filePath = file.fullPath.substr(file.fullPath.lastIndexOf('/') + 1);
         let options: FileUploadOptions = {
             fileKey: 'file',
-            fileName: file.fullPath.substr(file.fullPath.lastIndexOf('/') + 1),
+            fileName: filePath,
             mimeType: 'video/mp4',
             headers: {}
         }
@@ -31,7 +32,7 @@ export class FileUploadService {
         });
     }
 
-    uploadVideoDesktop(file: any, advertId: number): Promise<any> {
+    uploadVideoFromFileSystem(file: any, advertId: number): Promise<any> {
         return new Promise((resolve, reject) => {
             let xhr:XMLHttpRequest = new XMLHttpRequest();
             xhr.onreadystatechange = () => {

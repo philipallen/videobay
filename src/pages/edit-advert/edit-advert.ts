@@ -67,7 +67,7 @@ export class EditAdvertPage {
                 // TODO when the video stuff is working, this can be added back and edited
                 // if (this.isUsingCordova) { 
                 //     // The below needs testing
-                //     this.fileUploadService.uploadVideoCordova(this.videoData[0], response.id).then(uploaded => {
+                //     this.fileUploadService.uploadVideoFromCamera(this.videoData[0], response.id).then(uploaded => {
                 //         if (uploaded) {
                 //             this.editedSuccessfully();
                 //         } else {
@@ -77,7 +77,7 @@ export class EditAdvertPage {
                 // }
                 // if (!this.isUsingCordova) {
                 //     // The the below needs testing
-                //     this.fileUploadService.uploadVideoDesktop(this.videoData[0], response.id).then(response => {
+                //     this.fileUploadService.uploadVideoFromFileSystem(this.videoData[0], response.id).then(response => {
                 //         if (response) { //todo test this. Might never go into error as response is the thing being passed back from the servive regardless.
                 //             this.editedSuccessfully();
                 //         } else {
