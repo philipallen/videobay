@@ -5,9 +5,9 @@
         <ion-badge secondary item-end>{{advert.price | currency:'EUR':true}}</ion-badge>
     </ion-item>
 
-    <video-component 
-        [poster]="'https://dstqaa92re5c4.cloudfront.net/Images/Giant/Vibes/2017/bikecatalogueblocks/off-road_3.jpg'" 
-        [src]="'https://vjs.zencdn.net/v/oceans.mp4'">
+    <video-component
+        [poster]="'https://dstqaa92re5c4.cloudfront.net/Images/Giant/Vibes/2017/bikecatalogueblocks/off-road_3.jpg'"
+        [src]="advert.videoUrl">
     </video-component>
 
     <ion-card-content>
@@ -18,7 +18,7 @@
                 </ion-col>
                 <ion-col>
                     <favourite-button-component text-right [advertId]="advert.id"></favourite-button-component>
-                </ion-col>    
+                </ion-col>
             </ion-row>
             <ion-row align-items-end>
                 <ion-col col-8>
@@ -28,6 +28,6 @@
                     <p class="small" text-right>{{advert.created | amTimeAgo}}</p>
                 </ion-col>
             </ion-row>
-        </ion-grid>  
+        </ion-grid>
     </ion-card-content>
 </ion-card>
