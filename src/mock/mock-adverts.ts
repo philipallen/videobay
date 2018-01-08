@@ -11,7 +11,6 @@ export const ADVERTS: Advert[] = [
 	    description: "Men's bicycle. Perfect condition. Collection only.",
 	    price: 50,
 		created: 1497538869000,
-		user: {},
 		videoUrl: ""
 	},
 	{
@@ -24,7 +23,6 @@ export const ADVERTS: Advert[] = [
 	    description: "",
 	    price: 125.50,
 		created: 1497366993000,
-		user: {},
 		videoUrl: ""
 	}
 ]

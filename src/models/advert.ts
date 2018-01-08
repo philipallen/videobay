@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export class Advert {
     title: string;
     description: string;
@@ -8,7 +10,7 @@ export class Advert {
     county: string;
     id?: number;
     state?: string;
-    user?: any; //to be more strongly typed later
+    user?: User; //to be more strongly typed later
     city?: string;
 }
 //todo eventually sync this up with the rest endpoints types
