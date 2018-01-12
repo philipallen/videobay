@@ -2,7 +2,7 @@
 	<ion-header>
 		<ion-toolbar>
 			<ion-title *ngIf="this.userService.isSomeoneLoggedIn()">Hello {{this.userService.getLoggedInUser().firstName}}</ion-title>
-			<ion-title *ngIf="!this.userService.isSomeoneLoggedIn()">Hello</ion-title>
+			<ion-title *ngIf="!this.userService.isSomeoneLoggedIn()">Please login</ion-title>
 		</ion-toolbar>
 	</ion-header>
 
