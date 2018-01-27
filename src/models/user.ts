@@ -7,6 +7,7 @@ export class User {
     firstName: string;
     surName: string;
     email: string;
+    account : Account;
     adverts: Advert[];
     favoriteAds: number[];
 }
