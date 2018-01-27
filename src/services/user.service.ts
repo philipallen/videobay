@@ -36,7 +36,7 @@ export class UserService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options : RequestOptions = new RequestOptions({headers: headers});
 
-        return this.http.get(this.baseUrl + '/users?username=' + user.screenName.toLowerCase() + '&password=' + user.password, options)
+        return this.http.get(this.baseUrl + '/users?username=' + user.screenName + '&password=' + user.password, options)
                         .map((res:Response) => { 
                             this.setLoggedInUser(res); 
                             return this.extractData(res) 
