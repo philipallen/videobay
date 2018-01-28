@@ -13,6 +13,7 @@ import { RegisterPage } from '../pages/register/register';
 import { CreateAdvertPage } from '../pages/create-advert/create-advert';
 import { EditAdvertPage } from '../pages/edit-advert/edit-advert';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
+import { AccountPage} from '../pages/account/account';
 
 //ionic native
 import { StatusBar } from '@ionic-native/status-bar';
@@ -62,6 +63,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     CreateAdvertPage,
     EditAdvertPage,
     ForgotPasswordPage,
+    AccountPage,
     LoadingComponent,
     ToastComponent,
     FavouriteButtonComponent,
@@ -99,7 +101,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     RegisterPage,
     CreateAdvertPage,
     EditAdvertPage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    AccountPage
   ],
   providers: [
     StatusBar,

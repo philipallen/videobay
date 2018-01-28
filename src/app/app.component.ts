@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { UserService } from '../services/user.service';
 import { PermissionsService } from '../services/permissions.service';
+import { AccountPage } from '../pages/account/account';
 
 @Component({
   templateUrl: 'app.html'
@@ -44,6 +45,10 @@ export class MyApp {
 
   toMyFavourites() {
     this.nav.setRoot(FavouritesPage);
+  }
+
+  toAccount(){
+    this.nav.setRoot(AccountPage)
   }
 
   logout() {
