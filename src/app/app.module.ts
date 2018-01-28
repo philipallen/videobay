@@ -43,6 +43,7 @@ import { BaseRequestOptions } from '@angular/http';
 
 //third party 
 import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angular2-moment
+import { CreateAddressPage } from '../pages/create-address/create-address';
 
 
 // import { LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -64,6 +65,7 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     EditAdvertPage,
     ForgotPasswordPage,
     AccountPage,
+    CreateAddressPage,
     LoadingComponent,
     ToastComponent,
     FavouriteButtonComponent,
@@ -102,7 +104,8 @@ import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angul
     CreateAdvertPage,
     EditAdvertPage,
     ForgotPasswordPage,
-    AccountPage
+    AccountPage,
+    CreateAddressPage
   ],
   providers: [
     StatusBar,

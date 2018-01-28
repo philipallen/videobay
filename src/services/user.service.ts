@@ -14,8 +14,8 @@ export class UserService {
         return JSON.parse(localStorage.getItem('currentUser')) ? true : false;
     }
 
-    getLoggedInUser() {
-        return JSON.parse(localStorage.getItem('currentUser'));
+    getLoggedInUser() : User {
+        return JSON.parse(localStorage.getItem('currentUser')) as User;
     }
 
     create(user: User) {

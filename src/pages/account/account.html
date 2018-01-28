@@ -15,5 +15,8 @@
 
 
 <ion-content padding>
-
+  <div *ngIf="!account"> <!--TODO view is weird using it this way as shows no adverts until adverts load-->
+    <h6 padding >Your account isn't set up yet</h6>
+    <button ion-button (click)="toCreateAddress()">Add address</button>
+  </div>
 </ion-content>

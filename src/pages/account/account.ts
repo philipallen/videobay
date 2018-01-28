@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UserService } from '../../services/user.service';
+import { CreateAddressPage } from '../create-address/create-address';
 
 /**
  * Generated class for the AccountPage page.
@@ -13,8 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'account.html',
 })
 export class AccountPage {
+  account : Account
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public userService: UserService) {
+  }
+
+  ngOnInit(): void {
+    this.account = this.userService.getLoggedInUser().account;
+  }
+
+  toCreateAddress(): void {
+    this.navCtrl.push(CreateAddressPage);
   }
 
   ionViewDidLoad() {
