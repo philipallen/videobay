@@ -44,6 +44,7 @@ import { BaseRequestOptions } from '@angular/http';
 //third party 
 import { MomentModule } from 'angular2-moment'; //https://github.com/urish/angular2-moment
 import { CreateAddressPage } from '../pages/create-address/create-address';
+import { AddressFormComponent } from '../components/address-form/address-form';
 
 
 // import { LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -73,7 +74,8 @@ import { CreateAddressPage } from '../pages/create-address/create-address';
     AdvertComponent,
     AdvertFormComponent,
     VideoComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,

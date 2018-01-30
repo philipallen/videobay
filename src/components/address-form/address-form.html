@@ -1,0 +1,37 @@
+<form name="form" (ngSubmit)="f.form.valid && onsubmit.next('submitted')" #f="ngForm" novalidate>
+  <ion-item no-padding>
+      <ion-label floating>Full Name</ion-label>
+      <ion-input name="title" type="text" [(ngModel)]="address.fullName" #fullName="ngModel" required autocapitalize="off" autocorrect="off"></ion-input>
+  </ion-item>
+  <ion-item no-padding>
+      <ion-label floating>Street Address 1</ion-label>
+      <ion-input name="description" type="text" [(ngModel)]="address.streetAddress_1" #streetAddress_1="ngModel" required autocapitalize="off"
+      autocorrect="off"></ion-input>
+  </ion-item>
+  <ion-item no-padding>
+    <ion-label floating>Street Address 2</ion-label>
+    <ion-input name="description" type="text" [(ngModel)]="address.streetAddress_2" #streetAddress_2="ngModel" required autocapitalize="off"
+    autocorrect="off"></ion-input>
+</ion-item>
+  <ion-item no-padding>
+      <ion-label floating>City</ion-label>
+      <ion-input name="city" type="string" [(ngModel)]="address.city" #city="ngModel" autocapitalize="off" autocorrect="off"></ion-input>
+  </ion-item>
+  <ion-item no-padding>
+      <ion-label floating>County</ion-label>
+      <ion-select required [(ngModel)]="address.county" name="county">
+          <ion-option *ngFor="let county of countiesList" [value]="county">{{county}}</ion-option>
+      </ion-select>
+  </ion-item>
+  <ion-item no-padding>
+    <ion-label floating>Post Code</ion-label>
+    <ion-input name="postCode" type="string" [(ngModel)]="address.postCode" #postCode="ngModel" autocapitalize="off" autocorrect="off"></ion-input>
+</ion-item>
+<ion-item no-padding>
+  <ion-label floating>Phone Number</ion-label>
+  <ion-input name="phoneNumber" type="string" [(ngModel)]="address.phoneNumber" #phoneNumber="ngModel" autocapitalize="off" autocorrect="off"></ion-input>
+</ion-item>
+  <div class="form-group">
+      <p><button [disabled]="!f.form.valid" block ion-button>Add</button></p>
+  </div>
+</form>
