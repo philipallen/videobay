@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { User } from '../models/user';
+import { Address } from '../models/Address';
+import { Account } from '../models/Account';
 
 @Injectable()
 export class UserService {
@@ -51,6 +53,22 @@ export class UserService {
         return this.http.get(this.baseUrl + '/users/resetpw/?username=' + username, options)
                         .map(this.extractData)
                         .catch(this.handleError);
+    }
+
+     createAccount(address : Address) : Observable<Account>{
+        let userId : number = this.getLoggedInUser().id;
+        let account : Account = new Account;
+        account.addresses.push(address);
+        console.log(JSON.stringify(account));
+        let url : string = this.baseUrl + '/users/'+userId+'/accounts';
+        console.log(url);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options : RequestOptions = new RequestOptions({headers: headers});
+
+        return this.http.post(url,account,options)
+                        .map(this.extractData)
+                        .catch(this.handleError);
+
     }
 
     private setLoggedInUser(res: Response) {

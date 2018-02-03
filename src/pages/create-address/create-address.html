@@ -16,5 +16,5 @@
 
 
 <ion-content padding>
-  <address-form onsubmit="createAddress()" address=""></address-form>
+  <address-form (onsubmit)="createAddress()" [address]="address"></address-form>
 </ion-content>

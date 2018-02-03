@@ -19,9 +19,7 @@
   </ion-item>
   <ion-item no-padding>
       <ion-label floating>County</ion-label>
-      <ion-select required [(ngModel)]="address.county" name="county">
-          <ion-option *ngFor="let county of countiesList" [value]="county">{{county}}</ion-option>
-      </ion-select>
+      <ion-input name="county" type="string" [(ngModel)]="address.county" #county="ngModel" autocapitalize="off" autocorrect="off"></ion-input>
   </ion-item>
   <ion-item no-padding>
     <ion-label floating>Post Code</ion-label>

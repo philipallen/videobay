@@ -13,7 +13,7 @@ import { Address } from '../../models/Address';
 })
 export class AddressFormComponent {
   @Input() address : Address;
-  @Output() onsubmit = new EventEmitter<string>(); 
+  @Output() onsubmit = new EventEmitter<Address>(); 
   text: string;
 
   constructor() {
