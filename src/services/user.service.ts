@@ -71,8 +71,12 @@ export class UserService {
 
     }
 
-    public setLoggedInUser(res: Response) {
+    private setLoggedInUser(res: Response) {
         localStorage.setItem('currentUser', JSON.stringify(res.json()));
+    }
+
+    private updateLoggedInUserAccount(res : Response){
+        
     }
 
     //TODO refactor the below as it also exists in adverts.service.ts
