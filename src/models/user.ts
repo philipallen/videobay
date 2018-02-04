@@ -1,4 +1,5 @@
 import { Advert } from '../models/advert';
+import { Account } from './Account';
 
 export class User {
     id: number;

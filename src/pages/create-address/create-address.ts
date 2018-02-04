@@ -4,6 +4,8 @@ import { Address } from '../../models/Address';
 import { UserService } from '../../services/user.service';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { AdvertsPage } from '../adverts/adverts';
+import { Account } from '../../models/Account';
+import { User } from '../../models/user';
 
 /**
  * Generated class for the CreateAddressPage page.
@@ -34,6 +36,12 @@ export class CreateAddressPage {
     this.userService.createAccount(this.address).subscribe(
       response => {
         this.createdSuccessfully();
+        let account : Account = new Account();
+        account.addresses.push(this.address);
+        let user : User = this.userService.getLoggedInUser();
+        user.account = account;
+        // This should be capsuled in the userService
+        localStorage.setItem('currentUser', JSON.stringify(user));
       },
       error => {
         this.errorMessage = <any>error;

@@ -71,7 +71,7 @@ export class UserService {
 
     }
 
-    private setLoggedInUser(res: Response) {
+    public setLoggedInUser(res: Response) {
         localStorage.setItem('currentUser', JSON.stringify(res.json()));
     }
 

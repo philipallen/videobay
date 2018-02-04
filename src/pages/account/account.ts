@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserService } from '../../services/user.service';
 import { CreateAddressPage } from '../create-address/create-address';
+import { Account } from '../../models/Account';
 
 /**
  * Generated class for the AccountPage page.
