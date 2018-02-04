@@ -15,8 +15,14 @@
 
 
 <ion-content padding>
-  <div *ngIf="!account">
+  <div *ngIf="!account;else account_abailable">
     <h6 padding >Your account isn't set up yet</h6>
     <button ion-button (click)="toCreateAddress()">Add address</button>
   </div>
+
+  <ng-template #account_abailable>
+    <div>
+      <address-form (onsubmit)="updateAddress()" [address]="account.addresses[0]"  [buttonText]="'Update'" ></address-form>
+    </div>
+  </ng-template>
 </ion-content>

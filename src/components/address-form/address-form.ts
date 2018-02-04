@@ -13,6 +13,7 @@ import { Address } from '../../models/Address';
 })
 export class AddressFormComponent {
   @Input() address : Address;
+  @Input() buttonText: string;
   @Output() onsubmit = new EventEmitter<Address>(); 
   text: string;
 
