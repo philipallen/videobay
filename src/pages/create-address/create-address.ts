@@ -36,13 +36,6 @@ export class CreateAddressPage {
     this.userService.createAccount(this.address).subscribe(
       response => {
         this.createdSuccessfully();
-        // This should be capsuled in the userService => updateLoggedInUserAccount
-        let account : Account = new Account();
-        account.addresses.push(this.address);
-        let user : User = this.userService.getLoggedInUser();
-        user.account = account;
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        // END
       },
       error => {
         this.errorMessage = <any>error;

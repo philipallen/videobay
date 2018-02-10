@@ -59,15 +59,16 @@ export class UserService {
         let userId : number = this.getLoggedInUser().id;
         let account : Account = new Account;
         account.addresses.push(address);
-        console.log(JSON.stringify(account));
         let url : string = this.baseUrl + '/users/'+userId+'/accounts';
-        console.log(url);
         let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options : RequestOptions = new RequestOptions({headers: headers});
 
         return this.http.post(url,account,options)
-                        .map(this.extractData)
-                        .catch(this.handleError);
+                             .map((res:Response) => { 
+                                      this.updateLoggedInUserAccount(res); 
+                                      return this.extractData(res) 
+                                  })
+                             .catch(this.handleError);
 
     }
 
@@ -75,8 +76,15 @@ export class UserService {
         localStorage.setItem('currentUser', JSON.stringify(res.json()));
     }
 
+    private setLoggedInUserModel(user: User){
+        localStorage.setItem('currentUser', JSON.stringify(user));
+    }
+
     private updateLoggedInUserAccount(res : Response){
-        
+        let account:Account = JSON.parse(JSON.stringify(res.json())) as Account;
+        let user = this.getLoggedInUser();
+        user.account = account;
+        this.setLoggedInUserModel(user);
     }
 
     //TODO refactor the below as it also exists in adverts.service.ts
